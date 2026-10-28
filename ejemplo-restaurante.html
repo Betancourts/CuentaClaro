@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>El Guadual, asadero y restaurante (página de ejemplo)</title>
+<meta name="description" content="Página de ejemplo para un restaurante: carta, menú del día, horarios, ubicación y reservas por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --guadua: #24533a; --guadua-oscuro: #17382a; --maiz: #f2b632; --aji: #cf3b25; --fondo: #f2f6ee; --papel: #ffffff; --tinta: #1b2a21; --suave: #5a6b60; --linea: #d3ddcc; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Figtree, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--fondo); }
+h1, h2, h3 { font-family: "Bricolage Grotesque", Georgia, serif; line-height: 1.05; margin: 0; letter-spacing: -0.01em; }
+a { color: inherit; }
+.ancho { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+.aviso-demo { background: var(--guadua-oscuro); color: #e6efe0; font-size: 14px; padding: 9px 20px; text-align: center; }
+.aviso-demo a { color: var(--maiz); font-weight: 700; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+.marca { font-family: "Bricolage Grotesque", Georgia, serif; font-weight: 800; font-size: 24px; text-decoration: none; color: var(--guadua); }
+.menu a { margin-left: 22px; text-decoration: none; font-weight: 500; }
+.menu a:hover { color: var(--aji); }
+.boton { display: inline-block; background: var(--aji); color: #ffffff; font-weight: 700; padding: 13px 22px; border-radius: 6px; text-decoration: none; }
+.boton:hover { background: #b2301d; }
+.boton.verde { background: var(--guadua); }
+.boton.verde:hover { background: var(--guadua-oscuro); }
+.boton:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--maiz); outline-offset: 3px; }
+
+.portada { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; padding: 36px 0 64px; }
+.portada h1 { font-size: 66px; font-weight: 800; color: var(--guadua-oscuro); }
+.portada p { max-width: 46ch; color: var(--suave); margin: 22px 0 28px; font-size: 19px; }
+.acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+.cartel { background: var(--guadua); color: #f2f6ee; border-radius: 10px; padding: 28px 84px 28px 28px; position: relative; overflow: hidden; }
+.cartel::before { content: ""; position: absolute; right: 26px; top: 0; bottom: 0; width: 14px; background: repeating-linear-gradient(to bottom, #2f6a4a 0 86px, #17382a 86px 92px); opacity: .7; }
+.cartel::after { content: ""; position: absolute; right: 58px; top: 0; bottom: 0; width: 10px; background: repeating-linear-gradient(to bottom, #2f6a4a 0 60px, #17382a 60px 65px); opacity: .5; }
+.estado { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
+.punto { width: 14px; height: 14px; border-radius: 50%; background: #8a9a8f; }
+.punto.abierto { background: #5be08a; box-shadow: 0 0 0 5px rgba(91,224,138,.25); }
+.punto.cerrado { background: var(--aji); }
+.cartel .estado-detalle { margin: 4px 0 22px; color: #bcd0c2; font-size: 15px; max-width: none; }
+.cartel h2 { font-size: 15px; font-weight: 500; font-family: Figtree, sans-serif; color: #bcd0c2; letter-spacing: 0; }
+.cartel .plato-dia { font-family: "Bricolage Grotesque", Georgia, serif; font-size: 32px; font-weight: 800; line-height: 1.1; margin: 6px 0 8px; max-width: 12ch; color: #ffffff; }
+.cartel .precio { color: var(--maiz); font-weight: 700; font-size: 20px; }
+
+.seccion { padding: 64px 0; }
+.seccion h2 { font-size: 44px; color: var(--guadua-oscuro); margin-bottom: 8px; }
+.seccion .intro { color: var(--suave); max-width: 52ch; margin: 0 0 36px; }
+.fondo-papel { background: var(--papel); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.carta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 44px; }
+.grupo h3 { font-size: 26px; color: var(--aji); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--maiz); }
+.plato { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 12px 0; border-bottom: 1px dashed var(--linea); }
+.plato b { font-weight: 700; }
+.plato span.p { font-weight: 700; color: var(--guadua); white-space: nowrap; }
+.plato small { grid-column: 1 / -1; color: var(--suave); font-size: 15px; }
+.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+.horas { width: 100%; border-collapse: collapse; }
+.horas td { padding: 10px 0; border-bottom: 1px solid var(--linea); }
+.horas td:last-child { text-align: right; font-weight: 700; }
+.horas tr.hoy td { color: var(--aji); }
+.tarjeta-lugar { background: var(--fondo); border: 1px solid var(--linea); border-radius: 10px; padding: 26px; }
+.tarjeta-lugar p { margin: 0 0 14px; }
+.reserva { background: var(--guadua-oscuro); color: #eef4ea; text-align: left; padding: 64px 0; }
+.reserva h2 { color: #ffffff; font-size: 44px; max-width: 18ch; }
+.reserva p { color: #bcd0c2; max-width: 48ch; margin: 14px 0 26px; }
+.reserva .boton { background: var(--maiz); color: #1b2a21; }
+.reserva .boton:hover { background: #ffd067; }
+.pie { padding: 28px 20px 40px; color: var(--suave); font-size: 14px; }
+.pie a { color: var(--guadua); font-weight: 700; }
+@media (max-width: 800px) {
+  .portada, .carta, .dos { grid-template-columns: 1fr; gap: 28px; }
+  .portada h1 { font-size: 44px; }
+  .seccion h2, .reserva h2 { font-size: 34px; }
+  .menu { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="aviso-demo">Página de ejemplo hecha por CuentaClaro. El restaurante, los precios y los datos son inventados. <a href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20del%20restaurante%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero una para mi negocio</a></div>
+
+<div class="ancho">
+  <header class="cabecera">
+    <a class="marca" href="#inicio">El Guadual</a>
+    <nav class="menu"><a href="#carta">Carta</a><a href="#horarios">Horarios</a><a href="#lugar">Cómo llegar</a></nav>
+    <a class="boton verde" href="#reservar">Reservar mesa</a>
+  </header>
+
+  <section class="portada" id="inicio">
+    <div>
+      <h1>Arroz tapado, asado huilense y almuerzo de domingo.</h1>
+      <p>Cocina del Huila hecha en fogón, a la orilla del río. Venga con la familia, pida lo que quiera y quédese a la sobremesa.</p>
+      <div class="acciones">
+        <a class="boton" href="#carta">Ver la carta</a>
+        <a class="boton verde" href="#reservar">Reservar mesa</a>
+      </div>
+    </div>
+    <aside class="cartel">
+      <div class="estado"><span class="punto" id="punto"></span><span id="estado-texto">Revisando horario</span></div>
+      <p class="estado-detalle" id="estado-detalle"></p>
+      <h2>Plato del día</h2>
+      <p class="plato-dia" id="plato-dia">Arroz tapado</p>
+      <span class="precio" id="plato-precio">$ 32.000</span>
+    </aside>
+  </section>
+</div>
+
+<section class="seccion fondo-papel" id="carta">
+  <div class="ancho">
+    <h2>La carta</h2>
+    <p class="intro">Todo se prepara al momento. Los precios incluyen servicio y están en pesos colombianos.</p>
+    <div class="carta">
+      <div class="grupo">
+        <h3>Platos fuertes</h3>
+        <div class="plato"><b>Arroz tapado</b><span class="p">$ 32.000</span><small>Arroz con pollo, cerdo y chorizo, huevo y plátano maduro.</small></div>
+        <div class="plato"><b>Asado huilense</b><span class="p">$ 38.000</span><small>Costilla y carne de cerdo asadas, con yuca, papa criolla y arepa.</small></div>
+        <div class="plato"><b>Mojarra frita</b><span class="p">$ 36.000</span><small>Pescado entero con patacón, ensalada y arroz de coco.</small></div>
+        <div class="plato"><b>Sancocho de gallina</b><span class="p">$ 28.000</span><small>Sopa de la casa con presa, yuca, plátano y mazorca.</small></div>
+      </div>
+      <div class="grupo">
+        <h3>Para compartir</h3>
+        <div class="plato"><b>Picada para dos</b><span class="p">$ 58.000</span><small>Chorizo, morcilla, chicharrón, yuca, papa y ají de la casa.</small></div>
+        <div class="plato"><b>Tamal huilense</b><span class="p">$ 14.000</span><small>Envuelto en hoja de plátano, con pollo y cerdo.</small></div>
+        <h3 style="margin-top:28px">Para tomar y para el postre</h3>
+        <div class="plato"><b>Limonada de panela</b><span class="p">$ 6.000</span></div>
+        <div class="plato"><b>Café del Huila</b><span class="p">$ 4.500</span></div>
+        <div class="plato"><b>Brevas con arequipe</b><span class="p">$ 9.000</span></div>
+        <div class="plato"><b>Cuajada con melao</b><span class="p">$ 8.000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="horarios">
+  <div class="ancho dos">
+    <div>
+      <h2>Horarios</h2>
+      <p class="intro">Abrimos todos los días. Los fines de semana cerramos más tarde.</p>
+      <table class="horas">
+        <tr id="d1"><td>Lunes</td><td>11:00 a. m. a 3:00 p. m.</td></tr>
+        <tr id="d2"><td>Martes</td><td>11:00 a. m. a 3:00 p. m.</td></tr>
+        <tr id="d3"><td>Miércoles</td><td>11:00 a. m. a 3:00 p. m.</td></tr>
+        <tr id="d4"><td>Jueves</td><td>11:00 a. m. a 3:00 p. m.</td></tr>
+        <tr id="d5"><td>Viernes</td><td>11:00 a. m. a 10:00 p. m.</td></tr>
+        <tr id="d6"><td>Sábado</td><td>11:00 a. m. a 10:00 p. m.</td></tr>
+        <tr id="d0"><td>Domingo</td><td>11:00 a. m. a 5:00 p. m.</td></tr>
+      </table>
+    </div>
+    <div id="lugar">
+      <h2>Cómo llegar</h2>
+      <p class="intro">A 10 minutos del casco urbano, por la vía al río. Hay parqueadero para carros y motos.</p>
+      <div class="tarjeta-lugar">
+        <p><b>Vereda El Guadual, vía al río</b><br>Dirección de ejemplo</p>
+        <p>Teléfono: 300 000 0000 (ejemplo)</p>
+        <a class="boton verde" href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reserva" id="reservar">
+  <div class="ancho">
+    <h2>Reserve su mesa por WhatsApp</h2>
+    <p>Díganos para cuántas personas y a qué hora. Le confirmamos en pocos minutos, de lunes a domingo en horario de atención.</p>
+    <a class="boton" href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20del%20restaurante%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<footer class="ancho pie">
+  <p>Esta página es un ejemplo de lo que puede tener su restaurante. Hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></p>
+</footer>
+
+<script>
+let diaActual = 0;
+
+function horaApertura(dia) {
+  return 11;
+}
+
+function horaCierre(dia) {
+  switch (dia) {
+    case 5:
+    case 6:
+      return 22;
+    case 0:
+      return 17;
+    default:
+      return 15;
+  }
+}
+
+function platoDelDia(dia) {
+  switch (dia) {
+    case 0: return "Arroz tapado";
+    case 1: return "Sancocho de gallina";
+    case 2: return "Mojarra frita";
+    case 3: return "Tamal huilense con café";
+    case 4: return "Asado huilense";
+    case 5: return "Picada para dos";
+    default: return "Asado huilense";
+  }
+}
+
+function precioDelDia(dia) {
+  switch (dia) {
+    case 0: return "$ 32.000";
+    case 1: return "$ 28.000";
+    case 2: return "$ 36.000";
+    case 3: return "$ 18.000";
+    case 5: return "$ 58.000";
+    default: return "$ 38.000";
+  }
+}
+
+function textoHora(hora) {
+  if (hora > 12) {
+    return (hora - 12) + ":00 p. m.";
+  }
+  if (hora == 12) {
+    return "12:00 m.";
+  }
+  return hora + ":00 a. m.";
+}
+
+function actualizarEstado() {
+  const ahora = new Date();
+  diaActual = ahora.getDay();
+  const hora = ahora.getHours() + ahora.getMinutes() / 60;
+  const abre = horaApertura(diaActual);
+  const cierra = horaCierre(diaActual);
+  const punto = document.getElementById("punto");
+  const texto = document.getElementById("estado-texto");
+  const detalle = document.getElementById("estado-detalle");
+
+  if (hora >= abre && hora < cierra) {
+    punto.className = "punto abierto";
+    texto.textContent = "Abierto ahora";
+    detalle.textContent = "Atendemos hasta las " + textoHora(cierra) + ".";
+  } else if (hora < abre) {
+    punto.className = "punto cerrado";
+    texto.textContent = "Abrimos hoy a las " + textoHora(abre);
+    detalle.textContent = "Cerramos a las " + textoHora(cierra) + ".";
+  } else {
+    punto.className = "punto cerrado";
+    texto.textContent = "Cerrado por hoy";
+    detalle.textContent = "Mañana abrimos desde las " + textoHora(abre) + ".";
+  }
+
+  document.getElementById("plato-dia").textContent = platoDelDia(diaActual);
+  document.getElementById("plato-precio").textContent = precioDelDia(diaActual);
+  document.getElementById("d" + diaActual).className = "hoy";
+}
+
+actualizarEstado();
+</script>
+</body>
+</html>

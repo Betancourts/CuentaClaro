@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Salón Lirio, peluquería y estética (página de ejemplo)</title>
+<meta name="description" content="Página de ejemplo para una peluquería: servicios con precios, selector de citas y agenda por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --hueso: #f6f2ef; --tinta: #1f1b22; --orquidea: #a8326f; --orquidea-oscuro: #82245a; --rosa: #f1d9e5; --suave: #6d6470; --linea: #ddd3d8; --blanco: #ffffff; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Hanken Grotesk", "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--hueso); }
+h1, h2, h3 { font-family: "Bodoni Moda", Georgia, serif; font-weight: 500; line-height: 1.08; margin: 0; }
+a { color: inherit; }
+.ancho { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+.aviso-demo { background: var(--tinta); color: #eadfe6; font-size: 14px; padding: 9px 20px; text-align: center; }
+.aviso-demo a { color: #f3b5d4; font-weight: 700; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; gap: 16px; }
+.marca { font-family: "Bodoni Moda", Georgia, serif; font-size: 28px; font-weight: 700; text-decoration: none; color: var(--orquidea); }
+.cabecera nav a { margin-left: 22px; text-decoration: none; font-weight: 500; }
+.cabecera nav a:hover { color: var(--orquidea); }
+.boton { display: inline-block; background: var(--orquidea); color: #ffffff; font-weight: 700; padding: 14px 24px; border-radius: 999px; text-decoration: none; border: 0; font-family: inherit; font-size: 17px; cursor: pointer; }
+.boton:hover { background: var(--orquidea-oscuro); }
+.boton.contorno { background: transparent; color: var(--tinta); border: 1.5px solid var(--tinta); }
+.boton.contorno:hover { background: var(--tinta); color: #ffffff; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--orquidea); outline-offset: 3px; }
+
+.portada { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: start; padding: 28px 0 72px; }
+.portada h1 { font-size: 72px; }
+.portada h1 em { color: var(--orquidea); }
+.portada .texto p { color: var(--suave); max-width: 40ch; margin: 22px 0 0; font-size: 19px; }
+.selector { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 26px 26px 22px; box-shadow: 0 18px 40px rgba(130, 36, 90, .10); }
+.selector h2 { font-size: 26px; margin-bottom: 4px; }
+.selector .ayuda { margin: 0 0 14px; color: var(--suave); font-size: 15px; }
+.servicio { display: grid; grid-template-columns: 24px 1fr auto; gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--linea); cursor: pointer; }
+.servicio input { width: 20px; height: 20px; accent-color: var(--orquidea); margin: 0; }
+.servicio .nombre { font-weight: 500; }
+.servicio .nombre small { display: block; color: var(--suave); font-size: 14px; font-weight: 400; }
+.servicio .valor { font-weight: 700; white-space: nowrap; }
+.resumen { display: flex; justify-content: space-between; align-items: end; gap: 16px; padding-top: 18px; }
+.resumen .total { font-family: "Bodoni Moda", Georgia, serif; font-size: 38px; font-weight: 700; line-height: 1; }
+.resumen .tiempo { color: var(--suave); font-size: 15px; margin-top: 4px; }
+.agendar { display: block; text-align: center; margin-top: 16px; }
+.agendar.apagado { background: #c9bfc6; pointer-events: none; }
+
+.seccion { padding: 64px 0; border-top: 1px solid var(--linea); }
+.seccion h2 { font-size: 44px; margin-bottom: 10px; }
+.seccion .intro { color: var(--suave); max-width: 52ch; margin: 0 0 30px; }
+.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.horas { width: 100%; border-collapse: collapse; }
+.horas td { padding: 10px 0; border-bottom: 1px solid var(--linea); }
+.horas td:last-child { text-align: right; font-weight: 700; }
+.lugar { background: var(--rosa); border-radius: 18px; padding: 28px; }
+.lugar p { margin: 0 0 14px; }
+details { border-bottom: 1px solid var(--linea); padding: 16px 0; }
+summary { font-weight: 700; cursor: pointer; }
+details p { margin: 10px 0 0; color: var(--suave); max-width: 60ch; }
+.pie { padding: 28px 20px 60px; color: var(--suave); font-size: 14px; border-top: 1px solid var(--linea); }
+.pie a { color: var(--orquidea); font-weight: 700; }
+.barra-movil { display: none; }
+@media (max-width: 800px) {
+  .portada, .dos { grid-template-columns: 1fr; gap: 32px; }
+  .portada h1 { font-size: 46px; }
+  .seccion h2 { font-size: 34px; }
+  .cabecera nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="aviso-demo">Página de ejemplo hecha por CuentaClaro. El salón, los precios y los datos son inventados. <a href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20del%20sal%C3%B3n%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero una para mi negocio</a></div>
+
+<div class="ancho">
+  <header class="cabecera">
+    <a class="marca" href="#inicio">Salón Lirio</a>
+    <nav><a href="#servicios">Servicios</a><a href="#horarios">Horarios</a><a href="#preguntas">Preguntas</a></nav>
+    <a class="boton contorno" href="#servicios">Agendar cita</a>
+  </header>
+
+  <section class="portada" id="inicio">
+    <div class="texto">
+      <h1>Su cita, lista en un solo mensaje.</h1>
+      <p>Marque los servicios que quiere, vea el precio y el tiempo que toma, y envíe la solicitud por WhatsApp. Nosotras le confirmamos el horario.</p>
+    </div>
+
+    <div class="selector" id="servicios">
+      <h2>Arme su cita</h2>
+      <p class="ayuda">Puede elegir varios servicios en la misma visita.</p>
+
+      <label class="servicio"><input type="checkbox" data-nombre="Corte de mujer" data-precio="35000" data-minutos="45"><span class="nombre">Corte de mujer<small>Lavado, corte y secado. 45 min</small></span><span class="valor">$ 35.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Corte de hombre" data-precio="18000" data-minutos="30"><span class="nombre">Corte de hombre<small>Con máquina o tijera. 30 min</small></span><span class="valor">$ 18.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Tinte de raíz" data-precio="70000" data-minutos="90"><span class="nombre">Tinte de raíz<small>Color y tratamiento. 1 h 30 min</small></span><span class="valor">$ 70.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Mechas balayage" data-precio="180000" data-minutos="180"><span class="nombre">Mechas balayage<small>Incluye matizado y secado. 3 h</small></span><span class="valor">$ 180.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Alisado con keratina" data-precio="150000" data-minutos="150"><span class="nombre">Alisado con keratina<small>Dura entre 3 y 4 meses. 2 h 30 min</small></span><span class="valor">$ 150.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Peinado para evento" data-precio="60000" data-minutos="60"><span class="nombre">Peinado para evento<small>Recogido o semirecogido. 1 h</small></span><span class="valor">$ 60.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Manicure con esmaltado semipermanente" data-precio="35000" data-minutos="60"><span class="nombre">Manicure semipermanente<small>Dura hasta 3 semanas. 1 h</small></span><span class="valor">$ 35.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Pedicure" data-precio="28000" data-minutos="50"><span class="nombre">Pedicure<small>Con masaje de pies. 50 min</small></span><span class="valor">$ 28.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Limpieza facial" data-precio="55000" data-minutos="60"><span class="nombre">Limpieza facial<small>Profunda, con hidratación. 1 h</small></span><span class="valor">$ 55.000</span></label>
+
+      <div class="resumen">
+        <div><div class="total" id="total">$ 0</div><div class="tiempo" id="tiempo">Elija al menos un servicio</div></div>
+      </div>
+      <a class="boton agendar apagado" id="agendar" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    </div>
+  </section>
+</div>
+
+<section class="seccion" id="horarios">
+  <div class="ancho dos">
+    <div>
+      <h2>Horarios</h2>
+      <p class="intro">Atendemos con cita. Si llega sin cita, lo atendemos según el cupo del día.</p>
+      <table class="horas">
+        <tr><td>Lunes a viernes</td><td>8:00 a. m. a 7:00 p. m.</td></tr>
+        <tr><td>Sábado</td><td>8:00 a. m. a 7:00 p. m.</td></tr>
+        <tr><td>Domingo</td><td>Cerrado</td></tr>
+      </table>
+    </div>
+    <div class="lugar">
+      <h2 style="font-size:32px;margin-bottom:12px">Dónde estamos</h2>
+      <p><b>Centro, calle 5 con carrera 8</b><br>Dirección de ejemplo</p>
+      <p>Teléfono: 300 000 0000 (ejemplo)</p>
+      <a class="boton" href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="preguntas">
+  <div class="ancho">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Puedo cancelar o cambiar mi cita?</summary><p>Sí. Avísenos con 3 horas de anticipación por WhatsApp y le asignamos otro horario sin costo.</p></details>
+    <details><summary>¿Cuánto cuesta el balayage si tengo el cabello largo?</summary><p>El precio publicado es para largo hasta los hombros. Si su cabello es más largo, le confirmamos el valor exacto antes de empezar.</p></details>
+    <details><summary>¿Con qué medios de pago puedo pagar?</summary><p>Aceptamos efectivo, transferencia y tarjeta.</p></details>
+  </div>
+</section>
+
+<footer class="ancho pie">
+  <p>Esta página es un ejemplo de lo que puede tener su salón. Hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></p>
+</footer>
+
+<script>
+let total = 0;
+let minutos = 0;
+let nombres = "";
+
+function formatear(valor) {
+  return "$ " + valor.toLocaleString("es-CO");
+}
+
+function textoTiempo(min) {
+  const horas = Math.floor(min / 60);
+  const resto = min % 60;
+  if (horas == 0) {
+    return resto + " min";
+  }
+  if (resto == 0) {
+    return horas + " h";
+  }
+  return horas + " h " + resto + " min";
+}
+
+function calcular() {
+  const marcados = document.querySelectorAll(".servicio input:checked");
+  total = 0;
+  minutos = 0;
+  nombres = "";
+
+  for (let i = 0; i < marcados.length; i++) {
+    total = total + Number(marcados[i].getAttribute("data-precio"));
+    minutos = minutos + Number(marcados[i].getAttribute("data-minutos"));
+    nombres = nombres + "- " + marcados[i].getAttribute("data-nombre") + "\n";
+  }
+
+  const boton = document.getElementById("agendar");
+  document.getElementById("total").textContent = formatear(total);
+
+  if (marcados.length == 0) {
+    document.getElementById("tiempo").textContent = "Elija al menos un servicio";
+    boton.className = "boton agendar apagado";
+    boton.href = "#";
+    return;
+  }
+
+  document.getElementById("tiempo").textContent = "Tiempo estimado: " + textoTiempo(minutos);
+  const mensaje = "Hola, quiero agendar una cita en Salón Lirio (página de ejemplo).\nServicios:\n" + nombres + "Total aproximado: " + formatear(total) + "\n¿Qué horarios tienen disponibles?";
+  boton.className = "boton agendar";
+  boton.href = "https://wa.me/573132787667?text=" + encodeURIComponent(mensaje);
+}
+
+const casillas = document.querySelectorAll(".servicio input");
+for (let i = 0; i < casillas.length; i++) {
+  casillas[i].addEventListener("change", calcular);
+}
+calcular();
+</script>
+</body>
+</html>
