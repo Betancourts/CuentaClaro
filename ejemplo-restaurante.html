@@ -359,15 +359,15 @@ function actualizarEstado() {
   if (hora >= abre && hora < cierra) {
     punto.className = "punto abierto";
     texto.textContent = "Abierto ahora";
-    detalle.textContent = "Atendemos hasta las " + textoHora(cierra) + ".";
+    detalle.textContent = "Atendemos hasta las " + textoHora(cierra);
   } else if (hora < abre) {
     punto.className = "punto cerrado";
     texto.textContent = "Abrimos hoy a las " + textoHora(abre);
-    detalle.textContent = "Cerramos a las " + textoHora(cierra) + ".";
+    detalle.textContent = "Cerramos a las " + textoHora(cierra);
   } else {
     punto.className = "punto cerrado";
     texto.textContent = "Cerrado por hoy";
-    detalle.textContent = "Mañana abrimos desde las " + textoHora(abre) + ".";
+    detalle.textContent = "Mañana abrimos desde las " + textoHora(abre);
   }
 
   document.getElementById("plato-dia").textContent = platoDelDia(diaActual);
