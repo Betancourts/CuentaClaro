@@ -127,3 +127,25 @@ function ejemploCesantias() {
   document.getElementById("ces-dias").value = 360;
   calcularCesantias();
 }
+
+let elementosRevelar = [];
+
+function prepararRevelar() {
+  elementosRevelar = document.querySelectorAll(".tarjeta, h2, .aviso");
+  for (let i = 0; i < elementosRevelar.length; i++) {
+    elementosRevelar[i].classList.add("revelar");
+  }
+  revisarScroll();
+}
+
+function revisarScroll() {
+  let limite = window.innerHeight - 60;
+  for (let i = 0; i < elementosRevelar.length; i++) {
+    if (elementosRevelar[i].getBoundingClientRect().top < limite) {
+      elementosRevelar[i].classList.add("visible");
+    }
+  }
+}
+
+window.addEventListener("scroll", revisarScroll);
+window.addEventListener("load", prepararRevelar);
