@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de horas extra y recargos Colombia 2026</title>
+<meta name="description" content="Calcula horas extra, recargo nocturno y dominical en Colombia con los porcentajes vigentes desde julio de 2026 y la jornada de 42 horas. Con tabla y ejemplo resuelto.">
+<link rel="stylesheet" href="style.css">
+<!-- Aquí va el código de AdSense (script de adsbygoogle) cuando lo tengas -->
+</head>
+<body class="herramienta">
+<header class="cabecera"><div class="cabecera-in"><a class="logo" href="index.html">cuenta<em>claro</em><span></span></a><nav><a href="liquidacion.html">Liquidación</a><a href="prima.html">Prima</a><a href="cesantias.html">Cesantías</a><a href="horas.html">Horas extra</a><a href="servicios.html">Páginas web</a><a href="privacidad.html">Privacidad</a></nav><a class="boton" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Cotizar ahora</a></div></header>
+<div class="contenido">
+<div class="franja">¿Tienes un negocio? Te hacemos tu página web. <a class="boton amarillo" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Pedir propuesta</a></div>
+<h1>Calculadora de horas extra y recargos</h1>
+<p>Con los porcentajes vigentes desde el 1 de julio de 2026 y la jornada de 42 horas semanales.</p>
+<div class="tarjeta">
+<label for="hor-salario">Salario mensual</label><input type="number" id="hor-salario" placeholder="Ej: 2000000">
+<label for="hor-semanal">Horas de tu jornada semanal (42 desde el 15 de julio de 2026)</label><input type="number" id="hor-semanal" value="42">
+<label for="hor-nocturno">Horas con recargo nocturno (ordinarias de noche) (recargo 35%)</label><input type="number" id="hor-nocturno" value="0">
+<label for="hor-exdiurna">Horas extra diurnas (recargo 25%)</label><input type="number" id="hor-exdiurna" value="0">
+<label for="hor-exnocturna">Horas extra nocturnas (recargo 75%)</label><input type="number" id="hor-exnocturna" value="0">
+<label for="hor-dominical">Horas ordinarias en domingo o festivo (recargo 90%)</label><input type="number" id="hor-dominical" value="0">
+<label for="hor-exdiudom">Horas extra diurnas en domingo o festivo (recargo 115%)</label><input type="number" id="hor-exdiudom" value="0">
+<label for="hor-exnocdom">Horas extra nocturnas en domingo o festivo (recargo 165%)</label><input type="number" id="hor-exnocdom" value="0">
+<label for="hor-nocdom">Horas nocturnas ordinarias en domingo o festivo (recargo 125%)</label><input type="number" id="hor-nocdom" value="0">
+<button class="accion" onclick="calcularHoras()">Calcular</button><button class="accion claro" onclick="ejemploHoras()">Probar con un ejemplo</button>
+</div>
+<div class="resultado" id="hor-resultado">
+<p>Valor de tu hora ordinaria: <strong id="hor-valor"></strong></p>
+<p>Recargo nocturno: <strong id="hor-v0"></strong></p>
+<p>Extras diurnas: <strong id="hor-v1"></strong></p>
+<p>Extras nocturnas: <strong id="hor-v2"></strong></p>
+<p>Recargo dominical o festivo: <strong id="hor-v3"></strong></p>
+<p>Extras diurnas dominicales: <strong id="hor-v4"></strong></p>
+<p>Extras nocturnas dominicales: <strong id="hor-v5"></strong></p>
+<p>Nocturnas dominicales: <strong id="hor-v6"></strong></p>
+<p class="total">Total a pagar por estas horas: <span id="hor-tot"></span></p>
+<p class="nota" id="hor-paso"></p>
+<button class="accion claro" onclick="imprimir()">Imprimir o guardar PDF</button>
+</div>
+<div class="anuncio"></div>
+<h2>Cómo se calcula</h2>
+<p>Hora ordinaria = salario mensual / horas del mes. Las horas del mes salen de la jornada semanal: horas semanales / 6 x 30. Con 42 horas son 210 horas al mes; con 44 horas eran 220. Las horas extra se pagan completas con su recargo (hora ordinaria x (1 + porcentaje)). Los recargos de horas ordinarias nocturnas, dominicales o festivas pagan solo el porcentaje adicional, porque la hora ordinaria ya está dentro del salario.</p>
+<h2>Porcentajes desde el 1 de julio de 2026</h2>
+<p>Recargo nocturno 35%. Extra diurna 25%. Extra nocturna 75%. Dominical o festivo 90%. Extra diurna dominical o festiva 115%. Extra nocturna dominical o festiva 165%. Recargo nocturno dominical o festivo 125%.</p>
+<h2>Ejemplo resuelto</h2>
+<p>Con salario de 2.000.000 y jornada de 42 horas, la hora ordinaria vale 9.524. Diez horas extra diurnas pagan 9.524 x 1,25 x 10 = 119.048. Cuatro horas dominicales ordinarias pagan 9.524 x 0,90 x 4 = 34.286.</p>
+<div class="aviso"><h3>Revisa tu caso</h3><p>La hora nocturna empieza a las 7 p. m. según la reforma laboral vigente. Si tu contrato o tu empresa pagan más que la ley, se aplica lo más favorable para ti. Para un caso particular, consulta un abogado laboral.</p></div>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántas horas extra se pueden trabajar?</h3><p>El límite legal es de 2 horas diarias y 12 a la semana, y deben estar autorizadas.</p>
+<h3>¿Por qué cambió el valor de la hora?</h3><p>Al bajar la jornada de 44 a 42 horas semanales, el mes pasa de 220 a 210 horas y cada hora vale un poco más.</p>
+<footer class="pie2"><div><a class="logo" href="index.html">cuenta<em>claro</em><span></span></a><p>Herramientas laborales gratis y páginas web para negocios en Colombia.</p></div>
+<div><h4>herramientas</h4><a href="liquidacion.html">Liquidación laboral</a><a href="prima.html">Prima de servicios</a><a href="cesantias.html">Cesantías e intereses</a><a href="horas.html">Horas extra y recargos</a></div>
+<div><h4>contacto</h4><a href="mailto:cuentaclaro.contacto@gmail.com">cuentaclaro.contacto@gmail.com</a><a href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener">WhatsApp 313 278 7667</a><a href="privacidad.html">Privacidad</a></div>
+<p class="legal">Los resultados son aproximados y de carácter informativo. No reemplazan la asesoría de un abogado laboral ni el cálculo oficial de tu empleador.</p></footer>
+</div>
+<div class="flotantes">
+<a class="flotante correo" href="mailto:cuentaclaro.contacto@gmail.com" aria-label="Escribir por correo" title="Escribir por correo"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+<a class="flotante whatsapp" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" title="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

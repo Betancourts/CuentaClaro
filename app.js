@@ -128,6 +128,51 @@ function ejemploCesantias() {
   calcularCesantias();
 }
 
+let porcentajesHoras = [0.35, 0.25, 0.75, 0.90, 1.15, 1.65, 1.25];
+let esExtra = [false, true, true, false, true, true, false];
+
+function calcularHoras() {
+  salario = Number(document.getElementById("hor-salario").value);
+  let semanal = Number(document.getElementById("hor-semanal").value);
+
+  if (salario <= 0 || semanal <= 0 || semanal > 48) {
+    alert("Revisa los datos: salario mayor a 0 y jornada semanal entre 1 y 48 horas.");
+    return;
+  }
+
+  let horasMes = semanal / 6 * 30;
+  let valorHora = salario / horasMes;
+  let total = 0;
+
+  for (let i = 0; i < 7; i++) {
+    let cantidad = Number(document.getElementById("hor-" + i).value);
+    let valor = valorHora * porcentajesHoras[i] * cantidad;
+    if (esExtra[i]) {
+      valor = valorHora * (1 + porcentajesHoras[i]) * cantidad;
+    }
+    total = total + valor;
+    document.getElementById("hor-v" + i).textContent = formatear(valor);
+  }
+
+  document.getElementById("hor-valor").textContent = formatear(valorHora);
+  document.getElementById("hor-tot").textContent = formatear(total);
+  document.getElementById("hor-paso").textContent = "Hora ordinaria: " + formatear(salario) + " / " + horasMes + " horas del mes = " + formatear(valorHora) + ".";
+  document.getElementById("hor-resultado").style.display = "block";
+}
+
+function ejemploHoras() {
+  document.getElementById("hor-salario").value = 2000000;
+  document.getElementById("hor-semanal").value = 42;
+  document.getElementById("hor-0").value = 0;
+  document.getElementById("hor-1").value = 10;
+  document.getElementById("hor-2").value = 0;
+  document.getElementById("hor-3").value = 4;
+  document.getElementById("hor-4").value = 0;
+  document.getElementById("hor-5").value = 0;
+  document.getElementById("hor-6").value = 0;
+  calcularHoras();
+}
+
 let elementosRevelar = [];
 
 function prepararRevelar() {
