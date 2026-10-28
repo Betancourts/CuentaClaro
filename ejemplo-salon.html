@@ -5,68 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Salón Lirio, peluquería y estética (página de ejemplo)</title>
-<meta name="description" content="Página de ejemplo para una peluquería: servicios con precios, selector de citas y agenda por WhatsApp.">
+<meta name="description" content="Página de ejemplo para una peluquería: servicios con precios, trabajos recientes, selector de citas y agenda por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root { --hueso: #f6f2ef; --tinta: #1f1b22; --orquidea: #a8326f; --orquidea-oscuro: #82245a; --rosa: #f1d9e5; --suave: #6d6470; --linea: #ddd3d8; --blanco: #ffffff; }
+:root {
+  --ciruela: #5e1f3a;
+  --ciruela-oscura: #431528;
+  --rosa: #efdcdf;
+  --rosa-claro: #f8eff0;
+  --fondo: #fcfaf9;
+  --tinta: #1d1719;
+  --dorado: #a9824f;
+  --suave: #6c6266;
+  --linea: #e6dadd;
+  --blanco: #ffffff;
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; font-family: "Hanken Grotesk", "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--hueso); }
+body { margin: 0; font-family: "Hanken Grotesk", "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--fondo); }
 h1, h2, h3 { font-family: "Bodoni Moda", Georgia, serif; font-weight: 500; line-height: 1.08; margin: 0; }
+img { display: block; max-width: 100%; }
 a { color: inherit; }
-.ancho { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
-.aviso-demo { background: var(--tinta); color: #eadfe6; font-size: 14px; padding: 9px 20px; text-align: center; }
-.aviso-demo a { color: #f3b5d4; font-weight: 700; }
-.cabecera { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; gap: 16px; }
-.marca { font-family: "Bodoni Moda", Georgia, serif; font-size: 28px; font-weight: 700; text-decoration: none; color: var(--orquidea); }
-.cabecera nav a { margin-left: 22px; text-decoration: none; font-weight: 500; }
-.cabecera nav a:hover { color: var(--orquidea); }
-.boton { display: inline-block; background: var(--orquidea); color: #ffffff; font-weight: 700; padding: 14px 24px; border-radius: 999px; text-decoration: none; border: 0; font-family: inherit; font-size: 17px; cursor: pointer; }
-.boton:hover { background: var(--orquidea-oscuro); }
+.ancho { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.aviso-demo { background: var(--tinta); color: #eadfe3; font-size: 14px; padding: 9px 20px; text-align: center; }
+.aviso-demo a { color: #f0b9cc; font-weight: 700; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; gap: 16px; }
+.marca { font-family: "Bodoni Moda", Georgia, serif; font-size: 30px; font-weight: 700; text-decoration: none; color: var(--ciruela); }
+.cabecera nav a { margin-left: 24px; text-decoration: none; font-weight: 500; }
+.cabecera nav a:hover { color: var(--ciruela); }
+.boton { display: inline-block; background: var(--ciruela); color: #ffffff; font-weight: 700; padding: 14px 26px; border-radius: 999px; text-decoration: none; border: 0; font-family: inherit; font-size: 17px; cursor: pointer; }
+.boton:hover { background: var(--ciruela-oscura); }
 .boton.contorno { background: transparent; color: var(--tinta); border: 1.5px solid var(--tinta); }
 .boton.contorno:hover { background: var(--tinta); color: #ffffff; }
-a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--orquidea); outline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--dorado); outline-offset: 3px; }
 
-.portada { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: start; padding: 28px 0 72px; }
-.portada h1 { font-size: 72px; }
-.portada h1 em { color: var(--orquidea); }
-.portada .texto p { color: var(--suave); max-width: 40ch; margin: 22px 0 0; font-size: 19px; }
-.selector { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 26px 26px 22px; box-shadow: 0 18px 40px rgba(130, 36, 90, .10); }
-.selector h2 { font-size: 26px; margin-bottom: 4px; }
-.selector .ayuda { margin: 0 0 14px; color: var(--suave); font-size: 15px; }
+/* Portada */
+.portada { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 20px 0 80px; }
+.portada h1 { font-size: 74px; }
+.portada h1 i { color: var(--ciruela); }
+.portada p { color: var(--suave); max-width: 40ch; margin: 22px 0 30px; font-size: 19px; }
+.acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+.foto-portada { position: relative; }
+.foto-portada img { width: 100%; height: 560px; object-fit: cover; border-radius: 200px 200px 14px 14px; }
+.foto-portada .sello { position: absolute; left: -26px; bottom: 34px; background: var(--blanco); border: 1px solid var(--linea); border-radius: 14px; padding: 14px 18px; box-shadow: 0 14px 30px rgba(67, 21, 40, .12); }
+.sello b { display: block; font-family: "Bodoni Moda", Georgia, serif; font-size: 22px; color: var(--ciruela); }
+.sello span { color: var(--suave); font-size: 14px; }
+
+/* Selector de cita */
+.citas { background: var(--rosa-claro); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); padding: 80px 0; }
+.citas .rejilla { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+.citas h2 { font-size: 48px; margin-bottom: 12px; }
+.citas .intro { color: var(--suave); max-width: 40ch; margin: 0 0 26px; }
+.citas .foto-lado { width: 100%; height: 340px; object-fit: cover; border-radius: 14px; }
+.selector { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 26px 26px 22px; box-shadow: 0 18px 40px rgba(94, 31, 58, .08); }
+.selector h3 { font-size: 15px; font-family: "Hanken Grotesk", sans-serif; font-weight: 700; color: var(--dorado); margin: 18px 0 2px; letter-spacing: 0.02em; }
+.selector h3:first-child { margin-top: 0; }
 .servicio { display: grid; grid-template-columns: 24px 1fr auto; gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--linea); cursor: pointer; }
-.servicio input { width: 20px; height: 20px; accent-color: var(--orquidea); margin: 0; }
+.servicio input { width: 20px; height: 20px; accent-color: var(--ciruela); margin: 0; }
 .servicio .nombre { font-weight: 500; }
 .servicio .nombre small { display: block; color: var(--suave); font-size: 14px; font-weight: 400; }
 .servicio .valor { font-weight: 700; white-space: nowrap; }
-.resumen { display: flex; justify-content: space-between; align-items: end; gap: 16px; padding-top: 18px; }
-.resumen .total { font-family: "Bodoni Moda", Georgia, serif; font-size: 38px; font-weight: 700; line-height: 1; }
+.resumen { padding-top: 18px; }
+.resumen .total { font-family: "Bodoni Moda", Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1; }
 .resumen .tiempo { color: var(--suave); font-size: 15px; margin-top: 4px; }
 .agendar { display: block; text-align: center; margin-top: 16px; }
-.agendar.apagado { background: #c9bfc6; pointer-events: none; }
+.agendar.apagado { background: #cdbfc4; pointer-events: none; }
 
-.seccion { padding: 64px 0; border-top: 1px solid var(--linea); }
-.seccion h2 { font-size: 44px; margin-bottom: 10px; }
-.seccion .intro { color: var(--suave); max-width: 52ch; margin: 0 0 30px; }
-.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+/* Secciones */
+.seccion { padding: 80px 0; }
+.seccion h2 { font-size: 48px; margin-bottom: 10px; }
+.seccion .intro { color: var(--suave); max-width: 52ch; margin: 0 0 34px; }
+.trabajos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.trabajo img { width: 100%; height: 320px; object-fit: cover; border-radius: 12px; }
+.trabajo p { margin: 10px 0 0; font-weight: 500; }
+.trabajo small { display: block; color: var(--suave); font-weight: 400; font-size: 14px; }
+
+.pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--linea); }
+.paso { padding: 28px 28px 0 0; }
+.paso + .paso { padding-left: 28px; border-left: 1px solid var(--linea); }
+.paso .n { font-family: "Bodoni Moda", Georgia, serif; font-size: 46px; color: var(--dorado); line-height: 1; }
+.paso h3 { font-size: 24px; margin: 12px 0 8px; }
+.paso p { margin: 0; color: var(--suave); }
+
+.dos { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; }
 .horas { width: 100%; border-collapse: collapse; }
-.horas td { padding: 10px 0; border-bottom: 1px solid var(--linea); }
+.horas td { padding: 11px 0; border-bottom: 1px solid var(--linea); }
 .horas td:last-child { text-align: right; font-weight: 700; }
-.lugar { background: var(--rosa); border-radius: 18px; padding: 28px; }
-.lugar p { margin: 0 0 14px; }
-details { border-bottom: 1px solid var(--linea); padding: 16px 0; }
+.mapa { width: 100%; height: 300px; border: 0; border-radius: 14px; background: #eee6e8; }
+.datos { margin: 14px 0 0; color: var(--suave); }
+details { border-bottom: 1px solid var(--linea); padding: 18px 0; }
 summary { font-weight: 700; cursor: pointer; }
 details p { margin: 10px 0 0; color: var(--suave); max-width: 60ch; }
-.pie { padding: 28px 20px 60px; color: var(--suave); font-size: 14px; border-top: 1px solid var(--linea); }
-.pie a { color: var(--orquidea); font-weight: 700; }
+.cierre { background: var(--ciruela); color: #f6e9ee; padding: 72px 0; }
+.cierre h2 { color: #ffffff; font-size: 48px; max-width: 16ch; }
+.cierre p { color: #e1c4cf; max-width: 46ch; margin: 14px 0 26px; }
+.cierre .boton { background: #ffffff; color: var(--ciruela); }
+.cierre .boton:hover { background: var(--rosa); }
+.pie { padding: 30px 20px 90px; color: var(--suave); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.pie a { color: var(--ciruela); font-weight: 700; }
 .barra-movil { display: none; }
-@media (max-width: 800px) {
-  .portada, .dos { grid-template-columns: 1fr; gap: 32px; }
-  .portada h1 { font-size: 46px; }
-  .seccion h2 { font-size: 34px; }
+
+@media (max-width: 900px) {
+  .portada, .citas .rejilla, .dos { grid-template-columns: 1fr; gap: 36px; }
+  .portada h1 { font-size: 48px; }
+  .foto-portada img { height: 420px; }
+  .foto-portada .sello { left: 12px; bottom: 12px; }
+  .seccion h2, .citas h2, .cierre h2 { font-size: 36px; }
   .cabecera nav { display: none; }
+  .trabajos { grid-template-columns: 1fr 1fr; }
+  .trabajo img { height: 220px; }
+  .pasos { grid-template-columns: 1fr; }
+  .paso, .paso + .paso { padding: 24px 0; border-left: 0; border-bottom: 1px solid var(--linea); }
+  .citas .foto-lado { display: none; }
+  .barra-movil { display: block; position: fixed; left: 12px; right: 12px; bottom: 12px; text-align: center; background: var(--ciruela); color: #ffffff; font-weight: 700; padding: 14px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.2); z-index: 10; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -77,70 +130,126 @@ details p { margin: 10px 0 0; color: var(--suave); max-width: 60ch; }
 <div class="ancho">
   <header class="cabecera">
     <a class="marca" href="#inicio">Salón Lirio</a>
-    <nav><a href="#servicios">Servicios</a><a href="#horarios">Horarios</a><a href="#preguntas">Preguntas</a></nav>
-    <a class="boton contorno" href="#servicios">Agendar cita</a>
+    <nav><a href="#citas">Servicios</a><a href="#trabajos">Trabajos</a><a href="#horarios">Horarios</a><a href="#preguntas">Preguntas</a></nav>
+    <a class="boton contorno" href="#citas">Agendar cita</a>
   </header>
 
   <section class="portada" id="inicio">
-    <div class="texto">
-      <h1>Su cita, lista en un solo mensaje.</h1>
-      <p>Marque los servicios que quiere, vea el precio y el tiempo que toma, y envíe la solicitud por WhatsApp. Nosotras le confirmamos el horario.</p>
+    <div>
+      <h1>Color, corte y cuidado sin afán.</h1>
+      <p>Peluquería y estética en el centro. Atendemos con cita para que no tenga que esperar, y le decimos el precio antes de empezar.</p>
+      <div class="acciones">
+        <a class="boton" href="#citas">Ver servicios y precios</a>
+        <a class="boton contorno" href="#trabajos">Ver trabajos</a>
+      </div>
+    </div>
+    <div class="foto-portada">
+      <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1000&q=70&auto=format&fit=crop" alt="Estilista secando y peinando el cabello de una clienta">
+      <div class="sello"><b>Con cita previa</b><span>Lunes a sábado, 8 a. m. a 7 p. m.</span></div>
+    </div>
+  </section>
+</div>
+
+<section class="citas" id="citas">
+  <div class="ancho rejilla">
+    <div>
+      <h2>Arme su cita</h2>
+      <p class="intro">Marque los servicios que quiere. Le mostramos el total y el tiempo, y con un toque nos envía la solicitud por WhatsApp. Nosotras le confirmamos el horario.</p>
+      <img class="foto-lado" src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=900&q=70&auto=format&fit=crop" alt="Lavado de cabello en el salón" loading="lazy">
     </div>
 
-    <div class="selector" id="servicios">
-      <h2>Arme su cita</h2>
-      <p class="ayuda">Puede elegir varios servicios en la misma visita.</p>
-
+    <div class="selector">
+      <h3>Cabello</h3>
       <label class="servicio"><input type="checkbox" data-nombre="Corte de mujer" data-precio="35000" data-minutos="45"><span class="nombre">Corte de mujer<small>Lavado, corte y secado. 45 min</small></span><span class="valor">$ 35.000</span></label>
       <label class="servicio"><input type="checkbox" data-nombre="Corte de hombre" data-precio="18000" data-minutos="30"><span class="nombre">Corte de hombre<small>Con máquina o tijera. 30 min</small></span><span class="valor">$ 18.000</span></label>
       <label class="servicio"><input type="checkbox" data-nombre="Tinte de raíz" data-precio="70000" data-minutos="90"><span class="nombre">Tinte de raíz<small>Color y tratamiento. 1 h 30 min</small></span><span class="valor">$ 70.000</span></label>
       <label class="servicio"><input type="checkbox" data-nombre="Mechas balayage" data-precio="180000" data-minutos="180"><span class="nombre">Mechas balayage<small>Incluye matizado y secado. 3 h</small></span><span class="valor">$ 180.000</span></label>
       <label class="servicio"><input type="checkbox" data-nombre="Alisado con keratina" data-precio="150000" data-minutos="150"><span class="nombre">Alisado con keratina<small>Dura entre 3 y 4 meses. 2 h 30 min</small></span><span class="valor">$ 150.000</span></label>
-      <label class="servicio"><input type="checkbox" data-nombre="Peinado para evento" data-precio="60000" data-minutos="60"><span class="nombre">Peinado para evento<small>Recogido o semirecogido. 1 h</small></span><span class="valor">$ 60.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Peinado para evento" data-precio="60000" data-minutos="60"><span class="nombre">Peinado para evento<small>Recogido, ondas o trenzas. 1 h</small></span><span class="valor">$ 60.000</span></label>
+      <h3>Manos y rostro</h3>
       <label class="servicio"><input type="checkbox" data-nombre="Manicure con esmaltado semipermanente" data-precio="35000" data-minutos="60"><span class="nombre">Manicure semipermanente<small>Dura hasta 3 semanas. 1 h</small></span><span class="valor">$ 35.000</span></label>
       <label class="servicio"><input type="checkbox" data-nombre="Pedicure" data-precio="28000" data-minutos="50"><span class="nombre">Pedicure<small>Con masaje de pies. 50 min</small></span><span class="valor">$ 28.000</span></label>
       <label class="servicio"><input type="checkbox" data-nombre="Limpieza facial" data-precio="55000" data-minutos="60"><span class="nombre">Limpieza facial<small>Profunda, con hidratación. 1 h</small></span><span class="valor">$ 55.000</span></label>
+      <label class="servicio"><input type="checkbox" data-nombre="Diseño de cejas" data-precio="15000" data-minutos="20"><span class="nombre">Diseño de cejas<small>Con pinza o hilo. 20 min</small></span><span class="valor">$ 15.000</span></label>
 
       <div class="resumen">
-        <div><div class="total" id="total">$ 0</div><div class="tiempo" id="tiempo">Elija al menos un servicio</div></div>
+        <div class="total" id="total">$ 0</div>
+        <div class="tiempo" id="tiempo">Elija al menos un servicio</div>
       </div>
-      <a class="boton agendar apagado" id="agendar" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-    </div>
-  </section>
-</div>
-
-<section class="seccion" id="horarios">
-  <div class="ancho dos">
-    <div>
-      <h2>Horarios</h2>
-      <p class="intro">Atendemos con cita. Si llega sin cita, lo atendemos según el cupo del día.</p>
-      <table class="horas">
-        <tr><td>Lunes a viernes</td><td>8:00 a. m. a 7:00 p. m.</td></tr>
-        <tr><td>Sábado</td><td>8:00 a. m. a 7:00 p. m.</td></tr>
-        <tr><td>Domingo</td><td>Cerrado</td></tr>
-      </table>
-    </div>
-    <div class="lugar">
-      <h2 style="font-size:32px;margin-bottom:12px">Dónde estamos</h2>
-      <p><b>Centro, calle 5 con carrera 8</b><br>Dirección de ejemplo</p>
-      <p>Teléfono: 300 000 0000 (ejemplo)</p>
-      <a class="boton" href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      <a class="boton agendar apagado" id="agendar" href="#" target="_blank" rel="noopener">Enviar solicitud por WhatsApp</a>
     </div>
   </div>
 </section>
 
-<section class="seccion" id="preguntas">
+<section class="seccion" id="trabajos">
+  <div class="ancho">
+    <h2>Trabajos recientes</h2>
+    <p class="intro">Algunos de los servicios que más nos piden. En nuestro Instagram subimos los de cada semana.</p>
+    <div class="trabajos">
+      <figure class="trabajo" style="margin:0"><img src="https://images.unsplash.com/photo-1554519934-e32b1629d9ee?w=600&q=70&auto=format&fit=crop" alt="Cabello largo con mechas balayage rubias" loading="lazy"><p>Balayage<small>Desde $ 180.000</small></p></figure>
+      <figure class="trabajo" style="margin:0"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=600&q=70&auto=format&fit=crop" alt="Ondas hechas con pinza en cabello castaño" loading="lazy"><p>Ondas para evento<small>Desde $ 60.000</small></p></figure>
+      <figure class="trabajo" style="margin:0"><img src="https://images.unsplash.com/photo-1774660810725-fb04e002003d?w=600&q=70&auto=format&fit=crop" alt="Estilista haciendo un recogido a una clienta" loading="lazy"><p>Recogido<small>Desde $ 60.000</small></p></figure>
+      <figure class="trabajo" style="margin:0"><img src="https://images.unsplash.com/photo-1659391542239-9648f307c0b1?w=600&q=70&auto=format&fit=crop" alt="Manicurista aplicando esmalte verde menta" loading="lazy"><p>Manicure semipermanente<small>$ 35.000</small></p></figure>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" style="padding-top:0">
+  <div class="ancho">
+    <h2>Su visita, paso a paso</h2>
+    <p class="intro">Así funciona cuando agenda por la página.</p>
+    <div class="pasos">
+      <div class="paso"><div class="n">1</div><h3>Elige y envía</h3><p>Marca los servicios y nos llega su solicitud por WhatsApp con el total.</p></div>
+      <div class="paso"><div class="n">2</div><h3>Le confirmamos</h3><p>Le respondemos con los horarios libres. Usted escoge el que le sirva.</p></div>
+      <div class="paso"><div class="n">3</div><h3>Llega y la atendemos</h3><p>Sin filas. Si algo cambia en el precio, se lo decimos antes de empezar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="horarios" style="border-top:1px solid var(--linea)">
+  <div class="ancho dos">
+    <div>
+      <h2>Horarios</h2>
+      <p class="intro">Si llega sin cita, la atendemos según el cupo del día.</p>
+      <table class="horas">
+        <tr><td>Lunes a viernes</td><td>8:00 a. m. a 7:00 p. m.</td></tr>
+        <tr><td>Sábado</td><td>8:00 a. m. a 7:00 p. m.</td></tr>
+        <tr><td>Domingo y festivos</td><td>Cerrado</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Dónde estamos</h2>
+      <p class="intro">En el centro, a una cuadra del parque principal.</p>
+      <iframe class="mapa" title="Mapa de ubicación de ejemplo" src="https://www.google.com/maps?q=Garz%C3%B3n,+Huila&z=15&output=embed" loading="lazy"></iframe>
+      <p class="datos">Calle 5 con carrera 8, local 2 (dirección de ejemplo). Teléfono 300 000 0000.</p>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="preguntas" style="padding-top:0">
   <div class="ancho">
     <h2>Preguntas frecuentes</h2>
     <details><summary>¿Puedo cancelar o cambiar mi cita?</summary><p>Sí. Avísenos con 3 horas de anticipación por WhatsApp y le asignamos otro horario sin costo.</p></details>
     <details><summary>¿Cuánto cuesta el balayage si tengo el cabello largo?</summary><p>El precio publicado es para largo hasta los hombros. Si su cabello es más largo, le confirmamos el valor exacto antes de empezar.</p></details>
-    <details><summary>¿Con qué medios de pago puedo pagar?</summary><p>Aceptamos efectivo, transferencia y tarjeta.</p></details>
+    <details><summary>¿Atienden novias y quinceañeras?</summary><p>Sí. Hacemos prueba de peinado y maquillaje con anticipación, y podemos ir al lugar del evento.</p></details>
+    <details><summary>¿Con qué medios de pago puedo pagar?</summary><p>Aceptamos efectivo, transferencia, Nequi y tarjeta.</p></details>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="ancho">
+    <h2>¿Tiene un evento esta semana?</h2>
+    <p>Escríbanos y le buscamos un espacio. Los sábados se llenan rápido.</p>
+    <a class="boton" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20cita%20en%20Sal%C3%B3n%20Lirio%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Escribir por WhatsApp</a>
   </div>
 </section>
 
 <footer class="ancho pie">
-  <p>Esta página es un ejemplo de lo que puede tener su salón. Hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></p>
+  <span>Página de ejemplo hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></span>
+  <span>Fotos: Unsplash</span>
 </footer>
+
+<a class="barra-movil" href="#citas">Agendar cita</a>
 
 <script>
 let total = 0;

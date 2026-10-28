@@ -4,76 +4,129 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>El Guadual, asadero y restaurante (página de ejemplo)</title>
-<meta name="description" content="Página de ejemplo para un restaurante: carta, menú del día, horarios, ubicación y reservas por WhatsApp.">
+<title>El Guadual, cocina huilense (página de ejemplo)</title>
+<meta name="description" content="Página de ejemplo para un restaurante: carta con fotos, plato del día, domicilios, horarios, ubicación y reservas por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root { --guadua: #24533a; --guadua-oscuro: #17382a; --maiz: #f2b632; --aji: #cf3b25; --fondo: #f2f6ee; --papel: #ffffff; --tinta: #1b2a21; --suave: #5a6b60; --linea: #d3ddcc; }
+:root {
+  --hoja: #1f3a2b;
+  --hoja-oscura: #142a1e;
+  --maiz: #f0b429;
+  --aji: #d2381f;
+  --fondo: #fbfaf6;
+  --blanco: #ffffff;
+  --tinta: #1d211e;
+  --suave: #5d665f;
+  --linea: #e3e2da;
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; font-family: Figtree, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--fondo); }
 h1, h2, h3 { font-family: "Bricolage Grotesque", Georgia, serif; line-height: 1.05; margin: 0; letter-spacing: -0.01em; }
+img { display: block; max-width: 100%; }
 a { color: inherit; }
-.ancho { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
-.aviso-demo { background: var(--guadua-oscuro); color: #e6efe0; font-size: 14px; padding: 9px 20px; text-align: center; }
+.ancho { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.aviso-demo { background: var(--hoja-oscura); color: #dfe9e1; font-size: 14px; padding: 9px 20px; text-align: center; }
 .aviso-demo a { color: var(--maiz); font-weight: 700; }
-.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
-.marca { font-family: "Bricolage Grotesque", Georgia, serif; font-weight: 800; font-size: 24px; text-decoration: none; color: var(--guadua); }
-.menu a { margin-left: 22px; text-decoration: none; font-weight: 500; }
-.menu a:hover { color: var(--aji); }
-.boton { display: inline-block; background: var(--aji); color: #ffffff; font-weight: 700; padding: 13px 22px; border-radius: 6px; text-decoration: none; }
-.boton:hover { background: #b2301d; }
-.boton.verde { background: var(--guadua); }
-.boton.verde:hover { background: var(--guadua-oscuro); }
-.boton:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--maiz); outline-offset: 3px; }
 
-.portada { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; padding: 36px 0 64px; }
-.portada h1 { font-size: 66px; font-weight: 800; color: var(--guadua-oscuro); }
-.portada p { max-width: 46ch; color: var(--suave); margin: 22px 0 28px; font-size: 19px; }
+.boton { display: inline-block; background: var(--aji); color: #ffffff; font-weight: 700; padding: 13px 22px; border-radius: 6px; text-decoration: none; }
+.boton:hover { background: #b42d17; }
+.boton.claro { background: #ffffff; color: var(--hoja); }
+.boton.claro:hover { background: #eef2ee; }
+.boton.maiz { background: var(--maiz); color: var(--tinta); }
+.boton.maiz:hover { background: #ffc84d; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--maiz); outline-offset: 3px; }
+
+/* Portada con foto */
+.portada { position: relative; color: #ffffff; background: #1d1a16 url("https://images.unsplash.com/photo-1723693407562-bb4fcae76797?w=1800&q=70&auto=format&fit=crop") center 60% / cover no-repeat; }
+.portada::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,20,16,.88) 0%, rgba(14,20,16,.55) 55%, rgba(14,20,16,.15) 100%); }
+.portada .ancho { position: relative; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
+.marca { font-family: "Bricolage Grotesque", Georgia, serif; font-weight: 800; font-size: 26px; text-decoration: none; color: #ffffff; }
+.marca span { color: var(--maiz); }
+.menu a { margin-left: 22px; text-decoration: none; font-weight: 500; color: #e9eee9; }
+.menu a:hover { color: var(--maiz); }
+.portada-cuerpo { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: end; padding: 70px 0 64px; }
+.portada h1 { font-size: 68px; font-weight: 800; max-width: 12ch; }
+.portada p { max-width: 44ch; color: #dfe6e0; margin: 20px 0 28px; font-size: 19px; }
 .acciones { display: flex; flex-wrap: wrap; gap: 12px; }
-.cartel { background: var(--guadua); color: #f2f6ee; border-radius: 10px; padding: 28px 84px 28px 28px; position: relative; overflow: hidden; }
-.cartel::before { content: ""; position: absolute; right: 26px; top: 0; bottom: 0; width: 14px; background: repeating-linear-gradient(to bottom, #2f6a4a 0 86px, #17382a 86px 92px); opacity: .7; }
-.cartel::after { content: ""; position: absolute; right: 58px; top: 0; bottom: 0; width: 10px; background: repeating-linear-gradient(to bottom, #2f6a4a 0 60px, #17382a 60px 65px); opacity: .5; }
+.cartel { background: rgba(20, 42, 30, .92); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 24px 26px; }
 .estado { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
 .punto { width: 14px; height: 14px; border-radius: 50%; background: #8a9a8f; }
 .punto.abierto { background: #5be08a; box-shadow: 0 0 0 5px rgba(91,224,138,.25); }
 .punto.cerrado { background: var(--aji); }
-.cartel .estado-detalle { margin: 4px 0 22px; color: #bcd0c2; font-size: 15px; max-width: none; }
-.cartel h2 { font-size: 15px; font-weight: 500; font-family: Figtree, sans-serif; color: #bcd0c2; letter-spacing: 0; }
-.cartel .plato-dia { font-family: "Bricolage Grotesque", Georgia, serif; font-size: 32px; font-weight: 800; line-height: 1.1; margin: 6px 0 8px; max-width: 12ch; color: #ffffff; }
+.cartel .estado-detalle { margin: 4px 0 18px; color: #b9cbbf; font-size: 15px; }
+.cartel h2 { font-size: 15px; font-weight: 500; font-family: Figtree, sans-serif; color: #b9cbbf; letter-spacing: 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.14); }
+.cartel .plato-dia { font-family: "Bricolage Grotesque", Georgia, serif; font-size: 30px; font-weight: 800; line-height: 1.1; margin: 6px 0 6px; color: #ffffff; }
 .cartel .precio { color: var(--maiz); font-weight: 700; font-size: 20px; }
 
-.seccion { padding: 64px 0; }
-.seccion h2 { font-size: 44px; color: var(--guadua-oscuro); margin-bottom: 8px; }
-.seccion .intro { color: var(--suave); max-width: 52ch; margin: 0 0 36px; }
-.fondo-papel { background: var(--papel); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
-.carta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 44px; }
-.grupo h3 { font-size: 26px; color: var(--aji); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--maiz); }
-.plato { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 12px 0; border-bottom: 1px dashed var(--linea); }
+/* Secciones */
+.seccion { padding: 72px 0; }
+.seccion h2 { font-size: 46px; color: var(--hoja); margin-bottom: 8px; }
+.seccion .intro { color: var(--suave); max-width: 54ch; margin: 0 0 36px; }
+.blanco { background: var(--blanco); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+
+.favoritos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.favorito { background: var(--blanco); border: 1px solid var(--linea); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.favorito img { width: 100%; height: 230px; object-fit: cover; }
+.favorito .info { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.favorito h3 { font-size: 24px; color: var(--hoja); }
+.favorito p { margin: 6px 0 16px; color: var(--suave); font-size: 15px; flex: 1; }
+.favorito .fila { display: flex; justify-content: space-between; align-items: center; }
+.favorito .valor { font-weight: 700; font-size: 19px; }
+.favorito .pedir { color: var(--aji); font-weight: 700; text-decoration: none; }
+.favorito .pedir:hover { text-decoration: underline; }
+
+.carta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.grupo h3 { font-size: 24px; color: var(--aji); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--maiz); }
+.plato { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 12px 0; border-bottom: 1px dashed var(--linea); }
 .plato b { font-weight: 700; }
-.plato span.p { font-weight: 700; color: var(--guadua); white-space: nowrap; }
+.plato span.p { font-weight: 700; color: var(--hoja); white-space: nowrap; }
 .plato small { grid-column: 1 / -1; color: var(--suave); font-size: 15px; }
-.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+
+.franja { background: var(--hoja); color: #e7eee8; }
+.franja .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.franja .bloque { padding: 56px 40px 56px 0; }
+.franja .bloque + .bloque { padding: 56px 0 56px 40px; border-left: 1px solid rgba(255,255,255,.16); }
+.franja h2 { color: #ffffff; font-size: 34px; margin-bottom: 12px; }
+.franja p { color: #c4d3c8; margin: 0 0 22px; max-width: 42ch; }
+
+.galeria { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 12px; }
+.galeria img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.galeria .grande { grid-row: 1 / 3; }
+.galeria .ancha { grid-column: 2 / 4; }
+
+.dos-col { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; }
 .horas { width: 100%; border-collapse: collapse; }
 .horas td { padding: 10px 0; border-bottom: 1px solid var(--linea); }
 .horas td:last-child { text-align: right; font-weight: 700; }
 .horas tr.hoy td { color: var(--aji); }
-.tarjeta-lugar { background: var(--fondo); border: 1px solid var(--linea); border-radius: 10px; padding: 26px; }
-.tarjeta-lugar p { margin: 0 0 14px; }
-.reserva { background: var(--guadua-oscuro); color: #eef4ea; text-align: left; padding: 64px 0; }
-.reserva h2 { color: #ffffff; font-size: 44px; max-width: 18ch; }
-.reserva p { color: #bcd0c2; max-width: 48ch; margin: 14px 0 26px; }
-.reserva .boton { background: var(--maiz); color: #1b2a21; }
-.reserva .boton:hover { background: #ffd067; }
-.pie { padding: 28px 20px 40px; color: var(--suave); font-size: 14px; }
-.pie a { color: var(--guadua); font-weight: 700; }
-@media (max-width: 800px) {
-  .portada, .carta, .dos { grid-template-columns: 1fr; gap: 28px; }
+.mapa { width: 100%; height: 300px; border: 0; border-radius: 10px; background: #e8e8e2; }
+.datos { margin: 16px 0 0; color: var(--suave); }
+
+.reserva { background: var(--hoja-oscura); color: #e7eee8; padding: 72px 0; }
+.reserva h2 { color: #ffffff; font-size: 46px; max-width: 16ch; }
+.reserva p { color: #b9cbbf; max-width: 48ch; margin: 14px 0 26px; }
+
+.pie { padding: 30px 20px 90px; color: var(--suave); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.pie a { color: var(--hoja); font-weight: 700; }
+.barra-movil { display: none; }
+
+@media (max-width: 900px) {
+  .portada-cuerpo, .carta, .dos-col, .franja .dos { grid-template-columns: 1fr; gap: 28px; }
+  .favoritos { grid-template-columns: 1fr; }
   .portada h1 { font-size: 44px; }
+  .portada-cuerpo { padding: 40px 0 40px; }
   .seccion h2, .reserva h2 { font-size: 34px; }
   .menu { display: none; }
+  .franja .bloque, .franja .bloque + .bloque { padding: 40px 0; border-left: 0; }
+  .franja .bloque + .bloque { border-top: 1px solid rgba(255,255,255,.16); }
+  .galeria { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 140px 140px; }
+  .galeria .grande { grid-column: 1 / 3; grid-row: auto; }
+  .galeria .ancha { grid-column: auto; }
+  .barra-movil { display: block; position: fixed; left: 12px; right: 12px; bottom: 12px; text-align: center; background: var(--aji); color: #ffffff; font-weight: 700; padding: 14px; border-radius: 8px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 10; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -81,33 +134,67 @@ a { color: inherit; }
 <body>
 <div class="aviso-demo">Página de ejemplo hecha por CuentaClaro. El restaurante, los precios y los datos son inventados. <a href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20del%20restaurante%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero una para mi negocio</a></div>
 
-<div class="ancho">
-  <header class="cabecera">
-    <a class="marca" href="#inicio">El Guadual</a>
-    <nav class="menu"><a href="#carta">Carta</a><a href="#horarios">Horarios</a><a href="#lugar">Cómo llegar</a></nav>
-    <a class="boton verde" href="#reservar">Reservar mesa</a>
-  </header>
-
-  <section class="portada" id="inicio">
-    <div>
-      <h1>Arroz tapado, asado huilense y almuerzo de domingo.</h1>
-      <p>Cocina del Huila hecha en fogón, a la orilla del río. Venga con la familia, pida lo que quiera y quédese a la sobremesa.</p>
-      <div class="acciones">
-        <a class="boton" href="#carta">Ver la carta</a>
-        <a class="boton verde" href="#reservar">Reservar mesa</a>
+<section class="portada" id="inicio">
+  <div class="ancho">
+    <header class="cabecera">
+      <a class="marca" href="#inicio">El Guadual<span>.</span></a>
+      <nav class="menu"><a href="#favoritos">Lo más pedido</a><a href="#carta">Carta</a><a href="#lugar">El lugar</a><a href="#horarios">Horarios</a></nav>
+      <a class="boton claro" href="#reservar">Reservar mesa</a>
+    </header>
+    <div class="portada-cuerpo">
+      <div>
+        <h1>Cocina huilense hecha en fogón de leña.</h1>
+        <p>Arroz tapado, asado, sancocho y almuerzo de domingo, a la orilla del río. Venga con la familia o pida a domicilio.</p>
+        <div class="acciones">
+          <a class="boton" href="#carta">Ver la carta</a>
+          <a class="boton claro" href="#reservar">Reservar mesa</a>
+        </div>
       </div>
+      <aside class="cartel">
+        <div class="estado"><span class="punto" id="punto"></span><span id="estado-texto">Revisando horario</span></div>
+        <p class="estado-detalle" id="estado-detalle"></p>
+        <h2>Plato del día</h2>
+        <p class="plato-dia" id="plato-dia">Arroz tapado</p>
+        <span class="precio" id="plato-precio">$ 32.000</span>
+      </aside>
     </div>
-    <aside class="cartel">
-      <div class="estado"><span class="punto" id="punto"></span><span id="estado-texto">Revisando horario</span></div>
-      <p class="estado-detalle" id="estado-detalle"></p>
-      <h2>Plato del día</h2>
-      <p class="plato-dia" id="plato-dia">Arroz tapado</p>
-      <span class="precio" id="plato-precio">$ 32.000</span>
-    </aside>
-  </section>
-</div>
+  </div>
+</section>
 
-<section class="seccion fondo-papel" id="carta">
+<section class="seccion" id="favoritos">
+  <div class="ancho">
+    <h2>Lo que más piden</h2>
+    <p class="intro">Los tres platos que salen de la cocina cada fin de semana. Puede pedirlos a domicilio con un mensaje.</p>
+    <div class="favoritos">
+      <article class="favorito">
+        <img src="https://images.unsplash.com/photo-1702827495434-629df15aa136?w=800&q=70&auto=format&fit=crop" alt="Picada con carnes, patacón, yuca y papas fritas sobre tabla de madera" loading="lazy">
+        <div class="info">
+          <h3>Picada para dos</h3>
+          <p>Carne asada, chorizo, chicharrón, patacón, yuca frita y ají de la casa.</p>
+          <div class="fila"><span class="valor">$ 58.000</span><a class="pedir" href="https://wa.me/573132787667?text=Hola,%20quiero%20pedir%20una%20Picada%20para%20dos%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Pedir</a></div>
+        </div>
+      </article>
+      <article class="favorito">
+        <img src="https://images.unsplash.com/photo-1603496987674-79600a000f55?w=800&q=70&auto=format&fit=crop" alt="Pollo asado sobre arroz amarillo" loading="lazy">
+        <div class="info">
+          <h3>Arroz con pollo</h3>
+          <p>Pollo dorado al carbón sobre arroz con verduras y achiote. Con ensalada.</p>
+          <div class="fila"><span class="valor">$ 26.000</span><a class="pedir" href="https://wa.me/573132787667?text=Hola,%20quiero%20pedir%20un%20Arroz%20con%20pollo%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Pedir</a></div>
+        </div>
+      </article>
+      <article class="favorito">
+        <img src="https://images.unsplash.com/photo-1644753787064-9f2846d6c995?w=800&q=70&auto=format&fit=crop" alt="Sopa servida en plato hondo con papa crocante por encima" loading="lazy">
+        <div class="info">
+          <h3>Sancocho de gallina</h3>
+          <p>Sopa de la casa con presa, yuca, plátano y mazorca. Viene con arroz y aguacate.</p>
+          <div class="fila"><span class="valor">$ 28.000</span><a class="pedir" href="https://wa.me/573132787667?text=Hola,%20quiero%20pedir%20un%20Sancocho%20de%20gallina%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Pedir</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="seccion blanco" id="carta">
   <div class="ancho">
     <h2>La carta</h2>
     <p class="intro">Todo se prepara al momento. Los precios incluyen servicio y están en pesos colombianos.</p>
@@ -115,17 +202,24 @@ a { color: inherit; }
       <div class="grupo">
         <h3>Platos fuertes</h3>
         <div class="plato"><b>Arroz tapado</b><span class="p">$ 32.000</span><small>Arroz con pollo, cerdo y chorizo, huevo y plátano maduro.</small></div>
-        <div class="plato"><b>Asado huilense</b><span class="p">$ 38.000</span><small>Costilla y carne de cerdo asadas, con yuca, papa criolla y arepa.</small></div>
+        <div class="plato"><b>Asado huilense</b><span class="p">$ 38.000</span><small>Cerdo adobado al horno, con yuca, papa criolla y arepa.</small></div>
         <div class="plato"><b>Mojarra frita</b><span class="p">$ 36.000</span><small>Pescado entero con patacón, ensalada y arroz de coco.</small></div>
-        <div class="plato"><b>Sancocho de gallina</b><span class="p">$ 28.000</span><small>Sopa de la casa con presa, yuca, plátano y mazorca.</small></div>
+        <div class="plato"><b>Arroz con pollo</b><span class="p">$ 26.000</span><small>Con ensalada y papa a la francesa.</small></div>
+        <div class="plato"><b>Sancocho de gallina</b><span class="p">$ 28.000</span><small>Con arroz, aguacate y banano.</small></div>
       </div>
       <div class="grupo">
         <h3>Para compartir</h3>
-        <div class="plato"><b>Picada para dos</b><span class="p">$ 58.000</span><small>Chorizo, morcilla, chicharrón, yuca, papa y ají de la casa.</small></div>
+        <div class="plato"><b>Picada para dos</b><span class="p">$ 58.000</span><small>Carne, chorizo, chicharrón, patacón, yuca y ají.</small></div>
+        <div class="plato"><b>Picada familiar</b><span class="p">$ 98.000</span><small>Para 4 personas, con limonada de la casa.</small></div>
         <div class="plato"><b>Tamal huilense</b><span class="p">$ 14.000</span><small>Envuelto en hoja de plátano, con pollo y cerdo.</small></div>
-        <h3 style="margin-top:28px">Para tomar y para el postre</h3>
+        <div class="plato"><b>Patacones con hogao</b><span class="p">$ 12.000</span><small>Seis patacones con hogao y queso.</small></div>
+      </div>
+      <div class="grupo">
+        <h3>Bebidas</h3>
         <div class="plato"><b>Limonada de panela</b><span class="p">$ 6.000</span></div>
+        <div class="plato"><b>Jugo natural en leche</b><span class="p">$ 7.000</span></div>
         <div class="plato"><b>Café del Huila</b><span class="p">$ 4.500</span></div>
+        <h3 style="margin-top:24px">Postres</h3>
         <div class="plato"><b>Brevas con arequipe</b><span class="p">$ 9.000</span></div>
         <div class="plato"><b>Cuajada con melao</b><span class="p">$ 8.000</span></div>
       </div>
@@ -133,8 +227,36 @@ a { color: inherit; }
   </div>
 </section>
 
-<section class="seccion" id="horarios">
+<section class="franja">
   <div class="ancho dos">
+    <div class="bloque">
+      <h2>Domicilios en el pueblo</h2>
+      <p>Pida por WhatsApp de lunes a domingo. Le confirmamos el valor del envío y la hora de llegada antes de despachar.</p>
+      <a class="boton maiz" href="https://wa.me/573132787667?text=Hola,%20quiero%20hacer%20un%20pedido%20a%20domicilio%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Pedir a domicilio</a>
+    </div>
+    <div class="bloque">
+      <h2>Cumpleaños y grupos</h2>
+      <p>Tenemos kiosco para 30 personas. Arreglamos la mesa, preparamos el menú y le guardamos el espacio con un anticipo.</p>
+      <a class="boton claro" href="https://wa.me/573132787667?text=Hola,%20quiero%20cotizar%20una%20celebraci%C3%B3n%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Cotizar una celebración</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="lugar">
+  <div class="ancho">
+    <h2>El lugar</h2>
+    <p class="intro">Mesas de madera, kiosco con techo de palma y zona verde para los niños. Hay parqueadero para carros y motos.</p>
+    <div class="galeria">
+      <img class="grande" src="https://images.unsplash.com/photo-1724762125537-1b92770c1ae2?w=1000&q=70&auto=format&fit=crop" alt="Restaurante con mesas de madera, plantas y lámparas colgantes" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1644753787131-a75cbda834cd?w=600&q=70&auto=format&fit=crop" alt="Acompañantes: aguacate, banano, arepa y salsas" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1714383611437-485d97141913?w=600&q=70&auto=format&fit=crop" alt="Paila de arroz recién hecho" loading="lazy">
+      <img class="ancha" src="https://images.unsplash.com/photo-1746716447103-e1618bbd0669?w=1000&q=70&auto=format&fit=crop" alt="Mesa con varios platos servidos en cuencos de madera" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="seccion blanco" id="horarios">
+  <div class="ancho dos-col">
     <div>
       <h2>Horarios</h2>
       <p class="intro">Abrimos todos los días. Los fines de semana cerramos más tarde.</p>
@@ -148,14 +270,11 @@ a { color: inherit; }
         <tr id="d0"><td>Domingo</td><td>11:00 a. m. a 5:00 p. m.</td></tr>
       </table>
     </div>
-    <div id="lugar">
+    <div>
       <h2>Cómo llegar</h2>
-      <p class="intro">A 10 minutos del casco urbano, por la vía al río. Hay parqueadero para carros y motos.</p>
-      <div class="tarjeta-lugar">
-        <p><b>Vereda El Guadual, vía al río</b><br>Dirección de ejemplo</p>
-        <p>Teléfono: 300 000 0000 (ejemplo)</p>
-        <a class="boton verde" href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir en Google Maps</a>
-      </div>
+      <p class="intro">A 10 minutos del parque principal, por la vía al río.</p>
+      <iframe class="mapa" title="Mapa de ubicación de ejemplo" src="https://www.google.com/maps?q=Garz%C3%B3n,+Huila&z=14&output=embed" loading="lazy"></iframe>
+      <p class="datos">Vereda El Guadual, vía al río (dirección de ejemplo). Teléfono 300 000 0000.</p>
     </div>
   </div>
 </section>
@@ -163,14 +282,17 @@ a { color: inherit; }
 <section class="reserva" id="reservar">
   <div class="ancho">
     <h2>Reserve su mesa por WhatsApp</h2>
-    <p>Díganos para cuántas personas y a qué hora. Le confirmamos en pocos minutos, de lunes a domingo en horario de atención.</p>
-    <a class="boton" href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20del%20restaurante%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    <p>Díganos para cuántas personas y a qué hora. Le confirmamos en pocos minutos, en horario de atención.</p>
+    <a class="boton maiz" href="https://wa.me/573132787667?text=Hola,%20quiero%20reservar%20una%20mesa%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Reservar por WhatsApp</a>
   </div>
 </section>
 
 <footer class="ancho pie">
-  <p>Esta página es un ejemplo de lo que puede tener su restaurante. Hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></p>
+  <span>Página de ejemplo hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></span>
+  <span>Fotos: Unsplash</span>
 </footer>
+
+<a class="barra-movil" href="https://wa.me/573132787667?text=Hola,%20quiero%20hacer%20un%20pedido%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Pedir o reservar por WhatsApp</a>
 
 <script>
 let diaActual = 0;

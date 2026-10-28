@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mora, ropa y accesorios (página de ejemplo)</title>
+<meta name="description" content="Página de ejemplo para una tienda: catálogo con fotos y precios, filtro por categoría y pedido por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tinta: #15171c;
+  --cobalto: #2742c4;
+  --cobalto-oscuro: #1c3196;
+  --piedra: #efede9;
+  --fondo: #ffffff;
+  --suave: #62656d;
+  --linea: #e2e0dc;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Archivo, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.55; color: var(--tinta); background: var(--fondo); }
+h1, h2, h3 { font-family: Archivo, "Segoe UI", sans-serif; font-stretch: 75%; font-weight: 800; line-height: 1; margin: 0; letter-spacing: -0.01em; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font-family: inherit; }
+.ancho { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.aviso-demo { background: var(--tinta); color: #d9dbe2; font-size: 14px; padding: 9px 20px; text-align: center; }
+.aviso-demo a { color: #9fb1ff; font-weight: 700; }
+.cinta { background: var(--piedra); font-size: 14px; text-align: center; padding: 8px 20px; color: var(--suave); }
+
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--linea); }
+.marca { font-stretch: 125%; font-weight: 800; font-size: 26px; text-decoration: none; letter-spacing: 0.04em; }
+.cabecera nav a { margin: 0 14px; text-decoration: none; color: var(--suave); }
+.cabecera nav a:hover { color: var(--tinta); }
+.btn-bolsa { background: var(--tinta); color: #ffffff; border: 0; padding: 11px 18px; border-radius: 4px; font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; }
+.btn-bolsa span { background: #ffffff; color: var(--tinta); border-radius: 999px; padding: 0 8px; margin-left: 6px; }
+
+.boton { display: inline-block; background: var(--cobalto); color: #ffffff; font-weight: 700; padding: 14px 24px; border-radius: 4px; text-decoration: none; border: 0; font-size: 16px; cursor: pointer; }
+.boton:hover { background: var(--cobalto-oscuro); }
+.boton.borde { background: transparent; color: var(--tinta); border: 1.5px solid var(--tinta); }
+.boton.borde:hover { background: var(--tinta); color: #ffffff; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--cobalto); outline-offset: 3px; }
+
+/* Portada */
+.portada { display: grid; grid-template-columns: 1fr 1.25fr; min-height: 520px; }
+.portada .texto { background: var(--piedra); padding: 64px 48px; display: flex; flex-direction: column; justify-content: center; }
+.portada h1 { font-size: 84px; }
+.portada p { color: var(--suave); max-width: 38ch; margin: 22px 0 30px; font-size: 18px; }
+.portada .foto { background: #d8d4cc url("https://images.unsplash.com/photo-1718985342149-7178154e0aee?w=1400&q=70&auto=format&fit=crop") center / cover no-repeat; }
+.acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Catálogo */
+.seccion { padding: 72px 0; }
+.titulo-fila { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 28px; }
+.seccion h2 { font-size: 56px; }
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+.filtro { background: #ffffff; border: 1.5px solid var(--linea); color: var(--tinta); padding: 9px 16px; border-radius: 999px; font-size: 15px; cursor: pointer; }
+.filtro:hover { border-color: var(--tinta); }
+.filtro.activo { background: var(--tinta); border-color: var(--tinta); color: #ffffff; }
+.productos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 20px; }
+.producto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--piedra); }
+.producto h3 { font-size: 20px; font-stretch: 100%; font-weight: 600; margin: 12px 0 2px; letter-spacing: 0; }
+.producto .detalle { color: var(--suave); font-size: 14px; margin: 0; }
+.producto .fila { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.producto .valor { font-weight: 700; font-size: 17px; }
+.agregar { background: transparent; border: 1.5px solid var(--tinta); padding: 7px 14px; border-radius: 4px; font-weight: 700; font-size: 14px; cursor: pointer; }
+.agregar:hover { background: var(--tinta); color: #ffffff; }
+.oculto { display: none; }
+
+/* Bolsa */
+.bolsa { background: var(--piedra); padding: 56px 0; }
+.bolsa .caja { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.bolsa h2 { font-size: 48px; margin-bottom: 10px; }
+.bolsa .intro { color: var(--suave); margin: 0; max-width: 42ch; }
+.lista { background: #ffffff; border: 1px solid var(--linea); border-radius: 6px; padding: 22px; }
+.lista pre { font-family: inherit; white-space: pre-wrap; margin: 0 0 16px; min-height: 48px; color: var(--suave); }
+.lista .total { display: flex; justify-content: space-between; font-weight: 800; font-size: 22px; padding-top: 14px; border-top: 1px solid var(--linea); }
+.lista .acciones { margin-top: 18px; }
+.apagado { background: #b9bccb; pointer-events: none; }
+.vaciar { background: transparent; border: 0; color: var(--suave); text-decoration: underline; cursor: pointer; font-size: 15px; }
+
+/* Información */
+.info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--linea); }
+.info div { padding: 28px 28px 0 0; }
+.info div + div { padding-left: 28px; border-left: 1px solid var(--linea); }
+.info h3 { font-size: 26px; margin-bottom: 8px; }
+.info p { margin: 0; color: var(--suave); }
+.dos { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; }
+.horas { width: 100%; border-collapse: collapse; }
+.horas td { padding: 11px 0; border-bottom: 1px solid var(--linea); }
+.horas td:last-child { text-align: right; font-weight: 700; }
+.mapa { width: 100%; height: 300px; border: 0; background: var(--piedra); }
+.datos { color: var(--suave); margin: 12px 0 0; }
+.pie { padding: 30px 20px 90px; color: var(--suave); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid var(--linea); }
+.pie a { color: var(--cobalto); font-weight: 700; }
+.barra-movil { display: none; }
+
+@media (max-width: 900px) {
+  .portada, .bolsa .caja, .dos { grid-template-columns: 1fr; }
+  .portada .foto { min-height: 300px; order: -1; }
+  .portada .texto { padding: 40px 20px; }
+  .portada h1 { font-size: 56px; }
+  .seccion h2, .bolsa h2 { font-size: 42px; }
+  .cabecera nav { display: none; }
+  .productos { grid-template-columns: 1fr 1fr; gap: 24px 14px; }
+  .producto h3 { font-size: 17px; }
+  .producto .fila { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .info { grid-template-columns: 1fr; }
+  .info div, .info div + div { padding: 22px 0; border-left: 0; border-bottom: 1px solid var(--linea); }
+  .barra-movil { display: block; position: fixed; left: 12px; right: 12px; bottom: 12px; text-align: center; background: var(--tinta); color: #ffffff; font-weight: 700; padding: 14px; border-radius: 6px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 10; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="aviso-demo">Página de ejemplo hecha por CuentaClaro. La tienda, los productos y los precios son inventados. <a href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20de%20la%20tienda%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero una para mi negocio</a></div>
+<div class="cinta">Envíos a todo Colombia. En el pueblo, pago contraentrega.</div>
+
+<div class="ancho">
+  <header class="cabecera">
+    <a class="marca" href="#inicio">MORA</a>
+    <nav><a href="#catalogo">Ropa</a><a href="#catalogo">Bolsos</a><a href="#info">Envíos y cambios</a><a href="#tienda">La tienda</a></nav>
+    <a class="btn-bolsa" href="#bolsa">Bolsa <span id="contador">0</span></a>
+  </header>
+</div>
+
+<section class="portada" id="inicio">
+  <div class="texto">
+    <h1>Ropa y accesorios para el día a día.</h1>
+    <p>Prendas nuevas cada semana, bolsos de fique hechos en la región y asesoría por WhatsApp para escoger la talla.</p>
+    <div class="acciones">
+      <a class="boton" href="#catalogo">Ver productos</a>
+      <a class="boton borde" href="#tienda">Visitar la tienda</a>
+    </div>
+  </div>
+  <div class="foto" role="img" aria-label="Interior de la tienda con ropa colgada y plantas"></div>
+</section>
+
+<section class="seccion" id="catalogo">
+  <div class="ancho">
+    <div class="titulo-fila">
+      <h2>Lo nuevo</h2>
+      <div class="filtros">
+        <button class="filtro activo" id="f-todo" onclick="mostrarTodo()">Todo</button>
+        <button class="filtro" id="f-ropa" onclick="mostrarRopa()">Ropa</button>
+        <button class="filtro" id="f-jeans" onclick="mostrarJeans()">Jeans</button>
+        <button class="filtro" id="f-bolsos" onclick="mostrarBolsos()">Bolsos</button>
+      </div>
+    </div>
+
+    <div class="productos">
+      <article class="producto" data-cat="ropa">
+        <img src="https://images.unsplash.com/photo-1573879500655-98f2012dd1db?w=600&q=70&auto=format&fit=crop" alt="Blusas de tonos rosa y durazno colgadas" loading="lazy">
+        <h3>Blusa de lino</h3><p class="detalle">Tallas S a L. Durazno y rosa.</p>
+        <div class="fila"><span class="valor">$ 69.900</span><button class="agregar" data-nombre="Blusa de lino" data-precio="69900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="ropa">
+        <img src="https://images.unsplash.com/photo-1583316174775-bd6dc0e9f298?w=600&q=70&auto=format&fit=crop" alt="Vestidos estampados de colores colgados" loading="lazy">
+        <h3>Vestido estampado</h3><p class="detalle">Fresco, largo a la rodilla.</p>
+        <div class="fila"><span class="valor">$ 119.900</span><button class="agregar" data-nombre="Vestido estampado" data-precio="119900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="ropa">
+        <img src="https://images.unsplash.com/photo-1699797467199-6bdf301649e8?w=600&q=70&auto=format&fit=crop" alt="Suéteres tejidos doblados en tonos tierra" loading="lazy">
+        <h3>Suéter tejido</h3><p class="detalle">Algodón. Tres colores.</p>
+        <div class="fila"><span class="valor">$ 89.900</span><button class="agregar" data-nombre="Suéter tejido" data-precio="89900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="jeans">
+        <img src="https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=600&q=70&auto=format&fit=crop" alt="Jeans y prendas dobladas sobre una cama" loading="lazy">
+        <h3>Jean clásico</h3><p class="detalle">Tiro alto. Tallas 6 a 16.</p>
+        <div class="fila"><span class="valor">$ 99.900</span><button class="agregar" data-nombre="Jean clásico" data-precio="99900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="jeans">
+        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=70&auto=format&fit=crop" alt="Conjunto de jean, suéter y gorro sobre una sábana" loading="lazy">
+        <h3>Conjunto jean y suéter</h3><p class="detalle">Las dos prendas juntas.</p>
+        <div class="fila"><span class="valor">$ 169.900</span><button class="agregar" data-nombre="Conjunto jean y suéter" data-precio="169900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="bolsos">
+        <img src="https://images.unsplash.com/photo-1524679813234-66a389fe1a42?w=600&q=70&auto=format&fit=crop" alt="Bolso tejido de fibra natural con asas de cuero" loading="lazy">
+        <h3>Bolso de fique</h3><p class="detalle">Tejido a mano en la región.</p>
+        <div class="fila"><span class="valor">$ 79.900</span><button class="agregar" data-nombre="Bolso de fique" data-precio="79900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="bolsos">
+        <img src="https://images.unsplash.com/photo-1681747685985-a401c271156c?w=600&q=70&auto=format&fit=crop" alt="Bolso de mano rosado con correa" loading="lazy">
+        <h3>Bolso de mano</h3><p class="detalle">Correa larga desmontable.</p>
+        <div class="fila"><span class="valor">$ 129.900</span><button class="agregar" data-nombre="Bolso de mano rosado" data-precio="129900">Agregar</button></div>
+      </article>
+      <article class="producto" data-cat="bolsos">
+        <img src="https://images.unsplash.com/photo-1711548244653-72219aa9ac27?w=600&q=70&auto=format&fit=crop" alt="Bolso de cuero café con broche dorado" loading="lazy">
+        <h3>Bolso de cuero</h3><p class="detalle">Cuero café, broche dorado.</p>
+        <div class="fila"><span class="valor">$ 149.900</span><button class="agregar" data-nombre="Bolso de cuero" data-precio="149900">Agregar</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bolsa" id="bolsa">
+  <div class="ancho caja">
+    <div>
+      <h2>Su bolsa</h2>
+      <p class="intro">Agregue lo que le guste y envíenos el pedido por WhatsApp. Le confirmamos tallas, existencias y el valor del envío antes de cobrar.</p>
+    </div>
+    <div class="lista">
+      <pre id="lista">Todavía no ha agregado productos.</pre>
+      <div class="total"><span>Total</span><span id="total">$ 0</span></div>
+      <div class="acciones">
+        <a class="boton apagado" id="enviar" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+        <button class="vaciar" onclick="vaciarBolsa()">Vaciar bolsa</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="info">
+  <div class="ancho">
+    <h2 style="margin-bottom:28px">Comprar es fácil</h2>
+    <div class="info">
+      <div><h3>Envíos</h3><p>A todo el país por transportadora, de 2 a 5 días hábiles. En el pueblo entregamos el mismo día.</p></div>
+      <div><h3>Pagos</h3><p>Transferencia, Nequi, Daviplata o contraentrega. En la tienda también recibimos tarjeta.</p></div>
+      <div><h3>Cambios</h3><p>Tiene 8 días para cambiar la talla o la prenda, con la etiqueta puesta.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="tienda" style="padding-top:0">
+  <div class="ancho dos">
+    <div>
+      <h2 style="margin-bottom:20px">La tienda</h2>
+      <table class="horas">
+        <tr><td>Lunes a sábado</td><td>9:00 a. m. a 7:30 p. m.</td></tr>
+        <tr><td>Domingo</td><td>10:00 a. m. a 2:00 p. m.</td></tr>
+      </table>
+      <p class="datos">Carrera 4 con calle 6, centro (dirección de ejemplo). Teléfono 300 000 0000.</p>
+    </div>
+    <iframe class="mapa" title="Mapa de ubicación de ejemplo" src="https://www.google.com/maps?q=Garz%C3%B3n,+Huila&z=15&output=embed" loading="lazy"></iframe>
+  </div>
+</section>
+
+<footer class="ancho pie">
+  <span>Página de ejemplo hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></span>
+  <span>Fotos: Unsplash</span>
+</footer>
+
+<a class="barra-movil" href="#bolsa">Ver bolsa y enviar pedido</a>
+
+<script>
+let total = 0;
+let cantidad = 0;
+let pedido = "";
+
+function formatear(valor) {
+  return "$ " + valor.toLocaleString("es-CO");
+}
+
+function filtrar(categoria, idBoton) {
+  const productos = document.querySelectorAll(".producto");
+  for (let i = 0; i < productos.length; i++) {
+    if (categoria == "todo" || productos[i].getAttribute("data-cat") == categoria) {
+      productos[i].className = "producto";
+    } else {
+      productos[i].className = "producto oculto";
+    }
+  }
+  const botones = document.querySelectorAll(".filtro");
+  for (let i = 0; i < botones.length; i++) {
+    botones[i].className = "filtro";
+  }
+  document.getElementById(idBoton).className = "filtro activo";
+}
+
+function mostrarTodo() {
+  filtrar("todo", "f-todo");
+}
+
+function mostrarRopa() {
+  filtrar("ropa", "f-ropa");
+}
+
+function mostrarJeans() {
+  filtrar("jeans", "f-jeans");
+}
+
+function mostrarBolsos() {
+  filtrar("bolsos", "f-bolsos");
+}
+
+function actualizarBolsa() {
+  const enviar = document.getElementById("enviar");
+  document.getElementById("contador").textContent = cantidad;
+  document.getElementById("total").textContent = formatear(total);
+
+  if (cantidad == 0) {
+    document.getElementById("lista").textContent = "Todavía no ha agregado productos.";
+    enviar.className = "boton apagado";
+    enviar.href = "#";
+    return;
+  }
+
+  document.getElementById("lista").textContent = pedido;
+  const mensaje = "Hola, quiero hacer este pedido en Mora (página de ejemplo):\n" + pedido + "Total: " + formatear(total) + "\n¿Tienen disponible?";
+  enviar.className = "boton";
+  enviar.href = "https://wa.me/573132787667?text=" + encodeURIComponent(mensaje);
+}
+
+function agregar(evento) {
+  const boton = evento.target;
+  const nombre = boton.getAttribute("data-nombre");
+  const precio = Number(boton.getAttribute("data-precio"));
+  total = total + precio;
+  cantidad = cantidad + 1;
+  pedido = pedido + "- " + nombre + " (" + formatear(precio) + ")\n";
+  boton.textContent = "Agregado";
+  actualizarBolsa();
+}
+
+function vaciarBolsa() {
+  total = 0;
+  cantidad = 0;
+  pedido = "";
+  const botones = document.querySelectorAll(".agregar");
+  for (let i = 0; i < botones.length; i++) {
+    botones[i].textContent = "Agregar";
+  }
+  actualizarBolsa();
+}
+
+const botonesAgregar = document.querySelectorAll(".agregar");
+for (let i = 0; i < botonesAgregar.length; i++) {
+  botonesAgregar[i].addEventListener("click", agregar);
+}
+actualizarBolsa();
+</script>
+</body>
+</html>
