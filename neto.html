@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de salario neto Colombia 2026: descuentos de salud y pensión</title>
+<meta name="description" content="Calcula cuánto te queda libre cada mes en Colombia después de los descuentos de salud, pensión y fondo de solidaridad, con auxilio de transporte y ejemplo resuelto.">
+<link rel="stylesheet" href="style.css">
+<!-- Aquí va el código de AdSense (script de adsbygoogle) cuando lo tengas -->
+</head>
+<body class="herramienta">
+<header class="cabecera"><div class="cabecera-in"><a class="logo" href="index.html">cuenta<em>claro</em><span></span></a><nav><a href="liquidacion.html">Liquidación</a><a href="prima.html">Prima</a><a href="cesantias.html">Cesantías</a><a href="horas.html">Horas extra</a><a href="neto.html">Salario neto</a><a href="indemnizacion.html">Indemnización</a><a href="servicios.html">Páginas web</a></nav><a class="boton" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Cotizar ahora</a></div></header>
+<div class="contenido">
+<div class="franja">¿Tienes un negocio? Te hacemos tu página web. <a class="boton amarillo" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener">Pedir propuesta</a></div>
+<h1>Calculadora de salario neto</h1>
+<p>Descubre cuánto te llega a la cuenta cada mes después de los descuentos de salud y pensión.</p>
+<div class="tarjeta">
+<label for="net-salario">Salario mensual</label><input type="number" id="net-salario" placeholder="Ej: 2000000">
+<label for="net-smmlv">Salario mínimo vigente (puedes cambiarlo si se modifica)</label><input type="number" id="net-smmlv" value="1750905">
+<label for="net-auxilio">Auxilio de transporte mensual (solo si ganas hasta 2 salarios mínimos)</label><input type="number" id="net-auxilio" value="249095">
+<button class="accion" onclick="calcularNeto()">Calcular</button><button class="accion claro" onclick="ejemploNeto()">Probar con un ejemplo</button>
+</div>
+<div class="resultado" id="net-resultado">
+<p>Descuento de salud (4%): <strong id="net-salud"></strong></p>
+<p>Descuento de pensión (4%): <strong id="net-pension"></strong></p>
+<p>Fondo de solidaridad pensional: <strong id="net-fsp"></strong></p>
+<p>Auxilio de transporte: <strong id="net-aux"></strong></p>
+<p class="total">Te llega cada mes: <span id="net-tot"></span></p>
+<p class="nota" id="net-paso"></p>
+<button class="accion claro" onclick="imprimir()">Imprimir o guardar PDF</button>
+</div>
+<div class="anuncio"></div>
+<h2>Cómo se calcula</h2>
+<p>Al trabajador dependiente se le descuenta el 4% de su salario para salud y el 4% para pensión. Si gana 4 salarios mínimos o más, se suma el aporte al fondo de solidaridad pensional: 1% entre 4 y 16 salarios mínimos, y más desde 16 (de 1,2% hasta 2% a partir de 20). El auxilio de transporte se suma al final y solo se paga a quien gana hasta 2 salarios mínimos. Esta calculadora no incluye retención en la fuente ni otros descuentos como libranzas o préstamos.</p>
+<h2>Ejemplo resuelto</h2>
+<p>Con un salario de 2.000.000 (más de un salario mínimo pero menos de 2) y auxilio de 249.095: salud 80.000, pensión 80.000. Te llegan 2.000.000 - 160.000 + 249.095 = 2.089.095.</p>
+<div class="aviso"><h3>Revisa tu desprendible</h3><p>Si tu desprendible muestra descuentos distintos, pregunta a tu empleador por el detalle. Algunos descuentos solo pueden hacerse con tu autorización por escrito.</p></div>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Por qué no aparece la retención en la fuente?</h3><p>Depende de tus ingresos anuales y deducciones, y se calcula aparte. Para salarios bajos normalmente no aplica.</p>
+<h3>¿El auxilio de transporte tiene descuentos?</h3><p>No. Se suma completo, pero solo a quien gana hasta 2 salarios mínimos.</p>
+<footer class="pie2"><div><a class="logo" href="index.html">cuenta<em>claro</em><span></span></a><p>Herramientas laborales gratis y páginas web para negocios en Colombia.</p></div>
+<div><h4>herramientas</h4><a href="liquidacion.html">Liquidación laboral</a><a href="prima.html">Prima de servicios</a><a href="cesantias.html">Cesantías e intereses</a><a href="horas.html">Horas extra y recargos</a><a href="neto.html">Salario neto</a><a href="indemnizacion.html">Indemnización por despido</a></div>
+<div><h4>contacto</h4><a href="mailto:cuentaclaro.contacto@gmail.com">cuentaclaro.contacto@gmail.com</a><a href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener">WhatsApp 313 278 7667</a><a href="privacidad.html">Privacidad</a></div>
+<p class="legal">Los resultados son aproximados y de carácter informativo. No reemplazan la asesoría de un abogado laboral ni el cálculo oficial de tu empleador.</p></footer>
+</div>
+<div class="flotantes">
+<a class="flotante correo" href="mailto:cuentaclaro.contacto@gmail.com" aria-label="Escribir por correo" title="Escribir por correo"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+<a class="flotante whatsapp" href="https://wa.me/573132787667?text=Hola,%20quiero%20una%20p%C3%A1gina%20web%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" title="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

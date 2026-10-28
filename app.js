@@ -173,6 +173,119 @@ function ejemploHoras() {
   calcularHoras();
 }
 
+function calcularNeto() {
+  salario = Number(document.getElementById("net-salario").value);
+  let minimo = Number(document.getElementById("net-smmlv").value);
+  auxilio = Number(document.getElementById("net-auxilio").value);
+
+  if (salario <= 0 || minimo <= 0) {
+    alert("Revisa los datos: escribe el salario y el salario mínimo vigente.");
+    return;
+  }
+
+  let salud = salario * 0.04;
+  let pension = salario * 0.04;
+  let veces = salario / minimo;
+  let tasa = 0;
+  if (veces >= 4) {
+    tasa = 0.01;
+  }
+  if (veces >= 16) {
+    tasa = 0.012;
+  }
+  if (veces >= 17) {
+    tasa = 0.014;
+  }
+  if (veces >= 18) {
+    tasa = 0.016;
+  }
+  if (veces >= 19) {
+    tasa = 0.018;
+  }
+  if (veces >= 20) {
+    tasa = 0.02;
+  }
+  let solidaridad = salario * tasa;
+
+  let auxPagado = auxilio;
+  if (veces > 2) {
+    auxPagado = 0;
+  }
+
+  let neto = salario - salud - pension - solidaridad + auxPagado;
+
+  document.getElementById("net-salud").textContent = formatear(salud);
+  document.getElementById("net-pension").textContent = formatear(pension);
+  document.getElementById("net-fsp").textContent = formatear(solidaridad);
+  document.getElementById("net-aux").textContent = formatear(auxPagado);
+  document.getElementById("net-tot").textContent = formatear(neto);
+  document.getElementById("net-paso").textContent = "Salario " + formatear(salario) + " - salud " + formatear(salud) + " - pensión " + formatear(pension) + " - solidaridad " + formatear(solidaridad) + " + auxilio " + formatear(auxPagado) + " = " + formatear(neto) + ".";
+  document.getElementById("net-resultado").style.display = "block";
+}
+
+function ejemploNeto() {
+  document.getElementById("net-salario").value = 2000000;
+  document.getElementById("net-smmlv").value = 1750905;
+  document.getElementById("net-auxilio").value = 249095;
+  calcularNeto();
+}
+
+function calcularIndemnizacion() {
+  salario = Number(document.getElementById("ind-salario").value);
+  let minimo = Number(document.getElementById("ind-smmlv").value);
+  let tipo = document.getElementById("ind-tipo").value;
+  let ingreso = document.getElementById("ind-ingreso").value;
+  let retiro = document.getElementById("ind-retiro").value;
+  let fin = document.getElementById("ind-fin").value;
+
+  if (salario <= 0 || minimo <= 0 || ingreso == "" || retiro == "" || retiro < ingreso) {
+    alert("Revisa los datos: escribe el salario, el salario mínimo y fechas de ingreso y despido válidas.");
+    return;
+  }
+
+  let valorDia = salario / 30;
+  let diasIndemnizacion = 0;
+  let paso = "";
+
+  if (tipo == "indefinido") {
+    let anios = dias360(ingreso, retiro) / 360;
+    let primero = 30;
+    let adicional = 20;
+    if (salario >= minimo * 10) {
+      primero = 20;
+      adicional = 15;
+    }
+    diasIndemnizacion = primero;
+    if (anios > 1) {
+      diasIndemnizacion = primero + adicional * (anios - 1);
+    }
+    paso = "Tiempo trabajado: " + anios.toFixed(2) + " años. Días: " + diasIndemnizacion.toFixed(1) + ". Valor del día: " + formatear(valorDia) + ".";
+  } else {
+    if (fin == "" || fin <= retiro) {
+      alert("En contrato a término fijo escribe la fecha en que terminaba el contrato, posterior al despido.");
+      return;
+    }
+    diasIndemnizacion = dias360(retiro, fin) - 1;
+    paso = "Días que faltaban para terminar el contrato: " + diasIndemnizacion + ". Valor del día: " + formatear(valorDia) + ".";
+  }
+
+  let valor = valorDia * diasIndemnizacion;
+  document.getElementById("ind-dias").textContent = diasIndemnizacion.toFixed(1);
+  document.getElementById("ind-valor").textContent = formatear(valor);
+  document.getElementById("ind-paso").textContent = paso;
+  document.getElementById("ind-resultado").style.display = "block";
+}
+
+function ejemploIndemnizacion() {
+  document.getElementById("ind-tipo").value = "indefinido";
+  document.getElementById("ind-salario").value = 2000000;
+  document.getElementById("ind-smmlv").value = 1750905;
+  document.getElementById("ind-ingreso").value = "2025-03-15";
+  document.getElementById("ind-retiro").value = "2026-10-27";
+  document.getElementById("ind-fin").value = "";
+  calcularIndemnizacion();
+}
+
 let elementosRevelar = [];
 
 function prepararRevelar() {
