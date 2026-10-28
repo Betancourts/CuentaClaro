@@ -131,7 +131,7 @@ function ejemploCesantias() {
 let elementosRevelar = [];
 
 function prepararRevelar() {
-  elementosRevelar = document.querySelectorAll(".tarjeta, h2, .aviso");
+  elementosRevelar = document.querySelectorAll(".tarjeta, h2, .aviso, .bloque");
   for (let i = 0; i < elementosRevelar.length; i++) {
     elementosRevelar[i].classList.add("revelar");
   }
