@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de cesantías e intereses Colombia con fechas límite</title>
+<meta name="description" content="Calcula tus cesantías y los intereses del 12% en Colombia, con fórmula, ejemplo resuelto y fechas límite de consignación y pago (31 de enero y 14 de febrero).">
+<link rel="stylesheet" href="style.css">
+<!-- Aquí va el código de AdSense (script de adsbygoogle) cuando lo tengas -->
+</head>
+<body>
+<div class="menu"><a class="marca" href="index.html">Cuenta<span>Claro</span></a><a href="liquidacion.html">Liquidación laboral</a><a href="prima.html">Prima de servicios</a><a href="cesantias.html">Cesantías e intereses</a><a href="servicios.html">Páginas web y contacto</a><a href="privacidad.html">Privacidad</a></div>
+<div class="contenido">
+<h1>Calculadora de cesantías e intereses</h1>
+<p>Los intereses se pagan al trabajador a más tardar el 31 de enero. Las cesantías se consignan en el fondo antes del 14 de febrero.</p>
+<div class="tarjeta">
+<label for="ces-salario">Salario mensual</label><input type="number" id="ces-salario" placeholder="Ej: 2000000">
+<label for="ces-auxilio">Auxilio de transporte mensual (0 si no lo recibes)</label><input type="number" id="ces-auxilio" value="0">
+<label for="ces-dias">Días trabajados en el año (máximo 360)</label><input type="number" id="ces-dias" value="360">
+<button class="accion" onclick="calcularCesantias()">Calcular</button><button class="accion claro" onclick="ejemploCesantias()">Probar con un ejemplo</button>
+</div>
+<div class="resultado" id="ces-resultado">
+<p>Cesantías: <strong id="ces-valor"></strong></p>
+<p class="total">Intereses (12% anual): <span id="ces-inter"></span></p>
+<p class="nota" id="ces-paso"></p>
+<button class="accion claro" onclick="imprimir()">Imprimir o guardar PDF</button>
+</div>
+<div class="anuncio"></div>
+<h2>Cómo se calcula</h2>
+<p>Cesantías = (salario + auxilio) x días trabajados / 360. Intereses = cesantías x días x 12% / 360.</p>
+<h2>Ejemplo resuelto</h2>
+<p>Con salario de 2.000.000, sin auxilio y 360 días trabajados: cesantías 2.000.000 e intereses 240.000.</p>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué pasa si el empleador no consigna a tiempo?</h3><p>Puede generar una sanción equivalente a un día de salario por cada día de retraso. Verifica el caso con un abogado laboral.</p>
+<h3>¿Los intereses se consignan al fondo?</h3><p>No, se pagan directamente al trabajador.</p>
+<div class="pie">CuentaClaro. Herramientas informativas para Colombia. Los resultados son aproximados y no reemplazan la asesoría de un abogado laboral. <a href="privacidad.html">Privacidad</a></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
