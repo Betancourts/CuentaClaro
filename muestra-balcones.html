@@ -51,6 +51,7 @@ p { margin: 0; }
 .boton-rojo:hover { background: var(--rojo-oscuro); }
 .boton-wa { background: var(--wa); color: var(--blanco); }
 .boton-wa:hover { background: #18773f; }
+.boton.desactivado { background: #b9b4aa; color: #f4f2ee; cursor: not-allowed; pointer-events: none; }
 .boton-borde { background: transparent; color: var(--negro); border: 2px solid var(--negro); }
 .boton-borde:hover { background: var(--negro); color: var(--blanco); }
 .boton svg { width: 20px; height: 20px; flex: none; }
@@ -298,7 +299,7 @@ input, select { font: 400 17px "Public Sans", sans-serif; min-height: 48px; padd
         <img src="balcones/hab-pareja.jpg" alt="Habitación con cama doble, cabecero negro y cuadro de una casa colonial" width="1600" height="900" loading="lazy">
         <div class="habitacion-cuerpo">
           <h3>Pareja</h3>
-          <p>Una cama doble, televisor, Wi-Fi y baño. La más pedida para fines de semana.</p>
+          <p>Una cama doble, televisor, Wi-Fi y baño.</p>
           <div class="habitacion-pie">
             <div><p class="precio">$90.000<small>por noche</small></p><p class="capacidad">2 personas</p></div>
             <button class="boton boton-rojo" type="button" id="elegir-pareja">Elegir esta</button>
@@ -322,7 +323,7 @@ input, select { font: 400 17px "Public Sans", sans-serif; min-height: 48px; padd
         <img src="balcones/corredor.jpg" alt="Corredor del segundo piso con columnas rojas, sillas y puertas de las habitaciones" width="1333" height="1000" loading="lazy">
         <div class="habitacion-cuerpo">
           <h3>Familiar</h3>
-          <p>Varias camas en una sola habitación del segundo piso, a pocos pasos de la piscina para niños.</p>
+          <p>Varias camas en una sola habitación, ideal para familias.</p>
           <div class="habitacion-pie">
             <div><p class="precio">$160.000<small>por noche</small></p><p class="capacidad">Hasta 5 personas</p></div>
             <button class="boton boton-rojo" type="button" id="elegir-familiar">Elegir esta</button>
@@ -385,12 +386,12 @@ input, select { font: 400 17px "Public Sans", sans-serif; min-height: 48px; padd
     </div>
     <div>
       <h2>Piscina y pasadía</h2>
-      <p class="intro">Una piscina para adultos con jacuzzi y otra para niños, entre palmas y con la cordillera de fondo. No hace falta hospedarse: venga a pasar el día.</p>
+      <p class="intro">Piscina para adultos y piscina para niños, entre palmas y con la cordillera de fondo. No hace falta hospedarse: venga a pasar el día.</p>
       <p class="estado" id="estado-piscina">Piscina abierta hasta las 9:00 p. m.</p>
       <ul class="lista-simple">
         <li>Entrada hasta las 9:00 p. m.</li>
         <li>Restaurante al lado para el almuerzo</li>
-        <li>Parqueadero vigilado incluido</li>
+        <li>Parqueadero amplio</li>
       </ul>
 
       <div class="pasadia">
@@ -415,7 +416,7 @@ input, select { font: 400 17px "Public Sans", sans-serif; min-height: 48px; padd
     <img src="balcones/restaurante.jpg" alt="Restaurante del hotel con mesas de mantel rojo y barra de cafetería" width="1600" height="900" loading="lazy">
     <div>
       <h2>Restaurante</h2>
-      <p class="intro">Almuerzo corriente todos los días y platos a la carta para huéspedes y visitantes de pasadía. Mesas con vista a los jardines, a pocos pasos de la piscina.</p>
+      <p class="intro">Almuerzo corriente todos los días y platos a la carta para huéspedes y visitantes de pasadía.</p>
       <div class="carta">
         <div><span>Desayuno</span><span>$12.000 por persona</span></div>
         <div><span>Almuerzo corriente</span><span>Todos los días</span></div>
@@ -429,7 +430,7 @@ input, select { font: 400 17px "Public Sans", sans-serif; min-height: 48px; padd
   <div class="envoltura eventos">
     <div>
       <h2>Eventos y capilla</h2>
-      <p class="intro">Salón para capacitaciones, reuniones de empresa y celebraciones. Y una capilla propia para bautizos, primeras comuniones y matrimonios.</p>
+      <p class="intro">Salón para capacitaciones, reuniones de empresa y celebraciones. Y una capilla propia dentro del hotel.</p>
       <div class="fotos-eventos">
         <figure>
           <img src="balcones/eventos.jpg" alt="Salón de eventos con mesas, pantalla y personas en una capacitación" width="1332" height="1000" loading="lazy">
@@ -623,10 +624,12 @@ function calcularEstadia() {
   if (isNaN(huespedes) || huespedes < 1) {
     huespedes = 1;
   }
+  let hayError = false;
   let noches = Math.round((new Date(inputSalida.value) - new Date(inputLlegada.value)) / 86400000);
   if (isNaN(noches) || noches < 1) {
     avisoFechas.classList.remove("oculto");
     noches = 0;
+    hayError = true;
   } else {
     avisoFechas.classList.add("oculto");
   }
@@ -653,6 +656,7 @@ function calcularEstadia() {
   if (huespedes > habitacion.capacidad) {
     avisoCapacidad.textContent = "La habitación " + habitacion.nombre + " es para máximo " + habitacion.capacidad + " persona(s). Elija una más grande o pida dos habitaciones.";
     avisoCapacidad.classList.remove("oculto");
+    hayError = true;
   } else {
     avisoCapacidad.classList.add("oculto");
   }
@@ -668,7 +672,19 @@ function calcularEstadia() {
     mensaje = mensaje + "Sin desayuno\n";
   }
   mensaje = mensaje + "Total calculado en la página: " + formatear(total) + "\n¿Tienen disponibilidad?";
-  botonCotizar.href = enlaceWhatsApp(mensaje);
+  activarBotonCotizar(hayError, mensaje);
+}
+
+function activarBotonCotizar(hayError, mensaje) {
+  if (hayError) {
+    botonCotizar.removeAttribute("href");
+    botonCotizar.classList.add("desactivado");
+    botonCotizar.setAttribute("aria-disabled", "true");
+  } else {
+    botonCotizar.href = enlaceWhatsApp(mensaje);
+    botonCotizar.classList.remove("desactivado");
+    botonCotizar.removeAttribute("aria-disabled");
+  }
 }
 
 function marcarTarjeta(codigo) {
