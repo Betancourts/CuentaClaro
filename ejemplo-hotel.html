@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Casa Cafetal, hotel de montaña en Garzón (página de ejemplo)</title>
-<meta name="description" content="Página de ejemplo para un hotel: habitaciones con precio por noche, cotizador de estadía, experiencias cafeteras y reservas por WhatsApp.">
+<title>Casa Cafetal, hotel y café de montaña en Garzón (página de ejemplo)</title>
+<meta name="description" content="Página de ejemplo para un hotel con café: habitaciones con precio por noche, cotizador de estadía, café y tienda con pedidos, eventos y reservas por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -47,9 +47,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .cabecera { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 22px 0; gap: 16px; }
 .marca { font-family: "Young Serif", Georgia, serif; font-size: 28px; text-decoration: none; }
 .marca small { display: block; font-family: "Instrument Sans", sans-serif; font-size: 13px; opacity: .85; margin-top: -2px; }
-.cabecera nav a { margin-left: 26px; text-decoration: none; font-weight: 500; }
+.cabecera nav a { margin-left: 20px; text-decoration: none; font-weight: 500; }
 .cabecera nav a:hover { color: var(--pergamino); }
-.portada .texto { position: relative; margin-top: auto; padding-bottom: 56px; }
+.portada .texto { position: relative; width: 100%; margin-top: auto; padding-bottom: 56px; }
 .portada h1 { font-size: 68px; max-width: 13ch; }
 .portada p { max-width: 46ch; font-size: 19px; margin: 18px 0 28px; color: #f3ece4; }
 .portada .acciones { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -112,6 +112,48 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .exp p { margin: 4px 0 0; font-size: 15px; color: #eadfd3; }
 .exp.grande { grid-row: span 2; }
 
+/* Café y tienda */
+.cafe { background: var(--arena); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.cafe .rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.cafe h3 { font-size: 28px; margin-bottom: 6px; }
+.cafe .nota { color: var(--suave); font-size: 15px; margin: 0 0 16px; }
+.carta { width: 100%; border-collapse: collapse; }
+.carta td { padding: 10px 0; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.carta td small { display: block; color: var(--suave); font-size: 14px; }
+.carta td:last-child { text-align: right; font-weight: 600; white-space: nowrap; padding-left: 12px; }
+.foto-cafe { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-top: 22px; }
+.tienda { background: var(--blanco); border: 1px solid var(--linea); border-radius: 14px; padding: 24px; }
+.producto { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--linea); }
+.producto b { display: block; }
+.producto small { color: var(--suave); font-size: 14px; }
+.producto .valor { font-weight: 600; white-space: nowrap; }
+.producto select { font-family: inherit; font-size: 15px; padding: 7px 6px; border: 1px solid #d3c7b8; border-radius: 8px; background: #ffffff; }
+.pedido-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 16px; }
+.pedido-total b { font-family: "Young Serif", Georgia, serif; font-size: 30px; font-weight: 400; }
+.pedir { display: block; text-align: center; margin-top: 12px; }
+.pedir.apagado { background: #cfc4b8; pointer-events: none; }
+
+.estado-cafe { display: inline-block; font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 99px; margin-bottom: 14px; }
+.estado-cafe.abierto { background: #dfe9dc; color: var(--hoja); }
+.estado-cafe.cerrado { background: #f1dcd9; color: var(--cereza-oscura); }
+
+/* Turismo */
+.planes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.planes .exp { min-height: 300px; }
+.planes .exp .tiempo { display: inline-block; background: rgba(255, 255, 255, .92); color: var(--tinta); font-size: 13px; font-weight: 600; padding: 3px 9px; border-radius: 6px; margin-bottom: 8px; }
+.planes .ayuda { background: var(--cacao); color: #efe6db; border-radius: 12px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; }
+.planes .ayuda h3 { color: #ffffff; font-size: 26px; }
+.planes .ayuda p { color: #cdbfb1; margin: 10px 0 18px; }
+.planes .ayuda .boton { align-self: flex-start; }
+
+/* Eventos */
+.eventos { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.eventos img { width: 100%; height: 360px; object-fit: cover; border-radius: 12px; }
+.eventos ul { margin: 0 0 24px; padding: 0; list-style: none; }
+.eventos li { padding: 12px 0; border-bottom: 1px solid var(--linea); }
+.eventos li b { display: block; }
+.eventos li span { color: var(--suave); font-size: 15px; }
+
 /* Información */
 .dos { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; }
 .horas { width: 100%; border-collapse: collapse; }
@@ -140,9 +182,11 @@ details p { margin: 10px 0 0; color: var(--suave); max-width: 62ch; }
   .portada h1 { font-size: 44px; }
   .cabecera nav { display: none; }
   .seccion h2, .cotizar h2, .cierre h2 { font-size: 34px; }
-  .habitaciones, .cotizar .rejilla, .dos, .cierre .ancho { grid-template-columns: 1fr; gap: 32px; }
+  .habitaciones, .cotizar .rejilla, .dos, .cierre .ancho, .cafe .rejilla, .eventos { grid-template-columns: 1fr; gap: 32px; }
+  .eventos img { height: 240px; }
   .habitacion img { height: 220px; }
   .experiencias { grid-template-columns: 1fr 1fr; }
+  .planes { grid-template-columns: 1fr 1fr; }
   .exp.grande { grid-row: auto; grid-column: 1 / -1; }
   .exp { min-height: 200px; }
   .campos { grid-template-columns: 1fr 1fr; }
@@ -151,6 +195,7 @@ details p { margin: 10px 0 0; color: var(--suave); max-width: 62ch; }
 @media (max-width: 480px) {
   .campos { grid-template-columns: 1fr; }
   .experiencias { grid-template-columns: 1fr; }
+  .planes { grid-template-columns: 1fr; }
   .datos-rapidos { gap: 10px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -164,13 +209,13 @@ details p { margin: 10px 0 0; color: var(--suave); max-width: 62ch; }
   <div class="velo"></div>
   <div class="ancho" style="position:relative;width:100%">
     <header class="cabecera">
-      <a class="marca" href="#inicio">Casa Cafetal<small>Hotel de montaña en Garzón, Huila</small></a>
-      <nav><a href="#habitaciones">Habitaciones</a><a href="#cotizar">Reservar</a><a href="#experiencias">Experiencias</a><a href="#informacion">Cómo llegar</a></nav>
+      <a class="marca" href="#inicio">Casa Cafetal<small>Hotel y café de montaña en Garzón, Huila</small></a>
+      <nav><a href="#habitaciones">Habitaciones</a><a href="#cotizar">Reservar</a><a href="#cafe">Café y tienda</a><a href="#eventos">Eventos</a><a href="#turismo">Turismo</a><a href="#informacion">Cómo llegar</a></nav>
     </header>
   </div>
   <div class="ancho texto">
     <h1>Despierte entre cafetales, a diez minutos de Garzón.</h1>
-    <p>Ocho habitaciones en una casona de 1940 rodeada de café. Desayuno huilense incluido, piscina y recorrido por la finca para que pruebe el café que sembramos.</p>
+    <p>Ocho habitaciones en una casona de 1940 rodeada de café. Desayuno huilense, piscina, recorrido por la finca y nuestra cafetería abierta al público, con el café que sembramos para llevar a casa.</p>
     <div class="acciones">
       <a class="boton" href="#cotizar">Cotizar mi estadía</a>
       <a class="boton claro" href="#habitaciones">Ver habitaciones</a>
@@ -301,6 +346,73 @@ details p { margin: 10px 0 0; color: var(--suave); max-width: 62ch; }
       <div class="exp"><img src="https://images.unsplash.com/photo-1792426419167-2b4695af7d5a?w=700&q=65&auto=format&fit=crop" alt="Arepa rellena servida al desayuno" loading="lazy"><div class="capa"></div><div class="txt"><h3>Desayuno huilense</h3><p>Arepa, huevos, fruta y café de la casa.</p></div></div>
       <div class="exp"><img src="https://images.unsplash.com/photo-1766603636787-d48785d00367?w=700&q=65&auto=format&fit=crop" alt="Terraza con hamaca y plantas tropicales" loading="lazy"><div class="capa"></div><div class="txt"><h3>Hamacas y terraza</h3><p>Para la siesta o el atardecer.</p></div></div>
       <div class="exp"><img src="https://images.unsplash.com/photo-1782974501096-90a2249b417a?w=700&q=65&auto=format&fit=crop" alt="Mano recogiendo granos de café maduros" loading="lazy"><div class="capa"></div><div class="txt"><h3>Coseche su café</h3><p>Entre octubre y diciembre, en temporada.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion cafe" id="cafe">
+  <div class="ancho">
+    <h2>Café y tienda</h2>
+    <p class="intro">La cafetería está abierta al público, no hace falta hospedarse. Todo el café sale de nuestra finca, y lo puede llevar en grano o molido.</p>
+    <div class="rejilla">
+      <div>
+        <h3>En la barra</h3>
+        <span class="estado-cafe abierto" id="estado-cafe">Abierto ahora</span>
+        <p class="nota">Todos los días de 7:00 a. m. a 8:00 p. m.</p>
+        <table class="carta">
+          <tr><td>Tinto de la casa<small>Café filtrado, taza grande</small></td><td>$ 3.000</td></tr>
+          <tr><td>Capuchino<small>Con leche entera o deslactosada</small></td><td>$ 7.500</td></tr>
+          <tr><td>Café en método<small>V60 o prensa francesa, preparado en su mesa</small></td><td>$ 10.000</td></tr>
+          <tr><td>Chemex para compartir<small>Dos tazas grandes del lote de la semana</small></td><td>$ 18.000</td></tr>
+          <tr><td>Limonada de café<small>Para la tarde caliente del Huila</small></td><td>$ 9.000</td></tr>
+          <tr><td>Achiras y pandeyuca<small>Recién horneados</small></td><td>$ 4.000</td></tr>
+          <tr><td>Torta de chocolate y café<small>Porción</small></td><td>$ 8.500</td></tr>
+        </table>
+        <img class="foto-cafe" src="https://images.unsplash.com/photo-1759259639356-7c6e74eed1ec?w=900&q=65&auto=format&fit=crop" alt="Barista sirviendo agua caliente en un café de filtro" loading="lazy">
+      </div>
+
+      <div class="tienda">
+        <h3>Lleve café a casa</h3>
+        <p class="nota">Elija la cantidad y nos envía el pedido por WhatsApp. Lo puede recoger en la cafetería o se lo enviamos a todo el país.</p>
+        <div class="producto"><span><b>Café de la finca, 250 g</b><small>Tostión media, notas a panela y naranja</small></span><span class="valor">$ 22.000</span><select data-nombre="Café de la finca 250 g" data-precio="22000"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+        <div class="producto"><span><b>Café de la finca, 500 g</b><small>En grano o molido, como prefiera</small></span><span class="valor">$ 40.000</span><select data-nombre="Café de la finca 500 g" data-precio="40000"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+        <div class="producto"><span><b>Café especial, 250 g</b><small>Lote pequeño, proceso honey</small></span><span class="valor">$ 35.000</span><select data-nombre="Café especial 250 g" data-precio="35000"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+        <div class="producto"><span><b>Kit regalo</b><small>Café 250 g, taza de barro y filtro de tela</small></span><span class="valor">$ 68.000</span><select data-nombre="Kit regalo" data-precio="68000"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+        <div class="pedido-total"><span>Total del pedido</span><b id="total-tienda">$ 0</b></div>
+        <a class="boton pedir apagado" id="pedir" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="eventos">
+  <div class="ancho eventos">
+    <img src="https://images.unsplash.com/photo-1766603636766-1f4662469448?w=1000&q=65&auto=format&fit=crop" alt="Patio cubierto con asientos y vista a la piscina" loading="lazy">
+    <div>
+      <h2>Eventos, reuniones y coworking</h2>
+      <p class="intro">Tenemos espacios para celebrar o trabajar en grupo, con el café y la comida de la casa.</p>
+      <ul>
+        <li><b>Salón principal</b><span>Hasta 60 personas. Cumpleaños, grados, primeras comuniones y matrimonios pequeños.</span></li>
+        <li><b>Sala de reuniones</b><span>Hasta 20 personas, con pantalla, wifi y estación de café ilimitada.</span></li>
+        <li><b>Catas para grupos</b><span>Talleres de café para empresas, colegios y turistas, con reserva previa.</span></li>
+        <li><b>Coworking</b><span>Día de trabajo por $ 35.000 con wifi, escritorio y café ilimitado. Almuerzo opcional.</span></li>
+      </ul>
+      <a class="boton" href="https://wa.me/573132787667?text=Hola,%20quiero%20cotizar%20un%20evento%20en%20Casa%20Cafetal%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Cotizar un evento</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="turismo" style="padding-top:0">
+  <div class="ancho">
+    <h2>Conozca el Huila desde aquí</h2>
+    <p class="intro">Garzón queda en el centro del departamento. Le ayudamos con el transporte, los horarios y la comida para el camino.</p>
+    <div class="planes">
+      <div class="exp"><img src="https://images.unsplash.com/photo-1695151061849-d5c15801b289?w=700&q=65&auto=format&fit=crop" alt="Banca de piedra en un mirador sobre montañas verdes" loading="lazy"><div class="capa"></div><div class="txt"><span class="tiempo">35 min</span><h3>Mirador Mano del Gigante</h3><p>En Gigante. Vista a la represa y al valle del Magdalena.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1791559486529-56ceb41e930c?w=700&q=65&auto=format&fit=crop" alt="Valle verde entre montañas con nubes" loading="lazy"><div class="capa"></div><div class="txt"><span class="tiempo">2 h 30 min</span><h3>San Agustín</h3><p>Parque arqueológico, estatuas milenarias y paisajes de montaña.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1650201777831-8c5c23a2b41e?w=700&q=65&auto=format&fit=crop" alt="Río que atraviesa un valle visto desde el aire" loading="lazy"><div class="capa"></div><div class="txt"><span class="tiempo">2 h 15 min</span><h3>Estrecho del Magdalena</h3><p>El punto donde el río más largo de Colombia se angosta entre rocas.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1705909287291-fb2c5d12863d?w=700&q=65&auto=format&fit=crop" alt="Pozo de agua azul rodeado de árboles" loading="lazy"><div class="capa"></div><div class="txt"><span class="tiempo">1 h 30 min</span><h3>Termales de Rivera</h3><p>Piscinas de agua caliente para descansar un día completo.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1545926610-a2ad2c08ee85?w=700&q=65&auto=format&fit=crop" alt="Colinas áridas de color café bajo el sol" loading="lazy"><div class="capa"></div><div class="txt"><span class="tiempo">3 h</span><h3>Desierto de la Tatacoa</h3><p>En Villavieja. Caminatas al atardecer y noche de estrellas.</p></div></div>
+      <div class="ayuda"><div><h3>¿No sabe por dónde empezar?</h3><p>Díganos cuántos días tiene y le armamos el plan, con transporte desde el hotel.</p></div><a class="boton" href="https://wa.me/573132787667?text=Hola,%20quiero%20armar%20un%20plan%20tur%C3%ADstico%20desde%20Casa%20Cafetal%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Armar mi plan</a></div>
     </div>
   </div>
 </section>
@@ -499,6 +611,47 @@ function estadoRecepcion() {
   }
 }
 
+function estadoCafe() {
+  const hora = new Date().getHours();
+  const etiqueta = document.getElementById("estado-cafe");
+  if (hora >= 7 && hora < 20) {
+    etiqueta.textContent = "Abierto ahora";
+    etiqueta.className = "estado-cafe abierto";
+  } else {
+    etiqueta.textContent = "Cerrado, abrimos a las 7:00 a. m.";
+    etiqueta.className = "estado-cafe cerrado";
+  }
+}
+
+function calcularPedido() {
+  const listas = document.querySelectorAll(".producto select");
+  let totalTienda = 0;
+  let lineas = "";
+  for (let i = 0; i < listas.length; i++) {
+    const cantidad = Number(listas[i].value);
+    if (cantidad > 0) {
+      const precio = Number(listas[i].getAttribute("data-precio"));
+      totalTienda = totalTienda + cantidad * precio;
+      lineas = lineas + "- " + cantidad + " x " + listas[i].getAttribute("data-nombre") + "\n";
+    }
+  }
+  document.getElementById("total-tienda").textContent = formatear(totalTienda);
+  const botonPedir = document.getElementById("pedir");
+  if (totalTienda == 0) {
+    botonPedir.className = "boton pedir apagado";
+    botonPedir.href = "#";
+    return;
+  }
+  const mensaje = "Hola, quiero pedir café de Casa Cafetal (página de ejemplo):\n" + lineas + "Total: " + formatear(totalTienda) + "\n¿Cómo hago el pago y el envío?";
+  botonPedir.className = "boton pedir";
+  botonPedir.href = "https://wa.me/573132787667?text=" + encodeURIComponent(mensaje);
+}
+
+const listasTienda = document.querySelectorAll(".producto select");
+for (let i = 0; i < listasTienda.length; i++) {
+  listasTienda[i].addEventListener("change", calcularPedido);
+}
+
 document.getElementById("elegir-sencilla").addEventListener("click", elegirSencilla);
 document.getElementById("elegir-doble").addEventListener("click", elegirDoble);
 document.getElementById("elegir-familiar").addEventListener("click", elegirFamiliar);
@@ -511,7 +664,9 @@ document.getElementById("tour").addEventListener("change", calcularEstadia);
 
 fechasIniciales();
 estadoRecepcion();
+estadoCafe();
 calcularEstadia();
+calcularPedido();
 </script>
 </body>
 </html>
