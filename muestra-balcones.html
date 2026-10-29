@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hotel Balcones de La Pradera, La Plata, Huila (muestra)</title>
+<meta name="description" content="Muestra de página web para el Hotel Balcones de La Pradera: habitaciones, cotizador de estadía, piscina y pasadía, restaurante, eventos y reservas por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="balcones/piscina-vertical.jpg" fetchpriority="high">
+<style>
+:root {
+  --cal: #fbfaf6;
+  --cal-2: #f2efe7;
+  --rojo: #c8381f;
+  --rojo-oscuro: #a52b16;
+  --verde: #2e5631;
+  --verde-claro: #e6ede3;
+  --negro: #1c1b19;
+  --azul: #1d6fc9;
+  --tinta: #262420;
+  --suave: #5f5b53;
+  --linea: #dedad0;
+  --blanco: #ffffff;
+  --wa: #1f8f4e;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Public Sans", "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--cal); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: "Zilla Slab", Georgia, serif; line-height: 1.12; margin: 0; color: var(--negro); }
+h2 { font-size: 40px; font-weight: 600; letter-spacing: -0.01em; }
+h3 { font-size: 25px; font-weight: 600; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
+.envoltura { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.seccion { padding: 88px 0; }
+.intro { max-width: 640px; margin-top: 14px; color: var(--suave); font-size: 18px; }
+
+/* Cinta de muestra */
+.cinta { background: var(--negro); color: #eceae4; font-size: 14px; line-height: 1.45; }
+.cinta .envoltura { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding-top: 10px; padding-bottom: 10px; }
+.cinta a { color: var(--blanco); font-weight: 700; white-space: nowrap; text-underline-offset: 3px; }
+
+/* Botones */
+.boton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 4px; border: 0; font: 600 16px "Public Sans", sans-serif; text-decoration: none; cursor: pointer; }
+.boton-rojo { background: var(--rojo); color: var(--blanco); }
+.boton-rojo:hover { background: var(--rojo-oscuro); }
+.boton-wa { background: var(--wa); color: var(--blanco); }
+.boton-wa:hover { background: #18773f; }
+.boton-borde { background: transparent; color: var(--negro); border: 2px solid var(--negro); }
+.boton-borde:hover { background: var(--negro); color: var(--blanco); }
+.boton svg { width: 20px; height: 20px; flex: none; }
+
+/* Columnata: columnas rojas con baranda negra, como los corredores del hotel */
+.columnata {
+  height: 70px;
+  background:
+    repeating-linear-gradient(90deg, var(--rojo) 0 18px, transparent 18px 120px),
+    linear-gradient(var(--negro), var(--negro)) 0 16px / 100% 4px no-repeat,
+    linear-gradient(var(--negro), var(--negro)) 0 48px / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, var(--negro) 0 2px, transparent 2px 13px) 0 20px / 100% 28px no-repeat,
+    linear-gradient(var(--cal-2), var(--cal-2)) 0 50px / 100% 20px no-repeat;
+}
+
+/* Hero */
+.hero { position: relative; min-height: 640px; display: flex; align-items: flex-end; color: var(--blanco); background: var(--verde); }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,20,18,0.5) 0%, rgba(20,20,18,0) 62%), linear-gradient(180deg, rgba(20,20,18,0) 30%, rgba(20,20,18,0.72) 100%); }
+.hero-texto { position: relative; z-index: 1; padding-bottom: 56px; width: 100%; }
+.hero h1 { color: var(--blanco); font-size: 66px; font-weight: 700; max-width: 760px; letter-spacing: -0.015em; }
+.hero-frase { font-size: 21px; max-width: 600px; margin-top: 14px; }
+.calificacion { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-top: 20px; font-size: 16px; }
+.estrellas { color: #ffc531; letter-spacing: 2px; font-size: 19px; }
+.calificacion strong { font-size: 18px; }
+.hero-botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.hero .boton-borde { color: var(--blanco); border-color: var(--blanco); }
+.hero .boton-borde:hover { background: var(--blanco); color: var(--negro); }
+
+/* Datos rápidos */
+.datos { background: var(--cal-2); }
+.datos ul { list-style: none; margin: 0; padding: 26px 0 30px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.datos li { border-left: 4px solid var(--rojo); padding-left: 14px; font-size: 15px; color: var(--suave); }
+.datos li strong { display: block; color: var(--negro); font-size: 17px; }
+
+/* Habitaciones */
+.habitaciones { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; }
+.habitacion { background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
+.habitacion img { width: 100%; height: 260px; object-fit: cover; }
+.habitacion-cuerpo { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.habitacion-cuerpo p { color: var(--suave); }
+.habitacion-pie { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 10px; }
+.precio { font-family: "Zilla Slab", serif; font-size: 30px; font-weight: 700; color: var(--negro); line-height: 1; }
+.precio small { display: block; font-family: "Public Sans", sans-serif; font-size: 14px; font-weight: 500; color: var(--suave); margin-top: 6px; }
+.capacidad { font-size: 14px; font-weight: 600; color: var(--verde); }
+.habitacion.elegida { border-color: var(--rojo); box-shadow: 0 0 0 2px var(--rojo); }
+.nota-precios { margin-top: 22px; font-size: 15px; color: var(--suave); }
+
+/* Cotizador */
+.cotizador-fondo { background: var(--negro); color: #e9e6df; }
+.cotizador-fondo h2 { color: var(--blanco); }
+.cotizador-fondo .intro { color: #bdb8ad; }
+.cotizador { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; margin-top: 36px; }
+.campos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.campo { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; }
+.campo-ancho { grid-column: 1 / -1; }
+input, select { font: 400 17px "Public Sans", sans-serif; min-height: 48px; padding: 0 12px; border-radius: 4px; border: 1px solid #8d887d; background: var(--blanco); color: var(--tinta); width: 100%; }
+.casilla { display: flex; align-items: center; gap: 10px; font-weight: 500; grid-column: 1 / -1; cursor: pointer; }
+.casilla input { width: 22px; height: 22px; min-height: 0; accent-color: var(--rojo); }
+.resumen { background: var(--cal); color: var(--tinta); border-radius: 4px; padding: 26px; border-top: 6px solid var(--rojo); align-self: start; }
+.resumen-fila { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--linea); font-size: 16px; }
+.resumen-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; font-family: "Zilla Slab", serif; font-size: 22px; font-weight: 600; }
+.resumen-total span:last-child { font-size: 34px; color: var(--negro); }
+.aviso { margin-top: 14px; padding: 12px 14px; border-radius: 4px; background: #fbe6e1; color: #8a2412; font-size: 15px; }
+.resumen .boton { width: 100%; margin-top: 18px; }
+.oculto { display: none; }
+
+/* Piscina */
+.piscina { display: grid; grid-template-columns: 1.15fr 1fr; gap: 44px; align-items: start; }
+.fotos-piscina { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fotos-piscina img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; }
+.fotos-piscina img:first-child { grid-column: 1 / -1; height: 340px; }
+.estado { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 8px 14px; border-radius: 4px; font-weight: 600; font-size: 15px; background: #e2eefa; color: #13508f; }
+.estado::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--azul); }
+.estado.cerrada { background: var(--cal-2); color: var(--suave); }
+.estado.cerrada::before { background: #9a958a; }
+.lista-simple { margin: 18px 0 0; padding-left: 20px; color: var(--suave); }
+.lista-simple li { margin-bottom: 6px; }
+.pasadia { margin-top: 28px; border: 2px solid var(--negro); border-radius: 4px; padding: 22px; background: var(--blanco); }
+.pasadia h3 { font-size: 22px; }
+.pasadia .campos { margin-top: 14px; }
+.pasadia-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; font-family: "Zilla Slab", serif; font-size: 20px; font-weight: 600; }
+.pasadia-total span:last-child { font-size: 30px; }
+.pasadia .boton { width: 100%; margin-top: 14px; }
+
+/* Restaurante */
+.restaurante { background: var(--verde-claro); }
+.dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.dos-columnas > img { width: 100%; height: 420px; object-fit: cover; border-radius: 4px; }
+.carta { margin-top: 24px; border-top: 2px solid var(--verde); }
+.carta div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #c4d2bf; }
+.carta span:last-child { color: var(--suave); text-align: right; }
+
+/* Eventos */
+.eventos { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.fotos-eventos { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; margin-top: 28px; }
+.fotos-eventos img { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; }
+.fotos-eventos figcaption { font-size: 14px; color: var(--suave); margin-top: 6px; }
+.fotos-eventos figure { margin: 0; }
+.formulario-evento { background: var(--blanco); border: 1px solid var(--linea); border-left: 6px solid var(--rojo); border-radius: 4px; padding: 26px; align-self: start; }
+.formulario-evento .campos { margin-top: 16px; }
+.formulario-evento .boton { width: 100%; margin-top: 18px; }
+
+/* Galería */
+.galeria-fondo { background: var(--cal-2); }
+.galeria { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; gap: 12px; margin-top: 36px; }
+.galeria figure { margin: 0; position: relative; overflow: hidden; border-radius: 4px; }
+.galeria img { width: 100%; height: 100%; object-fit: cover; }
+.galeria figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 12px 10px; font-size: 14px; color: var(--blanco); background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.6)); }
+.galeria .grande { grid-column: span 2; grid-row: span 2; }
+.galeria .alta { grid-row: span 2; }
+.galeria .ancha { grid-column: span 2; }
+
+/* Opiniones */
+.opiniones { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; margin-top: 36px; }
+.opinion { margin: 0; padding: 26px 0; border-top: 1px solid var(--linea); }
+.opinion p { font-family: "Zilla Slab", serif; font-size: 22px; line-height: 1.4; color: var(--negro); }
+.opinion footer { margin-top: 12px; font-size: 15px; color: var(--suave); }
+.opinion footer strong { color: var(--tinta); }
+.puntaje { display: flex; align-items: baseline; gap: 14px; margin-top: 20px; }
+.puntaje strong { font-family: "Zilla Slab", serif; font-size: 64px; line-height: 1; color: var(--negro); }
+
+/* Cómo llegar */
+.llegar { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; margin-top: 36px; }
+.direccion { font-size: 18px; }
+.direccion dl { margin: 0; }
+.direccion dt { font-weight: 700; margin-top: 18px; }
+.direccion dt:first-child { margin-top: 0; }
+.direccion dd { margin: 4px 0 0; color: var(--suave); }
+.direccion .boton { margin-top: 24px; }
+.direccion img { margin-top: 26px; width: 100%; height: 200px; object-fit: cover; border-radius: 4px; }
+.mapa { width: 100%; height: 100%; min-height: 460px; border: 0; border-radius: 4px; }
+
+/* Cierre */
+.cierre { background: var(--cal-2); padding: 70px 0 80px; }
+.cierre h2 { max-width: 700px; }
+.cierre p { margin-top: 14px; color: var(--suave); max-width: 620px; font-size: 18px; }
+.cierre .hero-botones .boton-borde { color: var(--negro); }
+.pie { background: var(--negro); color: #bdb8ad; font-size: 15px; padding: 28px 0 32px; }
+.pie .envoltura { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.pie a { color: var(--blanco); }
+
+/* Barra fija en celular */
+.barra-movil { display: none; }
+
+@media (max-width: 980px) {
+  .datos ul { grid-template-columns: repeat(3, 1fr); }
+  .cotizador, .piscina, .dos-columnas, .eventos, .llegar { grid-template-columns: 1fr; }
+  .galeria { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  body { font-size: 16px; padding-bottom: 74px; }
+  .seccion { padding: 60px 0; }
+  .envoltura { padding: 0 16px; }
+  h2 { font-size: 31px; }
+  h3 { font-size: 23px; }
+  .cinta { font-size: 13px; }
+  .cinta .envoltura { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .hero { min-height: 560px; }
+  .hero h1 { font-size: 42px; }
+  .hero-frase { font-size: 18px; }
+  .hero-texto { padding-bottom: 36px; }
+  .hero-botones .boton { flex: 1 1 100%; }
+  .columnata { height: 52px; background-size: auto, 100% 3px, 100% 2px, 100% 20px, 100% 14px; background-position: 0 0, 0 12px, 0 36px, 0 15px, 0 38px; background-image: repeating-linear-gradient(90deg, var(--rojo) 0 12px, transparent 12px 74px), linear-gradient(var(--negro), var(--negro)), linear-gradient(var(--negro), var(--negro)), repeating-linear-gradient(90deg, var(--negro) 0 2px, transparent 2px 10px), linear-gradient(var(--cal-2), var(--cal-2)); }
+  .datos ul { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .habitaciones { grid-template-columns: 1fr; gap: 22px; }
+  .habitacion img { height: 220px; }
+  .campos { grid-template-columns: 1fr; }
+  .resumen { padding: 20px; }
+  .fotos-piscina img { height: 150px; }
+  .fotos-piscina img:first-child { height: 230px; }
+  .dos-columnas > img { height: 260px; }
+  .fotos-eventos img { height: 200px; }
+  .galeria { grid-auto-rows: 150px; gap: 8px; }
+  .galeria .grande { grid-column: span 2; grid-row: span 2; }
+  .opiniones { grid-template-columns: 1fr; }
+  .opinion p { font-size: 20px; }
+  .mapa { min-height: 320px; }
+  .barra-movil { display: flex; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: 10px 12px; background: var(--blanco); border-top: 1px solid var(--linea); box-shadow: 0 -4px 14px rgba(0,0,0,0.08); }
+  .barra-movil .boton { flex: 1; }
+  .barra-movil .boton-borde { flex: 0 0 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="cinta">
+  <div class="envoltura">
+    <p>Muestra hecha por CuentaClaro para Hotel Balcones de La Pradera. Fotos tomadas de su ficha de Google; precios de referencia.</p>
+    <a href="https://wa.me/573132787667?text=Hola%20Juan%2C%20vi%20la%20muestra%20del%20Hotel%20Balcones%20de%20La%20Pradera%20y%20me%20interesa" target="_blank" rel="noopener">Quiero esta página</a>
+  </div>
+</div>
+
+<header class="hero">
+  <img src="balcones/piscina-vertical.jpg" alt="Piscina del hotel rodeada de palmas, con el edificio blanco de columnas rojas y las montañas de La Plata al fondo" width="1333" height="1000" fetchpriority="high">
+  <div class="hero-texto">
+    <div class="envoltura">
+      <h1>Hotel Balcones de La Pradera</h1>
+      <p class="hero-frase">Piscina, jardines y montaña a un kilómetro de La Plata, sobre la vía al Pacífico.</p>
+      <p class="calificacion"><span class="estrellas" aria-hidden="true">★★★★★</span><span><strong>4,5</strong> de 5 en Google, con 775 opiniones</span></p>
+      <div class="hero-botones">
+        <a class="boton boton-wa" id="boton-reservar-hero" href="https://wa.me/573213544436" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>Reservar por WhatsApp</a>
+        <a class="boton boton-borde" href="#habitaciones">Ver habitaciones y precios</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="columnata" aria-hidden="true"></div>
+
+<section class="datos" aria-label="Datos rápidos del hotel">
+  <div class="envoltura">
+    <ul>
+      <li><strong>Abierto 24 horas</strong>Recepción todo el día</li>
+      <li><strong>Dos piscinas</strong>Para adultos y para niños</li>
+      <li><strong>69 habitaciones</strong>115 camas en dos pisos</li>
+      <li><strong>Parqueadero</strong>Amplio y vigilado</li>
+      <li><strong>Wi-Fi y TV</strong>En todas las habitaciones</li>
+    </ul>
+  </div>
+</section>
+
+<section class="seccion" id="habitaciones">
+  <div class="envoltura">
+    <h2>Habitaciones</h2>
+    <p class="intro">Las habitaciones dan a corredores de columnas rojas, con vista a la piscina y los jardines. Lejos del ruido del pueblo y cerca del terminal.</p>
+
+    <div class="habitaciones">
+      <article class="habitacion" id="tarjeta-sencilla">
+        <img src="balcones/hab-sencilla.jpg" alt="Habitación sencilla con cama de cobija naranja y televisor" width="1333" height="1000" loading="lazy">
+        <div class="habitacion-cuerpo">
+          <h3>Sencilla</h3>
+          <p>Cama sencilla, televisor, Wi-Fi y baño. Para quien viene de paso o por trabajo.</p>
+          <div class="habitacion-pie">
+            <div><p class="precio">$60.000<small>por noche</small></p><p class="capacidad">1 persona</p></div>
+            <button class="boton boton-rojo" type="button" id="elegir-sencilla">Elegir esta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="habitacion" id="tarjeta-pareja">
+        <img src="balcones/hab-pareja.jpg" alt="Habitación con cama doble, cabecero negro y cuadro de una casa colonial" width="1600" height="900" loading="lazy">
+        <div class="habitacion-cuerpo">
+          <h3>Pareja</h3>
+          <p>Una cama doble, televisor, Wi-Fi y baño. La más pedida para fines de semana.</p>
+          <div class="habitacion-pie">
+            <div><p class="precio">$90.000<small>por noche</small></p><p class="capacidad">2 personas</p></div>
+            <button class="boton boton-rojo" type="button" id="elegir-pareja">Elegir esta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="habitacion" id="tarjeta-doble">
+        <img src="balcones/hab-doble.jpg" alt="Habitación con dos camas de cobija naranja y ventana amplia" width="1600" height="900" loading="lazy">
+        <div class="habitacion-cuerpo">
+          <h3>Doble</h3>
+          <p>Dos camas, ventana grande, televisor, Wi-Fi y baño. Sirve para amigos o padres con un hijo.</p>
+          <div class="habitacion-pie">
+            <div><p class="precio">$100.000<small>por noche</small></p><p class="capacidad">Hasta 3 personas</p></div>
+            <button class="boton boton-rojo" type="button" id="elegir-doble">Elegir esta</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="habitacion" id="tarjeta-familiar">
+        <img src="balcones/corredor.jpg" alt="Corredor del segundo piso con columnas rojas, sillas y puertas de las habitaciones" width="1333" height="1000" loading="lazy">
+        <div class="habitacion-cuerpo">
+          <h3>Familiar</h3>
+          <p>Varias camas en una sola habitación del segundo piso, a pocos pasos de la piscina para niños.</p>
+          <div class="habitacion-pie">
+            <div><p class="precio">$160.000<small>por noche</small></p><p class="capacidad">Hasta 5 personas</p></div>
+            <button class="boton boton-rojo" type="button" id="elegir-familiar">Elegir esta</button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="nota-precios">Precios de referencia en pesos colombianos, por noche. Desayuno aparte: $12.000 por persona por día.</p>
+  </div>
+</section>
+
+<section class="cotizador-fondo seccion" id="cotizar">
+  <div class="envoltura">
+    <h2>Calcule su estadía</h2>
+    <p class="intro">Escoja la habitación y las fechas. El mensaje de WhatsApp sale listo con todos los datos para que recepción le confirme.</p>
+
+    <div class="cotizador">
+      <div class="campos">
+        <label class="campo campo-ancho">Habitación
+          <select id="habitacion">
+            <option value="sencilla">Sencilla, 1 persona ($60.000)</option>
+            <option value="pareja" selected>Pareja, cama doble ($90.000)</option>
+            <option value="doble">Doble, dos camas ($100.000)</option>
+            <option value="familiar">Familiar, hasta 5 personas ($160.000)</option>
+          </select>
+        </label>
+        <label class="campo">Llegada
+          <input type="date" id="llegada">
+        </label>
+        <label class="campo">Salida
+          <input type="date" id="salida">
+        </label>
+        <label class="campo campo-ancho">Huéspedes
+          <input type="number" id="huespedes" min="1" max="10" value="2">
+        </label>
+        <label class="casilla"><input type="checkbox" id="desayuno"> Incluir desayuno ($12.000 por persona por día)</label>
+      </div>
+
+      <div class="resumen" aria-live="polite">
+        <div class="resumen-fila"><span id="texto-habitacion">Pareja</span><span id="texto-noches">1 noche</span></div>
+        <div class="resumen-fila"><span>Alojamiento</span><span id="texto-alojamiento">$90.000</span></div>
+        <div class="resumen-fila"><span>Desayuno</span><span id="texto-desayuno">No incluido</span></div>
+        <div class="resumen-total"><span>Total</span><span id="texto-total">$90.000</span></div>
+        <p class="aviso oculto" id="aviso-capacidad"></p>
+        <p class="aviso oculto" id="aviso-fechas">La salida tiene que ser después de la llegada.</p>
+        <a class="boton boton-wa" id="boton-cotizar" href="https://wa.me/573213544436" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="columnata" aria-hidden="true"></div>
+
+<section class="seccion" id="piscina">
+  <div class="envoltura piscina">
+    <div class="fotos-piscina">
+      <img src="balcones/piscina2.jpg" alt="Piscina grande con jacuzzi y piso de baldosa, con el hotel alrededor" width="1333" height="1000" loading="lazy">
+      <img src="balcones/piscina3.jpg" alt="Piscina para niños con fondo de cuadros azules" width="680" height="510" loading="lazy">
+      <img src="balcones/portada.jpg" alt="Vista desde el segundo piso hacia la piscina y los jardines" width="552" height="368" loading="lazy">
+    </div>
+    <div>
+      <h2>Piscina y pasadía</h2>
+      <p class="intro">Una piscina para adultos con jacuzzi y otra para niños, entre palmas y con la cordillera de fondo. No hace falta hospedarse: venga a pasar el día.</p>
+      <p class="estado" id="estado-piscina">Piscina abierta hasta las 9:00 p. m.</p>
+      <ul class="lista-simple">
+        <li>Entrada hasta las 9:00 p. m.</li>
+        <li>Restaurante al lado para el almuerzo</li>
+        <li>Parqueadero vigilado incluido</li>
+      </ul>
+
+      <div class="pasadia">
+        <h3>Cuánto cuesta el pasadía</h3>
+        <div class="campos">
+          <label class="campo">Adultos ($15.000)
+            <input type="number" id="adultos" min="0" max="60" value="2">
+          </label>
+          <label class="campo">Niños ($10.000)
+            <input type="number" id="ninos" min="0" max="60" value="1">
+          </label>
+        </div>
+        <div class="pasadia-total"><span>Total del día</span><span id="total-pasadia">$40.000</span></div>
+        <a class="boton boton-wa" id="boton-pasadia" href="https://wa.me/573213544436" target="_blank" rel="noopener">Avisar que vamos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="restaurante seccion" id="restaurante">
+  <div class="envoltura dos-columnas">
+    <img src="balcones/restaurante.jpg" alt="Restaurante del hotel con mesas de mantel rojo y barra de cafetería" width="1600" height="900" loading="lazy">
+    <div>
+      <h2>Restaurante</h2>
+      <p class="intro">Almuerzo corriente todos los días y platos a la carta para huéspedes y visitantes de pasadía. Mesas con vista a los jardines, a pocos pasos de la piscina.</p>
+      <div class="carta">
+        <div><span>Desayuno</span><span>$12.000 por persona</span></div>
+        <div><span>Almuerzo corriente</span><span>Todos los días</span></div>
+        <div><span>Platos a la carta</span><span>Para huéspedes y visitantes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="eventos">
+  <div class="envoltura eventos">
+    <div>
+      <h2>Eventos y capilla</h2>
+      <p class="intro">Salón para capacitaciones, reuniones de empresa y celebraciones. Y una capilla propia para bautizos, primeras comuniones y matrimonios.</p>
+      <div class="fotos-eventos">
+        <figure>
+          <img src="balcones/eventos.jpg" alt="Salón de eventos con mesas, pantalla y personas en una capacitación" width="1332" height="1000" loading="lazy">
+          <figcaption>Salón de eventos y capacitaciones</figcaption>
+        </figure>
+        <figure>
+          <img src="balcones/capilla.jpg" alt="Capilla con arco de piedra, bancas de madera y cuadro religioso" width="750" height="1000" loading="lazy">
+          <figcaption>Capilla del hotel</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <form class="formulario-evento" id="formulario-evento">
+      <h3>Pregunte por su fecha</h3>
+      <div class="campos">
+        <label class="campo campo-ancho">Tipo de evento
+          <select id="tipo-evento">
+            <option>Capacitación o reunión de empresa</option>
+            <option>Cumpleaños o celebración familiar</option>
+            <option>Matrimonio en la capilla</option>
+            <option>Bautizo o primera comunión</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label class="campo">Personas
+          <input type="number" id="personas-evento" min="1" max="500" value="40">
+        </label>
+        <label class="campo">Fecha
+          <input type="date" id="fecha-evento">
+        </label>
+      </div>
+      <button class="boton boton-wa" type="submit">Consultar por WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section class="galeria-fondo seccion" id="galeria">
+  <div class="envoltura">
+    <h2>Así es el hotel</h2>
+    <div class="galeria">
+      <figure class="grande"><img src="balcones/balcones.jpg" alt="Corredor de columnas rojas y baranda negra con vista a la piscina" width="680" height="382" loading="lazy"><figcaption>Los balcones que le dan el nombre</figcaption></figure>
+      <figure class="alta"><img src="balcones/jardin.jpg" alt="Sendero de baldosa entre jardines y palmas" width="750" height="1000" loading="lazy"><figcaption>Jardines</figcaption></figure>
+      <figure><img src="balcones/panorama.jpg" alt="Montañas con nubes detrás de los techos del hotel" width="1600" height="900" loading="lazy"><figcaption>La cordillera al fondo</figcaption></figure>
+      <figure><img src="balcones/noche.jpg" alt="Jardines del hotel iluminados de noche" width="680" height="510" loading="lazy"><figcaption>De noche</figcaption></figure>
+      <figure><img src="balcones/piscina1.jpg" alt="Piscina vista desde el segundo piso entre palmas" width="1333" height="1000" loading="lazy"><figcaption>Desde el segundo piso</figcaption></figure>
+      <figure><img src="balcones/sala.jpg" alt="Sala con sofás y vista a las montañas" width="1600" height="900" loading="lazy"><figcaption>Sala de descanso</figcaption></figure>
+      <figure class="ancha"><img src="balcones/fachada.jpg" alt="Fachada blanca del hotel con letrero y entrada" width="1333" height="1000" loading="lazy"><figcaption>Entrada por la vía al Pacífico</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="opiniones">
+  <div class="envoltura">
+    <h2>Lo que dicen los huéspedes</h2>
+    <div class="puntaje"><strong>4,5</strong><p>de 5 en Google<br>775 opiniones</p></div>
+    <div class="opiniones">
+      <blockquote class="opinion">
+        <p>“Todo 1A. Habitación limpia, ordenada, cómoda, sábanas limpias y bien tendidas, baño limpio. Por la ubicación casi no hay ruido. La atención y servicio de lo mejor, precios económicos.”</p>
+        <footer><strong>Harvey M.</strong>, en Google</footer>
+      </blockquote>
+      <blockquote class="opinion">
+        <p>“Excelente lugar para visitar en familia. Habitación cómoda, aseada y con acceso a internet y a canales de TV. Es un lugar tranquilo y la atención es muy buena.”</p>
+        <footer><strong>Marta Lucía G.</strong>, en Google</footer>
+      </blockquote>
+      <blockquote class="opinion">
+        <p>“El hotel es muy bonito. Las habitaciones son bastantes amplias. El servicio es excelente. El personal es muy atento y dispuesto a colaborar en todo.”</p>
+        <footer><strong>Diego C.</strong>, en Google</footer>
+      </blockquote>
+      <blockquote class="opinion">
+        <p>“Amplio, tiene servicio de restaurante, piscina, excelente servicio, camas cómodas. Ideal para descansar lejos del ruido.”</p>
+        <footer><strong>Jhon Jairo M.</strong>, en Google</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="seccion galeria-fondo" id="llegar">
+  <div class="envoltura">
+    <h2>Cómo llegar</h2>
+    <div class="llegar">
+      <div class="direccion">
+        <dl>
+          <dt>Dirección</dt>
+          <dd>Km 1 vía al Pacífico, salida a Belalcázar, sector Cansarrocines, La Plata, Huila</dd>
+          <dt>Desde el terminal</dt>
+          <dd>Muy cerca: se sale del pueblo por la vía hacia Belalcázar y a un kilómetro está el hotel.</dd>
+          <dt>Contacto</dt>
+          <dd>WhatsApp y celular: <a href="tel:+573213544436">321 354 4436</a><br>Correo: <a href="mailto:balcones_delapradera@hotmail.com">balcones_delapradera@hotmail.com</a></dd>
+        </dl>
+        <a class="boton boton-rojo" href="https://www.google.com/maps/dir/?api=1&amp;destination=2.4035675,-75.882019" target="_blank" rel="noopener">Abrir indicaciones en Google Maps</a>
+      </div>
+      <iframe class="mapa" title="Mapa del Hotel Balcones de La Pradera en La Plata, Huila" src="https://maps.google.com/maps?q=2.4035675,-75.882019&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="columnata" aria-hidden="true"></div>
+
+<section class="cierre">
+  <div class="envoltura">
+    <h2>Su habitación con vista a la piscina lo está esperando</h2>
+    <p>Escríbanos por WhatsApp con la fecha y el número de personas. El hotel está abierto las 24 horas.</p>
+    <div class="hero-botones">
+      <a class="boton boton-wa" id="boton-reservar-cierre" href="https://wa.me/573213544436" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+      <a class="boton boton-borde" href="tel:+573213544436">Llamar al 321 354 4436</a>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="envoltura">
+    <p>Hotel Balcones de La Pradera, La Plata, Huila.</p>
+    <p>Muestra hecha por <a href="https://cuentaclaralaboral.com/servicios">CuentaClaro</a>.</p>
+  </div>
+</footer>
+
+<div class="barra-movil">
+  <a class="boton boton-wa" id="boton-reservar-barra" href="https://wa.me/573213544436" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+  <a class="boton boton-borde" href="tel:+573213544436" aria-label="Llamar al hotel">Llamar</a>
+</div>
+
+<script>
+const numeroHotel = "573213544436";
+const precioDesayuno = 12000;
+const precioAdulto = 15000;
+const precioNino = 10000;
+
+let selectHabitacion = document.querySelector("#habitacion");
+let inputLlegada = document.querySelector("#llegada");
+let inputSalida = document.querySelector("#salida");
+let inputHuespedes = document.querySelector("#huespedes");
+let casillaDesayuno = document.querySelector("#desayuno");
+let botonCotizar = document.querySelector("#boton-cotizar");
+let avisoCapacidad = document.querySelector("#aviso-capacidad");
+let avisoFechas = document.querySelector("#aviso-fechas");
+let inputAdultos = document.querySelector("#adultos");
+let inputNinos = document.querySelector("#ninos");
+let botonPasadia = document.querySelector("#boton-pasadia");
+let formularioEvento = document.querySelector("#formulario-evento");
+let estadoPiscina = document.querySelector("#estado-piscina");
+
+function formatear(valor) {
+  return "$" + valor.toLocaleString("es-CO");
+}
+
+function enlaceWhatsApp(mensaje) {
+  return "https://wa.me/" + numeroHotel + "?text=" + encodeURIComponent(mensaje);
+}
+
+function datosHabitacion(codigo) {
+  switch (codigo) {
+    case "sencilla":
+      return { nombre: "Sencilla", precio: 60000, capacidad: 1 };
+    case "pareja":
+      return { nombre: "Pareja (cama doble)", precio: 90000, capacidad: 2 };
+    case "doble":
+      return { nombre: "Doble (dos camas)", precio: 100000, capacidad: 3 };
+    case "familiar":
+      return { nombre: "Familiar", precio: 160000, capacidad: 5 };
+    default:
+      return { nombre: "Pareja (cama doble)", precio: 90000, capacidad: 2 };
+  }
+}
+
+function fechaISO(fecha) {
+  let mes = String(fecha.getMonth() + 1).padStart(2, "0");
+  let dia = String(fecha.getDate()).padStart(2, "0");
+  return fecha.getFullYear() + "-" + mes + "-" + dia;
+}
+
+function fechaTexto(valor) {
+  let partes = valor.split("-");
+  return partes[2] + "/" + partes[1] + "/" + partes[0];
+}
+
+function fechasIniciales() {
+  let manana = new Date();
+  manana.setDate(manana.getDate() + 1);
+  let pasado = new Date();
+  pasado.setDate(pasado.getDate() + 2);
+  inputLlegada.value = fechaISO(manana);
+  inputSalida.value = fechaISO(pasado);
+  inputLlegada.min = fechaISO(new Date());
+  inputSalida.min = fechaISO(manana);
+  document.querySelector("#fecha-evento").value = fechaISO(manana);
+}
+
+function calcularEstadia() {
+  let habitacion = datosHabitacion(selectHabitacion.value);
+  let huespedes = parseInt(inputHuespedes.value, 10);
+  if (isNaN(huespedes) || huespedes < 1) {
+    huespedes = 1;
+  }
+  let noches = Math.round((new Date(inputSalida.value) - new Date(inputLlegada.value)) / 86400000);
+  if (isNaN(noches) || noches < 1) {
+    avisoFechas.classList.remove("oculto");
+    noches = 0;
+  } else {
+    avisoFechas.classList.add("oculto");
+  }
+
+  let alojamiento = habitacion.precio * noches;
+  let desayuno = 0;
+  if (casillaDesayuno.checked) {
+    desayuno = precioDesayuno * huespedes * noches;
+    document.querySelector("#texto-desayuno").textContent = formatear(desayuno);
+  } else {
+    document.querySelector("#texto-desayuno").textContent = "No incluido";
+  }
+  let total = alojamiento + desayuno;
+
+  let textoNoches = noches + " noches";
+  if (noches === 1) {
+    textoNoches = "1 noche";
+  }
+  document.querySelector("#texto-habitacion").textContent = habitacion.nombre;
+  document.querySelector("#texto-noches").textContent = textoNoches;
+  document.querySelector("#texto-alojamiento").textContent = formatear(alojamiento);
+  document.querySelector("#texto-total").textContent = formatear(total);
+
+  if (huespedes > habitacion.capacidad) {
+    avisoCapacidad.textContent = "La habitación " + habitacion.nombre + " es para máximo " + habitacion.capacidad + " persona(s). Elija una más grande o pida dos habitaciones.";
+    avisoCapacidad.classList.remove("oculto");
+  } else {
+    avisoCapacidad.classList.add("oculto");
+  }
+
+  let mensaje = "Hola, quiero reservar en Hotel Balcones de La Pradera.\n" +
+    "Habitación: " + habitacion.nombre + "\n" +
+    "Llegada: " + fechaTexto(inputLlegada.value) + "\n" +
+    "Salida: " + fechaTexto(inputSalida.value) + " (" + textoNoches + ")\n" +
+    "Huéspedes: " + huespedes + "\n";
+  if (casillaDesayuno.checked) {
+    mensaje = mensaje + "Con desayuno\n";
+  } else {
+    mensaje = mensaje + "Sin desayuno\n";
+  }
+  mensaje = mensaje + "Total calculado en la página: " + formatear(total) + "\n¿Tienen disponibilidad?";
+  botonCotizar.href = enlaceWhatsApp(mensaje);
+}
+
+function marcarTarjeta(codigo) {
+  document.querySelector("#tarjeta-sencilla").classList.remove("elegida");
+  document.querySelector("#tarjeta-pareja").classList.remove("elegida");
+  document.querySelector("#tarjeta-doble").classList.remove("elegida");
+  document.querySelector("#tarjeta-familiar").classList.remove("elegida");
+  document.querySelector("#tarjeta-" + codigo).classList.add("elegida");
+}
+
+function elegir(codigo) {
+  selectHabitacion.value = codigo;
+  inputHuespedes.value = datosHabitacion(codigo).capacidad;
+  marcarTarjeta(codigo);
+  calcularEstadia();
+  document.querySelector("#cotizar").scrollIntoView();
+}
+
+function elegirSencilla() { elegir("sencilla"); }
+function elegirPareja() { elegir("pareja"); }
+function elegirDoble() { elegir("doble"); }
+function elegirFamiliar() { elegir("familiar"); }
+
+function cambiarHabitacion() {
+  marcarTarjeta(selectHabitacion.value);
+  calcularEstadia();
+}
+
+function calcularPasadia() {
+  let adultos = parseInt(inputAdultos.value, 10);
+  let ninos = parseInt(inputNinos.value, 10);
+  if (isNaN(adultos) || adultos < 0) {
+    adultos = 0;
+  }
+  if (isNaN(ninos) || ninos < 0) {
+    ninos = 0;
+  }
+  let total = adultos * precioAdulto + ninos * precioNino;
+  document.querySelector("#total-pasadia").textContent = formatear(total);
+  let mensaje = "Hola, queremos ir de pasadía a la piscina del Hotel Balcones de La Pradera.\n" +
+    "Adultos: " + adultos + "\nNiños: " + ninos + "\n" +
+    "Total calculado: " + formatear(total) + "\n¿Qué día nos recomiendan?";
+  botonPasadia.href = enlaceWhatsApp(mensaje);
+}
+
+function horaColombia() {
+  let texto = new Date().toLocaleString("en-US", { timeZone: "America/Bogota", hour: "numeric", hour12: false });
+  return parseInt(texto, 10) % 24;
+}
+
+function revisarPiscina() {
+  let hora = horaColombia();
+  if (hora >= 21) {
+    estadoPiscina.textContent = "Cerrada, abre mañana";
+    estadoPiscina.classList.add("cerrada");
+  } else if (hora < 6) {
+    estadoPiscina.textContent = "Cerrada, abre en la mañana";
+    estadoPiscina.classList.add("cerrada");
+  } else {
+    estadoPiscina.textContent = "Piscina abierta hasta las 9:00 p. m.";
+    estadoPiscina.classList.remove("cerrada");
+  }
+}
+
+function enviarEvento(evento) {
+  evento.preventDefault();
+  let tipo = document.querySelector("#tipo-evento").value;
+  let personas = document.querySelector("#personas-evento").value;
+  let fecha = document.querySelector("#fecha-evento").value;
+  let mensaje = "Hola, quiero preguntar por un evento en Hotel Balcones de La Pradera.\n" +
+    "Tipo: " + tipo + "\nPersonas: " + personas + "\n";
+  if (fecha) {
+    mensaje = mensaje + "Fecha: " + fechaTexto(fecha) + "\n";
+  }
+  mensaje = mensaje + "¿Está disponible y qué incluye?";
+  window.open(enlaceWhatsApp(mensaje), "_blank", "noopener");
+}
+
+function enlacesReserva() {
+  let mensaje = "Hola, quiero reservar una habitación en Hotel Balcones de La Pradera. ¿Tienen disponibilidad?";
+  document.querySelector("#boton-reservar-hero").href = enlaceWhatsApp(mensaje);
+  document.querySelector("#boton-reservar-cierre").href = enlaceWhatsApp(mensaje);
+  document.querySelector("#boton-reservar-barra").href = enlaceWhatsApp(mensaje);
+}
+
+function iniciar() {
+  fechasIniciales();
+  enlacesReserva();
+  marcarTarjeta(selectHabitacion.value);
+  calcularEstadia();
+  calcularPasadia();
+  revisarPiscina();
+  setInterval(revisarPiscina, 60000);
+
+  document.querySelector("#elegir-sencilla").addEventListener("click", elegirSencilla);
+  document.querySelector("#elegir-pareja").addEventListener("click", elegirPareja);
+  document.querySelector("#elegir-doble").addEventListener("click", elegirDoble);
+  document.querySelector("#elegir-familiar").addEventListener("click", elegirFamiliar);
+  selectHabitacion.addEventListener("change", cambiarHabitacion);
+  inputLlegada.addEventListener("change", calcularEstadia);
+  inputSalida.addEventListener("change", calcularEstadia);
+  inputHuespedes.addEventListener("input", calcularEstadia);
+  casillaDesayuno.addEventListener("change", calcularEstadia);
+  inputAdultos.addEventListener("input", calcularPasadia);
+  inputNinos.addEventListener("input", calcularPasadia);
+  formularioEvento.addEventListener("submit", enviarEvento);
+}
+
+iniciar();
+</script>
+</body>
+</html>
