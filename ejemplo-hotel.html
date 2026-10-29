@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Casa Cafetal, hotel de montaña en Garzón (página de ejemplo)</title>
+<meta name="description" content="Página de ejemplo para un hotel: habitaciones con precio por noche, cotizador de estadía, experiencias cafeteras y reservas por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1788145749384-f91374d3bb99?w=1400&q=65&auto=format&fit=crop" fetchpriority="high">
+<style>
+:root {
+  --cacao: #33221a;
+  --cacao-2: #4a3326;
+  --cereza: #a8302c;
+  --cereza-oscura: #872320;
+  --pergamino: #c9a46a;
+  --hoja: #3f5a45;
+  --fondo: #fbfaf7;
+  --arena: #f1ebe1;
+  --tinta: #221a16;
+  --suave: #6d625b;
+  --linea: #e4dbcf;
+  --blanco: #ffffff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Instrument Sans", "Segoe UI", sans-serif; font-size: 17px; line-height: 1.6; color: var(--tinta); background: var(--fondo); }
+h1, h2, h3 { font-family: "Young Serif", Georgia, serif; font-weight: 400; line-height: 1.1; margin: 0; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+.ancho { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+.aviso-demo { background: var(--tinta); color: #e9e0d6; font-size: 14px; padding: 9px 20px; text-align: center; }
+.aviso-demo a { color: var(--pergamino); font-weight: 700; }
+.boton { display: inline-block; background: var(--cereza); color: #ffffff; font-weight: 600; padding: 14px 24px; border-radius: 8px; text-decoration: none; border: 0; font-family: inherit; font-size: 17px; cursor: pointer; }
+.boton:hover { background: var(--cereza-oscura); }
+.boton.claro { background: transparent; color: var(--tinta); border: 1.5px solid var(--tinta); }
+.boton.claro:hover { background: var(--tinta); color: #ffffff; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid var(--pergamino); outline-offset: 3px; }
+
+/* Portada */
+.portada { position: relative; min-height: 640px; color: #ffffff; display: flex; flex-direction: column; }
+.portada .fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.portada .velo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(34, 22, 16, .55) 0%, rgba(34, 22, 16, .15) 40%, rgba(34, 22, 16, .75) 100%); }
+.cabecera { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 22px 0; gap: 16px; }
+.marca { font-family: "Young Serif", Georgia, serif; font-size: 28px; text-decoration: none; }
+.marca small { display: block; font-family: "Instrument Sans", sans-serif; font-size: 13px; opacity: .85; margin-top: -2px; }
+.cabecera nav a { margin-left: 26px; text-decoration: none; font-weight: 500; }
+.cabecera nav a:hover { color: var(--pergamino); }
+.portada .texto { position: relative; margin-top: auto; padding-bottom: 56px; }
+.portada h1 { font-size: 68px; max-width: 13ch; }
+.portada p { max-width: 46ch; font-size: 19px; margin: 18px 0 28px; color: #f3ece4; }
+.portada .acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+.portada .boton.claro { color: #ffffff; border-color: #ffffff; }
+.portada .boton.claro:hover { background: #ffffff; color: var(--tinta); }
+.datos-rapidos { position: relative; display: flex; flex-wrap: wrap; gap: 28px; border-top: 1px solid rgba(255, 255, 255, .3); padding: 18px 0 24px; font-size: 15px; color: #f3ece4; }
+.datos-rapidos b { color: #ffffff; }
+
+/* Secciones */
+.seccion { padding: 84px 0; }
+.seccion h2 { font-size: 46px; margin-bottom: 10px; }
+.intro { color: var(--suave); max-width: 54ch; margin: 0 0 36px; }
+
+/* Habitaciones */
+.habitaciones { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.habitacion { background: var(--blanco); border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.habitacion img { width: 100%; height: 280px; object-fit: cover; }
+.habitacion .info { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+.habitacion h3 { font-size: 26px; }
+.habitacion .capacidad { color: var(--suave); font-size: 15px; margin: 4px 0 12px; }
+.habitacion ul { margin: 0 0 18px; padding-left: 18px; color: var(--suave); font-size: 15px; }
+.habitacion .pie-hab { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--linea); padding-top: 16px; }
+.precio b { font-family: "Young Serif", Georgia, serif; font-size: 26px; font-weight: 400; }
+.precio span { color: var(--suave); font-size: 14px; }
+.elegir { background: var(--cacao); padding: 11px 18px; font-size: 15px; }
+.elegir:hover { background: var(--cacao-2); }
+.habitacion.destacada { border-color: var(--pergamino); box-shadow: 0 0 0 2px var(--pergamino); }
+
+/* Cotizador */
+.cotizar { background: var(--cacao); color: #efe6db; padding: 84px 0; }
+.cotizar .rejilla { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: start; }
+.cotizar h2 { color: #ffffff; font-size: 46px; margin-bottom: 12px; }
+.cotizar .intro { color: #cdbfb1; }
+.cotizar .incluye { list-style: none; padding: 0; margin: 0; }
+.cotizar .incluye li { padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+.formulario { background: var(--blanco); color: var(--tinta); border-radius: 14px; padding: 28px; }
+.campos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.campo.completo { grid-column: 1 / -1; }
+.campo label { display: block; font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+.campo input, .campo select { width: 100%; font-family: inherit; font-size: 16px; padding: 12px; border: 1px solid #d3c7b8; border-radius: 8px; background: #ffffff; color: var(--tinta); }
+.extra { display: flex; gap: 12px; align-items: flex-start; margin-top: 18px; padding: 14px; background: var(--arena); border-radius: 10px; cursor: pointer; }
+.extra input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--cereza); }
+.extra small { display: block; color: var(--suave); }
+.cuenta { margin-top: 22px; border-top: 1px solid var(--linea); padding-top: 16px; }
+.cuenta .fila { display: flex; justify-content: space-between; padding: 5px 0; color: var(--suave); }
+.cuenta .fila b { color: var(--tinta); }
+.cuenta .total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+.cuenta .total b { font-family: "Young Serif", Georgia, serif; font-size: 36px; font-weight: 400; }
+.alerta { color: var(--cereza); font-weight: 600; font-size: 15px; min-height: 24px; margin-top: 10px; }
+.reservar { display: block; text-align: center; margin-top: 8px; }
+.reservar.apagado { background: #cfc4b8; pointer-events: none; }
+
+/* Experiencias */
+.experiencias { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: auto auto; gap: 18px; }
+.exp { position: relative; border-radius: 12px; overflow: hidden; min-height: 260px; color: #ffffff; }
+.exp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.exp .capa { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(26, 17, 12, .85) 100%); }
+.exp div.txt { position: absolute; left: 20px; right: 20px; bottom: 18px; }
+.exp h3 { font-size: 24px; }
+.exp p { margin: 4px 0 0; font-size: 15px; color: #eadfd3; }
+.exp.grande { grid-row: span 2; }
+
+/* Información */
+.dos { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; }
+.horas { width: 100%; border-collapse: collapse; }
+.horas td { padding: 11px 0; border-bottom: 1px solid var(--linea); }
+.horas td:last-child { text-align: right; font-weight: 600; }
+.mapa { width: 100%; height: 320px; border: 0; border-radius: 12px; background: var(--arena); }
+.llegar { margin: 16px 0 0; padding: 0; list-style: none; color: var(--suave); }
+.llegar li { padding: 6px 0; }
+.llegar b { color: var(--tinta); }
+details { border-bottom: 1px solid var(--linea); padding: 18px 0; }
+summary { font-weight: 600; cursor: pointer; }
+details p { margin: 10px 0 0; color: var(--suave); max-width: 62ch; }
+
+.cierre { background: var(--hoja); color: #e8efe7; padding: 72px 0; }
+.cierre .ancho { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+.cierre h2 { color: #ffffff; font-size: 44px; }
+.cierre p { color: #cfdccd; margin: 12px 0 0; max-width: 46ch; }
+.cierre .boton { background: #ffffff; color: var(--hoja); justify-self: start; }
+.cierre .boton:hover { background: var(--arena); }
+.pie { padding: 30px 20px 90px; color: var(--suave); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.pie a { color: var(--cereza); font-weight: 700; }
+.barra-movil { display: none; }
+
+@media (max-width: 900px) {
+  .portada { min-height: 580px; }
+  .portada h1 { font-size: 44px; }
+  .cabecera nav { display: none; }
+  .seccion h2, .cotizar h2, .cierre h2 { font-size: 34px; }
+  .habitaciones, .cotizar .rejilla, .dos, .cierre .ancho { grid-template-columns: 1fr; gap: 32px; }
+  .habitacion img { height: 220px; }
+  .experiencias { grid-template-columns: 1fr 1fr; }
+  .exp.grande { grid-row: auto; grid-column: 1 / -1; }
+  .exp { min-height: 200px; }
+  .campos { grid-template-columns: 1fr 1fr; }
+  .barra-movil { display: block; position: fixed; left: 12px; right: 12px; bottom: 12px; text-align: center; background: var(--cereza); color: #ffffff; font-weight: 700; padding: 14px; border-radius: 10px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 10; }
+}
+@media (max-width: 480px) {
+  .campos { grid-template-columns: 1fr; }
+  .experiencias { grid-template-columns: 1fr; }
+  .datos-rapidos { gap: 10px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="aviso-demo">Página de ejemplo hecha por CuentaClaro. El hotel, los precios y los datos son inventados. <a href="https://wa.me/573132787667?text=Hola,%20vi%20la%20p%C3%A1gina%20de%20ejemplo%20del%20hotel%20y%20quiero%20una%20para%20mi%20negocio" target="_blank" rel="noopener">Quiero una para mi hotel</a></div>
+
+<section class="portada" id="inicio">
+  <img class="fondo" src="https://images.unsplash.com/photo-1788145749384-f91374d3bb99?w=1400&q=65&auto=format&fit=crop" alt="Casa colonial con molduras verdes y tejado de barro" fetchpriority="high">
+  <div class="velo"></div>
+  <div class="ancho" style="position:relative;width:100%">
+    <header class="cabecera">
+      <a class="marca" href="#inicio">Casa Cafetal<small>Hotel de montaña en Garzón, Huila</small></a>
+      <nav><a href="#habitaciones">Habitaciones</a><a href="#cotizar">Reservar</a><a href="#experiencias">Experiencias</a><a href="#informacion">Cómo llegar</a></nav>
+    </header>
+  </div>
+  <div class="ancho texto">
+    <h1>Despierte entre cafetales, a diez minutos de Garzón.</h1>
+    <p>Ocho habitaciones en una casona de 1940 rodeada de café. Desayuno huilense incluido, piscina y recorrido por la finca para que pruebe el café que sembramos.</p>
+    <div class="acciones">
+      <a class="boton" href="#cotizar">Cotizar mi estadía</a>
+      <a class="boton claro" href="#habitaciones">Ver habitaciones</a>
+    </div>
+  </div>
+  <div class="ancho" style="position:relative;width:100%">
+    <div class="datos-rapidos">
+      <span>Desde <b>$ 160.000</b> la noche</span>
+      <span>Entrada <b>3:00 p. m.</b>, salida <b>12:00 m.</b></span>
+      <span id="estado-recepcion">Recepción abierta las 24 horas</span>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="habitaciones">
+  <div class="ancho">
+    <h2>Habitaciones</h2>
+    <p class="intro">Todas tienen baño privado, agua caliente, wifi y desayuno incluido. El precio es por noche, por habitación.</p>
+    <div class="habitaciones">
+      <article class="habitacion" id="hab-sencilla">
+        <img src="https://images.unsplash.com/photo-1776763255122-3d35e32aee64?w=900&q=65&auto=format&fit=crop" alt="Cama con almohadas blancas y lámparas de mesa" loading="lazy">
+        <div class="info">
+          <h3>Sencilla Pergamino</h3>
+          <p class="capacidad">1 a 2 personas, cama doble</p>
+          <ul><li>Ventana hacia el jardín</li><li>Escritorio y ventilador de techo</li><li>Ideal para viajes de trabajo</li></ul>
+          <div class="pie-hab"><div class="precio"><b>$ 160.000</b> <span>/ noche</span></div><button class="boton elegir" id="elegir-sencilla">Elegir esta</button></div>
+        </div>
+      </article>
+      <article class="habitacion" id="hab-doble">
+        <img src="https://images.unsplash.com/photo-1776763018821-8feeaeeee0a5?w=900&q=65&auto=format&fit=crop" alt="Habitación iluminada con sillón y escritorio" loading="lazy">
+        <div class="info">
+          <h3>Doble Cafetal</h3>
+          <p class="capacidad">Hasta 3 personas, cama queen y sofá cama</p>
+          <ul><li>Balcón con vista a los cafetales</li><li>Sillón de lectura</li><li>La más pedida por parejas</li></ul>
+          <div class="pie-hab"><div class="precio"><b>$ 210.000</b> <span>/ noche</span></div><button class="boton elegir" id="elegir-doble">Elegir esta</button></div>
+        </div>
+      </article>
+      <article class="habitacion" id="hab-familiar">
+        <img src="https://images.unsplash.com/photo-1662385930165-49ebaa03b152?w=900&q=65&auto=format&fit=crop" alt="Dormitorio amplio con cama grande" loading="lazy">
+        <div class="info">
+          <h3>Familiar Guadua</h3>
+          <p class="capacidad">Hasta 5 personas, cama king y dos sencillas</p>
+          <ul><li>Dos ambientes separados</li><li>Junto a la piscina</li><li>Cunas sin costo</li></ul>
+          <div class="pie-hab"><div class="precio"><b>$ 320.000</b> <span>/ noche</span></div><button class="boton elegir" id="elegir-familiar">Elegir esta</button></div>
+        </div>
+      </article>
+      <article class="habitacion" id="hab-suite">
+        <img src="https://images.unsplash.com/photo-1790419683322-b08a7050c424?w=900&q=65&auto=format&fit=crop" alt="Habitación con pared de piedra y espejo redondo" loading="lazy">
+        <div class="info">
+          <h3>Suite Cereza</h3>
+          <p class="capacidad">2 personas, cama king</p>
+          <ul><li>Pared de piedra y tina</li><li>Terraza privada con hamaca</li><li>Botella de vino y café de la finca de bienvenida</li></ul>
+          <div class="pie-hab"><div class="precio"><b>$ 380.000</b> <span>/ noche</span></div><button class="boton elegir" id="elegir-suite">Elegir esta</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cotizar" id="cotizar">
+  <div class="ancho rejilla">
+    <div>
+      <h2>Cotice su estadía</h2>
+      <p class="intro">Elija fechas y habitación. Le mostramos el total al instante y nos envía la solicitud por WhatsApp. Le confirmamos disponibilidad en minutos.</p>
+      <ul class="incluye">
+        <li>Desayuno huilense para cada huésped</li>
+        <li>Piscina, hamacas y zonas verdes</li>
+        <li>Parqueadero cubierto sin costo</li>
+        <li>Separa con el 30%, el resto al llegar</li>
+      </ul>
+    </div>
+
+    <div class="formulario">
+      <div class="campos">
+        <div class="campo completo">
+          <label for="habitacion">Habitación</label>
+          <select id="habitacion">
+            <option value="sencilla">Sencilla Pergamino, $ 160.000 la noche</option>
+            <option value="doble" selected>Doble Cafetal, $ 210.000 la noche</option>
+            <option value="familiar">Familiar Guadua, $ 320.000 la noche</option>
+            <option value="suite">Suite Cereza, $ 380.000 la noche</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="llegada">Llegada</label>
+          <input type="date" id="llegada">
+        </div>
+        <div class="campo">
+          <label for="salida">Salida</label>
+          <input type="date" id="salida">
+        </div>
+        <div class="campo completo">
+          <label for="huespedes">Huéspedes</label>
+          <select id="huespedes">
+            <option value="1">1 persona</option>
+            <option value="2" selected>2 personas</option>
+            <option value="3">3 personas</option>
+            <option value="4">4 personas</option>
+            <option value="5">5 personas</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="extra">
+        <input type="checkbox" id="tour">
+        <span><b>Recorrido cafetero</b>, $ 45.000 por persona<small>Dos horas por la finca: siembra, cosecha, secado y cata de tres cafés.</small></span>
+      </label>
+
+      <div class="cuenta">
+        <div class="fila"><span id="detalle-noches">Noches</span><b id="valor-noches">$ 0</b></div>
+        <div class="fila"><span>Recorrido cafetero</span><b id="valor-tour">$ 0</b></div>
+        <div class="total"><span>Total</span><b id="total">$ 0</b></div>
+        <div class="fila"><span>Para separar (30%)</span><b id="anticipo">$ 0</b></div>
+      </div>
+      <div class="alerta" id="alerta"></div>
+      <a class="boton reservar apagado" id="reservar" href="#" target="_blank" rel="noopener">Solicitar reserva por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="experiencias">
+  <div class="ancho">
+    <h2>Qué hacer en la casa</h2>
+    <p class="intro">No hace falta salir para tener un buen día. Y si quiere conocer la región, le ayudamos a organizar el paseo.</p>
+    <div class="experiencias">
+      <div class="exp grande"><img src="https://images.unsplash.com/photo-1762686852371-763b689910b2?w=900&q=65&auto=format&fit=crop" alt="Hileras de plantas de café en una ladera" loading="lazy"><div class="capa"></div><div class="txt"><h3>Recorrido por la finca</h3><p>Todos los días a las 9:00 a. m. y 3:00 p. m. Termina con cata de café.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1506812428898-fe5a708f5359?w=700&q=65&auto=format&fit=crop" alt="Piscina rodeada de árboles" loading="lazy"><div class="capa"></div><div class="txt"><h3>Piscina</h3><p>De 8:00 a. m. a 7:00 p. m.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1792426419167-2b4695af7d5a?w=700&q=65&auto=format&fit=crop" alt="Arepa rellena servida al desayuno" loading="lazy"><div class="capa"></div><div class="txt"><h3>Desayuno huilense</h3><p>Arepa, huevos, fruta y café de la casa.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1766603636787-d48785d00367?w=700&q=65&auto=format&fit=crop" alt="Terraza con hamaca y plantas tropicales" loading="lazy"><div class="capa"></div><div class="txt"><h3>Hamacas y terraza</h3><p>Para la siesta o el atardecer.</p></div></div>
+      <div class="exp"><img src="https://images.unsplash.com/photo-1782974501096-90a2249b417a?w=700&q=65&auto=format&fit=crop" alt="Mano recogiendo granos de café maduros" loading="lazy"><div class="capa"></div><div class="txt"><h3>Coseche su café</h3><p>Entre octubre y diciembre, en temporada.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="informacion" style="border-top:1px solid var(--linea)">
+  <div class="ancho dos">
+    <div>
+      <h2>Horarios y reglas</h2>
+      <p class="intro">Lo que conviene saber antes de llegar.</p>
+      <table class="horas">
+        <tr><td>Entrada (check-in)</td><td>Desde las 3:00 p. m.</td></tr>
+        <tr><td>Salida (check-out)</td><td>Hasta las 12:00 m.</td></tr>
+        <tr><td>Desayuno</td><td>7:00 a 10:00 a. m.</td></tr>
+        <tr><td>Recepción</td><td>24 horas</td></tr>
+      </table>
+      <details><summary>¿Puedo cancelar mi reserva?</summary><p>Sí. Si cancela con 5 días o más de anticipación le devolvemos todo el anticipo. Con menos tiempo, lo puede usar para otra fecha en los próximos 6 meses.</p></details>
+      <details><summary>¿Aceptan mascotas?</summary><p>Sí, perros pequeños y medianos en la habitación Familiar Guadua, con un cargo de $ 30.000 por noche.</p></details>
+      <details><summary>¿Cómo pago?</summary><p>Transferencia, Nequi, Daviplata o tarjeta. Al confirmar la reserva le enviamos los datos para el anticipo.</p></details>
+      <details><summary>¿Hacen planes para grupos o eventos?</summary><p>Sí. Para grupos de más de 10 personas, matrimonios o retiros de empresa escríbanos y le armamos una propuesta.</p></details>
+    </div>
+    <div>
+      <h2>Cómo llegar</h2>
+      <p class="intro">A 10 minutos del parque principal de Garzón por vía pavimentada.</p>
+      <iframe class="mapa" title="Mapa de ubicación de ejemplo" src="https://www.google.com/maps?q=Garz%C3%B3n,+Huila&z=13&output=embed" loading="lazy"></iframe>
+      <ul class="llegar">
+        <li><b>Desde Neiva:</b> 1 h 45 min por la Ruta 45.</li>
+        <li><b>Desde Pitalito:</b> 1 h 30 min.</li>
+        <li><b>Desde el aeropuerto de Neiva:</b> le recogemos con cita previa.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="ancho">
+    <div>
+      <h2>¿Viene este fin de semana?</h2>
+      <p>Los sábados y festivos se llenan primero. Escríbanos y le decimos qué habitaciones quedan.</p>
+    </div>
+    <a class="boton" href="https://wa.me/573132787667?text=Hola,%20quiero%20saber%20la%20disponibilidad%20de%20Casa%20Cafetal%20(p%C3%A1gina%20de%20ejemplo)" target="_blank" rel="noopener">Preguntar disponibilidad</a>
+  </div>
+</section>
+
+<footer class="ancho pie">
+  <span>Página de ejemplo hecha por <a href="/">CuentaClaro</a>. <a href="/portafolio">Ver más ejemplos</a></span>
+  <span>Fotos: Unsplash</span>
+</footer>
+
+<a class="barra-movil" href="#cotizar">Cotizar mi estadía</a>
+
+<script>
+let noches = 0;
+let tarifa = 0;
+let capacidad = 0;
+let nombreHabitacion = "";
+
+function formatear(valor) {
+  return "$ " + valor.toLocaleString("es-CO");
+}
+
+function datosHabitacion(codigo) {
+  switch (codigo) {
+    case "sencilla":
+      tarifa = 160000;
+      capacidad = 2;
+      nombreHabitacion = "Sencilla Pergamino";
+      break;
+    case "doble":
+      tarifa = 210000;
+      capacidad = 3;
+      nombreHabitacion = "Doble Cafetal";
+      break;
+    case "familiar":
+      tarifa = 320000;
+      capacidad = 5;
+      nombreHabitacion = "Familiar Guadua";
+      break;
+    case "suite":
+      tarifa = 380000;
+      capacidad = 2;
+      nombreHabitacion = "Suite Cereza";
+      break;
+  }
+}
+
+function fechaTexto(valor) {
+  const partes = valor.split("-");
+  return partes[2] + "/" + partes[1] + "/" + partes[0];
+}
+
+function calcularEstadia() {
+  const codigo = document.getElementById("habitacion").value;
+  const llegada = document.getElementById("llegada").value;
+  const salida = document.getElementById("salida").value;
+  const huespedes = Number(document.getElementById("huespedes").value);
+  const conTour = document.getElementById("tour").checked;
+  const boton = document.getElementById("reservar");
+  const alerta = document.getElementById("alerta");
+
+  datosHabitacion(codigo);
+  noches = 0;
+  if (llegada != "" && salida != "") {
+    noches = Math.round((new Date(salida) - new Date(llegada)) / 86400000);
+  }
+
+  let valorTour = 0;
+  if (conTour) {
+    valorTour = 45000 * huespedes;
+  }
+  let valorNoches = 0;
+  if (noches > 0) {
+    valorNoches = tarifa * noches;
+  }
+  const total = valorNoches + valorTour;
+
+  if (noches > 0) {
+    document.getElementById("detalle-noches").textContent = noches + " noche(s) x " + formatear(tarifa);
+  } else {
+    document.getElementById("detalle-noches").textContent = "Noches";
+  }
+  document.getElementById("valor-noches").textContent = formatear(valorNoches);
+  document.getElementById("valor-tour").textContent = formatear(valorTour);
+  document.getElementById("total").textContent = formatear(total);
+  document.getElementById("anticipo").textContent = formatear(Math.round(total * 0.3));
+
+  boton.className = "boton reservar apagado";
+  boton.href = "#";
+
+  if (llegada == "" || salida == "") {
+    alerta.textContent = "Elija la fecha de llegada y de salida.";
+    return;
+  }
+  if (noches <= 0) {
+    alerta.textContent = "La salida debe ser después de la llegada.";
+    return;
+  }
+  if (huespedes > capacidad) {
+    alerta.textContent = "La " + nombreHabitacion + " recibe máximo " + capacidad + " personas. Elija otra habitación.";
+    return;
+  }
+
+  alerta.textContent = "";
+  let mensaje = "Hola, quiero reservar en Casa Cafetal (página de ejemplo).\n";
+  mensaje = mensaje + "Habitación: " + nombreHabitacion + "\n";
+  mensaje = mensaje + "Llegada: " + fechaTexto(llegada) + "\nSalida: " + fechaTexto(salida) + " (" + noches + " noche(s))\n";
+  mensaje = mensaje + "Huéspedes: " + huespedes + "\n";
+  if (conTour) {
+    mensaje = mensaje + "Con recorrido cafetero\n";
+  }
+  mensaje = mensaje + "Total aproximado: " + formatear(total) + "\n¿Tienen disponibilidad?";
+  boton.className = "boton reservar";
+  boton.href = "https://wa.me/573132787667?text=" + encodeURIComponent(mensaje);
+}
+
+function elegir(codigo, idTarjeta) {
+  document.getElementById("habitacion").value = codigo;
+  const tarjetas = document.querySelectorAll(".habitacion");
+  for (let i = 0; i < tarjetas.length; i++) {
+    tarjetas[i].className = "habitacion";
+  }
+  document.getElementById(idTarjeta).className = "habitacion destacada";
+  calcularEstadia();
+  document.getElementById("cotizar").scrollIntoView();
+}
+
+function elegirSencilla() { elegir("sencilla", "hab-sencilla"); }
+function elegirDoble() { elegir("doble", "hab-doble"); }
+function elegirFamiliar() { elegir("familiar", "hab-familiar"); }
+function elegirSuite() { elegir("suite", "hab-suite"); }
+
+function fechaISO(fecha) {
+  const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+  const dia = String(fecha.getDate()).padStart(2, "0");
+  return fecha.getFullYear() + "-" + mes + "-" + dia;
+}
+
+function fechasIniciales() {
+  const hoy = new Date();
+  const manana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 1);
+  const pasado = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 2);
+  document.getElementById("llegada").min = fechaISO(hoy);
+  document.getElementById("salida").min = fechaISO(hoy);
+  document.getElementById("llegada").value = fechaISO(manana);
+  document.getElementById("salida").value = fechaISO(pasado);
+}
+
+function estadoRecepcion() {
+  const hora = new Date().getHours();
+  const texto = document.getElementById("estado-recepcion");
+  if (hora >= 15 && hora < 22) {
+    texto.innerHTML = "Hoy: <b>entradas desde las 3:00 p. m.</b>";
+  } else if (hora >= 7 && hora < 10) {
+    texto.innerHTML = "Ahora: <b>servimos el desayuno</b>";
+  } else {
+    texto.innerHTML = "Recepción abierta <b>las 24 horas</b>";
+  }
+}
+
+document.getElementById("elegir-sencilla").addEventListener("click", elegirSencilla);
+document.getElementById("elegir-doble").addEventListener("click", elegirDoble);
+document.getElementById("elegir-familiar").addEventListener("click", elegirFamiliar);
+document.getElementById("elegir-suite").addEventListener("click", elegirSuite);
+document.getElementById("habitacion").addEventListener("change", calcularEstadia);
+document.getElementById("llegada").addEventListener("change", calcularEstadia);
+document.getElementById("salida").addEventListener("change", calcularEstadia);
+document.getElementById("huespedes").addEventListener("change", calcularEstadia);
+document.getElementById("tour").addEventListener("change", calcularEstadia);
+
+fechasIniciales();
+estadoRecepcion();
+calcularEstadia();
+</script>
+</body>
+</html>
