@@ -286,6 +286,261 @@ function ejemploIndemnizacion() {
   calcularIndemnizacion();
 }
 
+let diasGanados = 0;
+let diasPendientes = 0;
+let festivosEncontrados = "";
+let fueraDeRango = false;
+
+function formatearDias(valor) {
+  return valor.toLocaleString("es-CO", { maximumFractionDigits: 2 });
+}
+
+function cambiarVariable() {
+  let marcada = document.getElementById("vac-variable").checked;
+  if (marcada) {
+    document.getElementById("vac-aviso-variable").style.display = "block";
+  } else {
+    document.getElementById("vac-aviso-variable").style.display = "none";
+  }
+}
+
+function calcularVacaciones() {
+  salario = Number(document.getElementById("vac-salario").value);
+  let inicio = document.getElementById("vac-inicio").value;
+  let corte = document.getElementById("vac-corte").value;
+  let tomados = Number(document.getElementById("vac-tomados").value);
+
+  if (salario <= 0) {
+    alert("Revisa los datos: escribe un salario mayor a 0.");
+    return;
+  }
+
+  if (inicio != "" || corte != "") {
+    if (inicio == "" || corte == "" || corte < inicio) {
+      alert("Revisa las fechas: escribe la fecha de inicio y una fecha de corte igual o posterior.");
+      return;
+    }
+    document.getElementById("vac-dias").value = dias360(inicio, corte);
+  }
+
+  dias = Number(document.getElementById("vac-dias").value);
+
+  if (dias <= 0) {
+    alert("Revisa los datos: escribe los días trabajados (mayor a 0) o las fechas de inicio y corte.");
+    return;
+  }
+  if (tomados < 0) {
+    alert("Revisa los datos: los días ya disfrutados no pueden ser negativos.");
+    return;
+  }
+
+  let valorDia = salario / 30;
+  let valorTotal = salario * dias / 720;
+  let valorTomado = valorDia * tomados;
+  diasGanados = dias * 15 / 360;
+  diasPendientes = diasGanados - tomados;
+  let valorPendiente = valorTotal - valorTomado;
+  if (diasPendientes < 0) {
+    diasPendientes = 0;
+    valorPendiente = 0;
+  }
+
+  document.getElementById("vac-ganados").textContent = formatearDias(diasGanados);
+  document.getElementById("vac-disfrutados").textContent = formatearDias(tomados);
+  document.getElementById("vac-pendientes").textContent = formatearDias(diasPendientes);
+  document.getElementById("vac-tot").textContent = formatear(valorPendiente);
+  document.getElementById("vac-paso1").textContent = "1. Valor de las vacaciones ganadas: " + formatear(salario) + " x " + dias + " días / 720 = " + formatear(valorTotal) + ".";
+  document.getElementById("vac-paso2").textContent = "2. Días hábiles ganados: " + dias + " x 15 / 360 = " + formatearDias(diasGanados) + " días.";
+  document.getElementById("vac-paso3").textContent = "3. Valor de un día: " + formatear(salario) + " / 30 = " + formatear(valorDia) + ". Días ya disfrutados: " + formatearDias(tomados) + " x " + formatear(valorDia) + " = " + formatear(valorTomado) + ".";
+  document.getElementById("vac-paso4").textContent = "4. Pendiente: " + formatear(valorTotal) + " - " + formatear(valorTomado) + " = " + formatear(valorPendiente) + ".";
+  if (diasGanados - tomados < 0) {
+    document.getElementById("vac-paso4").textContent = "4. Ya disfrutaste más días de los que ganaste en este periodo, así que no queda nada pendiente.";
+  }
+  document.getElementById("vac-resultado").style.display = "block";
+}
+
+function ejemploVacaciones() {
+  document.getElementById("vac-salario").value = 1750905;
+  document.getElementById("vac-dias").value = 360;
+  document.getElementById("vac-inicio").value = "";
+  document.getElementById("vac-corte").value = "";
+  document.getElementById("vac-tomados").value = 0;
+  calcularVacaciones();
+}
+
+function esFestivo(texto) {
+  switch (texto) {
+    case "2026-01-01":
+    case "2026-01-12":
+    case "2026-03-23":
+    case "2026-04-02":
+    case "2026-04-03":
+    case "2026-05-01":
+    case "2026-05-18":
+    case "2026-06-08":
+    case "2026-06-15":
+    case "2026-06-29":
+    case "2026-07-13":
+    case "2026-07-20":
+    case "2026-08-07":
+    case "2026-08-17":
+    case "2026-10-12":
+    case "2026-11-02":
+    case "2026-11-16":
+    case "2026-12-08":
+    case "2026-12-25":
+    case "2027-01-01":
+    case "2027-01-11":
+    case "2027-03-22":
+    case "2027-03-25":
+    case "2027-03-26":
+    case "2027-05-01":
+    case "2027-05-10":
+    case "2027-05-31":
+    case "2027-06-07":
+    case "2027-07-05":
+    case "2027-07-12":
+    case "2027-07-20":
+    case "2027-08-07":
+    case "2027-08-16":
+    case "2027-10-18":
+    case "2027-11-01":
+    case "2027-11-15":
+    case "2027-12-08":
+    case "2027-12-25":
+      return true;
+    default:
+      return false;
+  }
+}
+
+function nombreDia(numero) {
+  switch (numero) {
+    case 0: return "domingo";
+    case 1: return "lunes";
+    case 2: return "martes";
+    case 3: return "miércoles";
+    case 4: return "jueves";
+    case 5: return "viernes";
+    default: return "sábado";
+  }
+}
+
+function nombreMes(numero) {
+  switch (numero) {
+    case 0: return "enero";
+    case 1: return "febrero";
+    case 2: return "marzo";
+    case 3: return "abril";
+    case 4: return "mayo";
+    case 5: return "junio";
+    case 6: return "julio";
+    case 7: return "agosto";
+    case 8: return "septiembre";
+    case 9: return "octubre";
+    case 10: return "noviembre";
+    default: return "diciembre";
+  }
+}
+
+function textoFecha(fecha) {
+  return fecha.toISOString().slice(0, 10);
+}
+
+function fechaLarga(fecha) {
+  return nombreDia(fecha.getUTCDay()) + " " + fecha.getUTCDate() + " de " + nombreMes(fecha.getUTCMonth()) + " de " + fecha.getUTCFullYear();
+}
+
+function esDiaHabil(fecha, trabajaSabados) {
+  let diaSemana = fecha.getUTCDay();
+  let texto = textoFecha(fecha);
+  let anio = fecha.getUTCFullYear();
+
+  if (anio < 2026 || anio > 2027) {
+    fueraDeRango = true;
+  }
+
+  if (diaSemana == 0) {
+    return false;
+  }
+  if (diaSemana == 6 && trabajaSabados == "no") {
+    return false;
+  }
+  if (esFestivo(texto)) {
+    if (festivosEncontrados != "") {
+      festivosEncontrados = festivosEncontrados + ", ";
+    }
+    festivosEncontrados = festivosEncontrados + fechaLarga(fecha);
+    return false;
+  }
+  return true;
+}
+
+function calcularRegreso() {
+  let salida = document.getElementById("reg-salida").value;
+  let habiles = Number(document.getElementById("reg-dias").value);
+  let sabados = document.getElementById("reg-sabados").value;
+
+  if (salida == "" || habiles < 1 || habiles > 60 || Math.floor(habiles) != habiles) {
+    alert("Revisa los datos: escribe la fecha de salida y un número entero de días hábiles entre 1 y 60.");
+    return;
+  }
+
+  festivosEncontrados = "";
+  fueraDeRango = false;
+
+  let primerDia = new Date(salida + "T00:00:00Z");
+  let fecha = new Date(salida + "T00:00:00Z");
+  let contados = 0;
+  let ultimo = new Date(salida + "T00:00:00Z");
+
+  while (contados < habiles) {
+    if (esDiaHabil(fecha, sabados)) {
+      contados = contados + 1;
+      ultimo = new Date(fecha.getTime());
+    }
+    fecha.setUTCDate(fecha.getUTCDate() + 1);
+  }
+
+  let regreso = new Date(ultimo.getTime());
+  regreso.setUTCDate(regreso.getUTCDate() + 1);
+  let festivosAntes = festivosEncontrados;
+  while (esDiaHabil(regreso, sabados) == false) {
+    regreso.setUTCDate(regreso.getUTCDate() + 1);
+  }
+  festivosEncontrados = festivosAntes;
+
+  let calendario = Math.round((regreso.getTime() - primerDia.getTime()) / 86400000);
+
+  let textoSabados = "Los sábados no se cuentan porque no trabajas ese día.";
+  if (sabados == "si") {
+    textoSabados = "Los sábados sí se cuentan porque trabajas ese día.";
+  }
+
+  document.getElementById("reg-ultimo").textContent = fechaLarga(ultimo);
+  document.getElementById("reg-regreso").textContent = fechaLarga(regreso);
+  document.getElementById("reg-calendario").textContent = calendario + " días";
+  document.getElementById("reg-paso").textContent = "Desde el " + fechaLarga(primerDia) + " se cuentan " + habiles + " días hábiles, sin domingos ni festivos. " + textoSabados + " Vuelves el siguiente día hábil.";
+  if (festivosEncontrados == "") {
+    document.getElementById("reg-festivos").textContent = "No cayó ningún festivo dentro de tus vacaciones.";
+  } else {
+    document.getElementById("reg-festivos").textContent = "Festivos que cayeron dentro y no se descuentan: " + festivosEncontrados + ".";
+  }
+  if (fueraDeRango) {
+    document.getElementById("reg-aviso").style.display = "block";
+  } else {
+    document.getElementById("reg-aviso").style.display = "none";
+  }
+  document.getElementById("reg-resultado").style.display = "block";
+}
+
+function ejemploRegreso() {
+  document.getElementById("reg-salida").value = "2026-12-14";
+  document.getElementById("reg-dias").value = 15;
+  document.getElementById("reg-sabados").value = "no";
+  calcularRegreso();
+}
+
 let elementosRevelar = [];
 
 function prepararRevelar() {

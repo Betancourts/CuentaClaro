@@ -49,6 +49,8 @@ h1 em, h2 em, h3 em { font-family: inherit; font-style: normal; font-weight: inh
 .tarjeta p { color: #c9cdd3; }
 label { display: block; font-size: 14px; font-weight: 700; margin: 14px 0 4px; }
 input { width: 100%; padding: 11px; font-size: 16px; background: var(--ink); color: var(--paper); border: 1px solid #333a45; border-radius: 8px; color-scheme: dark; transition: border-color 0.2s, box-shadow 0.2s; }
+label.casilla { font-weight: 400; cursor: pointer; }
+label.casilla input { width: auto; margin: 0 8px 0 0; }
 input::placeholder { color: #66707c; }
 input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.25); outline: none; }
 button.accion, .boton { display: inline-block; background: var(--rojo); color: #ffffff; font-weight: 700; border: none; padding: 12px 24px; font-size: 16px; border-radius: 6px; cursor: pointer; margin: 16px 8px 0 0; text-decoration: none; transition: background 0.2s; }
